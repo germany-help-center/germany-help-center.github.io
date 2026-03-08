@@ -1,14 +1,15 @@
-import { GraduationCap, Briefcase, ArrowRight, Plane } from "lucide-react";
+import { GraduationCap, Briefcase, Plane } from "lucide-react";
+import "flag-icons/css/flag-icons.min.css";
 
 const countries = [
-  { name: "India", code: "IN", flag: "🇮🇳" },
-  { name: "Latvia", code: "LV", flag: "🇱🇻" },
-  { name: "Canada", code: "CA", flag: "🇨🇦" },
-  { name: "UK", code: "GB", flag: "🇬🇧" },
-  { name: "Czech Republic", code: "CZ", flag: "🇨🇿" },
-  { name: "Poland", code: "PL", flag: "🇵🇱" },
-  { name: "Netherlands", code: "NL", flag: "🇳🇱" },
-  { name: "Denmark", code: "DK", flag: "🇩🇰" },
+  { name: "India", code: "in" },
+  { name: "Latvia", code: "lv" },
+  { name: "Canada", code: "ca" },
+  { name: "UK", code: "gb" },
+  { name: "Czech Republic", code: "cz" },
+  { name: "Poland", code: "pl" },
+  { name: "Netherlands", code: "nl" },
+  { name: "Denmark", code: "dk" },
 ];
 
 const CountriesSection = () => {
@@ -33,7 +34,7 @@ const CountriesSection = () => {
               key={c.name}
               className="flex items-center gap-3 rounded-xl border border-border/50 bg-background px-5 py-3 text-sm font-medium text-foreground shadow-sm"
             >
-              <span className="text-3xl leading-none">{c.flag}</span>
+              <span className={`fi fi-${c.code} text-2xl rounded-sm`} />
               <div className="text-left">
                 <span className="block font-semibold">{c.name}</span>
                 <span className="block text-xs text-muted-foreground">Students & Professionals</span>
