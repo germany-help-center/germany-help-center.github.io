@@ -34,6 +34,7 @@ const CountriesSection = () => {
               className="flex items-center gap-3 rounded-xl border border-border/50 bg-background px-5 py-3 text-sm font-medium text-foreground shadow-sm"
             >
               <span className="text-2xl">{c.flag}</span>
+              <span className="text-base font-bold text-muted-foreground">{c.code}</span>
               <div className="text-left">
                 <span className="block font-semibold">{c.name}</span>
                 <span className="block text-xs text-muted-foreground">Students & Professionals</span>
