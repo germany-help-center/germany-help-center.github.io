@@ -1,7 +1,8 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import CountriesSection from "@/components/CountriesSection";
+import DreamGermanySection from "@/components/DreamGermanySection";
 import GermanCitiesSection from "@/components/GermanCitiesSection";
+import CountriesSection from "@/components/CountriesSection";
 import ServicesSection from "@/components/ServicesSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import SocialProofSection from "@/components/SocialProofSection";
@@ -15,6 +16,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Header />
       <HeroSection />
+      <DreamGermanySection />
       <GermanCitiesSection />
       <CountriesSection />
       <ServicesSection />
