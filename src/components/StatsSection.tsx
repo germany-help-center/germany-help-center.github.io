@@ -1,12 +1,5 @@
-import { CheckCircle, Globe, Star, Clock, Heart, GraduationCap, FileCheck, Languages, Compass, Users, HandHeart } from "lucide-react";
+import { CheckCircle, Heart, GraduationCap, FileCheck, Languages, Compass, Users, HandHeart } from "lucide-react";
 import aboutUsHero from "@/assets/about-us-hero.jpg";
-
-const stats = [
-  { icon: CheckCircle, value: "100+", label: "Successful Visas" },
-  { icon: Globe, value: "10+", label: "Countries Served" },
-  { icon: Star, value: "5.0", label: "Google Rating" },
-  { icon: Clock, value: "10+", label: "Years in Germany" },
-];
 
 const aboutPoints = [
   { icon: GraduationCap, text: "Expert guidance for education and visa in Germany" },
@@ -41,18 +34,6 @@ const StatsSection = () => {
           </p>
         </div>
 
-        {/* Stats bar */}
-        <div className="mb-16 rounded-2xl border border-border/50 bg-primary p-1">
-          <div className="grid grid-cols-2 gap-1 md:grid-cols-4">
-            {stats.map((s) => (
-              <div key={s.label} className="rounded-xl bg-primary p-6 text-center text-primary-foreground">
-                <s.icon className="mx-auto mb-2 h-7 w-7 text-german-gold" />
-                <p className="text-3xl font-extrabold">{s.value}</p>
-                <p className="mt-1 text-sm text-primary-foreground/70">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {/* About + Image Split */}
         <div className="mb-16 grid items-center gap-10 lg:grid-cols-2">
