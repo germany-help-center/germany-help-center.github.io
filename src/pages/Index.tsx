@@ -19,8 +19,8 @@ const Index = () => {
       <Header />
       <HeroSection />
       <DreamGermanySection />
-      <StatsSection />
       <GermanCitiesSection />
+      <StatsSection />
       <CountriesSection />
       <OpportunityCardSection />
       <StudentPathwaysSection />
