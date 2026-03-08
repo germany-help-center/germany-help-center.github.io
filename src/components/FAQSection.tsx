@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     q: "How do you handle everything online? Why don't you need an office?",
-    a: "Every step to reach Germany is conducted online — be it the APS application, university application, or visa application. We just need your documents in digital format. Since the entire process is digital by nature, a physical office is simply not necessary.",
+    a: "Every step to reach Germany is conducted online — be it the APS application, university application, or visa application. We just need your documents in digital format. Since the entire process is digital by nature, a physical office is simply not necessary. Not having office and other administrative costs helps us offer services to our clients at very convenient and competitive prices. We focus on customer value instead of premium or posh amenities — a German mentality.",
   },
   {
     q: "How does the visa process work with digital documents?",
