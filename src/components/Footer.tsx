@@ -39,7 +39,7 @@ const Footer = () => {
               </a>
               <div className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
-                <span>Nußloch, Baden-Württemberg, Germany</span>
+                <span>103, Pramukh Daradhan Apartment, Patidar Char Rasta, Near Patidar Bhavan, Mahidharpura, Surat - 395003</span>
               </div>
             </div>
           </div>
