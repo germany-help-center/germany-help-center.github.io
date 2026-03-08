@@ -19,6 +19,7 @@ const Index = () => {
       <Header />
       <HeroSection />
       <DreamGermanySection />
+      <StatsSection />
       <GermanCitiesSection />
       <CountriesSection />
       <OpportunityCardSection />
@@ -26,7 +27,6 @@ const Index = () => {
       <ServicesSection />
       <HowItWorksSection />
       <SocialProofSection />
-      <StatsSection />
       <FAQSection />
       <Footer />
       <WhatsAppFloat />
