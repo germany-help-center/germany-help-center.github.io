@@ -63,7 +63,7 @@ const Footer = () => {
             <div className="overflow-hidden rounded-xl border border-border/50">
               <iframe
                 title="Germany Help Center Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10369.84913472!2d8.685!3d49.327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4797bef7fa1d3ccf%3A0x4237e36cf2c8770!2sNu%C3%9Floch!5e0!3m2!1sen!2sde!4v1"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.0!2d72.8311!3d21.1702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e59411d1563%3A0x4c0f3f23a8b3e01!2sGermany+Help+Center!5e0!3m2!1sen!2sin!4v1"
                 width="100%"
                 height="180"
                 style={{ border: 0 }}
