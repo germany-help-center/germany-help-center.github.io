@@ -5,7 +5,7 @@ const BookingSection = () => {
   return (
     <section
       id="booking"
-      className="relative overflow-hidden py-20 lg:py-28 bg-german-red"
+      className="relative overflow-hidden py-14 lg:py-20 bg-german-red"
     >
       <div className="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-white/5" />
       <div className="absolute -bottom-32 -left-16 h-96 w-96 rounded-full bg-white/5" />

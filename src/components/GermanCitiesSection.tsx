@@ -26,9 +26,9 @@ const cities = [
 
 const GermanCitiesSection = () => {
   return (
-    <section className="py-20 lg:py-28 bg-muted/30">
+    <section className="py-14 lg:py-20 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="mx-auto mb-14 max-w-2xl text-center">
+        <div className="mx-auto mb-10 max-w-2xl text-center">
           <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-german-red">Top German Destinations</p>
           <h2 className="mb-4 text-3xl font-extrabold tracking-tight md:text-4xl">
             Study & Work in Germany's Best Cities
@@ -82,7 +82,7 @@ const GermanCitiesSection = () => {
         </div>
 
         {/* Expert highlight */}
-        <div className="mt-16 mx-auto max-w-2xl rounded-2xl border border-german-gold/20 bg-german-gold/[0.05] p-8 text-center">
+        <div className="mt-12 mx-auto max-w-2xl rounded-2xl border border-german-gold/20 bg-german-gold/[0.05] p-8 text-center">
           <Award className="mx-auto mb-3 h-8 w-8 text-german-gold" />
           <h3 className="mb-2 text-lg font-bold">Germany Expert Since 2014</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">

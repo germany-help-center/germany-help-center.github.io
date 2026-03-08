@@ -29,7 +29,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/75 to-white/95" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 py-32 text-center lg:py-40">
+      <div className="container relative z-10 mx-auto px-4 py-24 text-center lg:py-32">
         <div className="mx-auto max-w-3xl animate-fade-in-up">
           {/* Logo + Company Name */}
           <div className="mb-8 flex flex-col items-center gap-3">
@@ -93,7 +93,7 @@ const HeroSection = () => {
         </div>
 
         {/* Trust badges */}
-        <div className="mt-16 flex flex-wrap items-center justify-center gap-6 md:gap-10">
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-6 md:gap-10">
           {badges.map((b) => (
             <div key={b.label} className="flex items-center gap-2 rounded-full border border-border bg-white/80 backdrop-blur-sm px-5 py-2.5 shadow-sm">
               <b.icon className="h-5 w-5 text-german-gold" />

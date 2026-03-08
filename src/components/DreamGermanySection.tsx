@@ -27,9 +27,9 @@ const dreams = [
 
 const DreamGermanySection = () => {
   return (
-    <section className="py-20 lg:py-28 bg-background">
+    <section className="py-14 lg:py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="mx-auto mb-14 max-w-2xl text-center">
+        <div className="mx-auto mb-10 max-w-2xl text-center">
           <p className="mb-2 inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-widest text-german-red">
             <Sparkles className="h-4 w-4" />
             Imagine Your Life in Germany
@@ -42,7 +42,7 @@ const DreamGermanySection = () => {
           </p>
         </div>
 
-        <div className="space-y-16">
+        <div className="space-y-12">
           {dreams.map((dream, i) => (
             <div key={dream.title} className={`flex flex-col items-center gap-8 lg:gap-12 ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
               {/* Image */}
