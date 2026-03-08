@@ -37,7 +37,7 @@ const CountriesSection = () => {
               <span className={`fi fi-${c.code} text-2xl rounded-sm`} />
               <div className="text-left">
                 <span className="block font-semibold">{c.name}</span>
-                <span className="block text-xs text-muted-foreground">Students & Professionals</span>
+                <span className="block text-xs text-muted-foreground">{c.type}</span>
               </div>
             </div>
           ))}
