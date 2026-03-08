@@ -1,4 +1,4 @@
-import { MessageCircle, FileCheck, Send, CalendarCheck, CheckCircle2, Plane, ShieldCheck, GraduationCap } from "lucide-react";
+import { MessageCircle, FileCheck, Send, CalendarCheck, CheckCircle2, Plane, ShieldCheck, GraduationCap, Users } from "lucide-react";
 
 const steps = [
   {
@@ -8,38 +8,44 @@ const steps = [
     desc: "Book a 30-minute call or message us on WhatsApp. We assess your profile, eligibility, and goals.",
   },
   {
-    icon: FileCheck,
+    icon: Users,
     step: "02",
+    title: "Dedicated WhatsApp Group",
+    desc: "We create a dedicated WhatsApp group for your entire process — answer all queries in the shortest time, share real-time updates, and ensure full transparency at every step.",
+  },
+  {
+    icon: FileCheck,
+    step: "03",
     title: "Document Preparation",
     desc: "We collect and prepare all required documents — school certificates, university transcripts, letters of recommendation (LOR), motivation letters, and certified translations.",
   },
   {
     icon: ShieldCheck,
-    step: "03",
+    step: "04",
     title: "APS Verification",
     desc: "We prepare your complete APS file, review every detail, and submit your documents to APS for academic credential verification and approval.",
   },
   {
     icon: GraduationCap,
-    step: "04",
+    step: "05",
     title: "University Application & Immatriculation",
     desc: "We shortlist the best universities for your profile, submit applications before deadlines, and once admission is confirmed, handle the full immatriculation process — a completely stress-free experience.",
   },
   {
     icon: CalendarCheck,
-    step: "05",
+    step: "06",
     title: "Visa Appointment & Preparation",
     desc: "We coach you for the embassy interview, ensure all documents are in order, and accompany you through the appointment process.",
   },
   {
     icon: CheckCircle2,
-    step: "06",
+    step: "07",
     title: "Visa Approved!",
     desc: "Receive your visa and get ready for your new life in Germany.",
   },
   {
     icon: Plane,
-    step: "07",
+    step: "08",
     title: "Onboarding in Germany",
     desc: "Post-arrival support — city registration, bank account, health insurance, housing guidance, and settling-in assistance.",
   },
@@ -53,7 +59,7 @@ const HowItWorksSection = () => {
           <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-german-red">Simple Process</p>
           <h2 className="mb-4 text-3xl font-extrabold tracking-tight md:text-4xl">How It Works</h2>
           <p className="text-muted-foreground">
-            From first call to settling in Germany — our streamlined 7-step process makes your journey completely stress-free.
+            From first call to settling in Germany — our streamlined 8-step process makes your journey completely stress-free.
           </p>
         </div>
 
