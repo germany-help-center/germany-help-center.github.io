@@ -59,7 +59,7 @@ const HeroSection = () => {
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button size="lg" className="px-8 text-base shadow-xl" asChild>
-              <a href="#booking">Book Free Consultation</a>
+              <a href="#services">Explore Services</a>
             </Button>
             <Button
               size="lg"
