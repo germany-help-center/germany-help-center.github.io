@@ -8,8 +8,14 @@ const steps = [
     desc: "Book a 30-minute call or message us on WhatsApp. We assess your profile, eligibility, and goals.",
   },
   {
-    icon: FileCheck,
+    icon: Users,
     step: "02",
+    title: "Dedicated WhatsApp Group",
+    desc: "We create a dedicated WhatsApp group for your entire process — answer all queries in the shortest time, share real-time updates, and ensure full transparency at every step.",
+  },
+  {
+    icon: FileCheck,
+    step: "03",
     title: "Document Preparation",
     desc: "We collect and prepare all required documents — school certificates, university transcripts, letters of recommendation (LOR), motivation letters, and certified translations.",
   },
