@@ -30,11 +30,6 @@ const HeroSection = () => {
         backgroundImage: "linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px)",
         backgroundSize: "50px 50px"
       }} />
-      {/* City silhouette hint */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 opacity-[0.06]" style={{
-        background: "url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1200 200\"><rect x=\"50\" y=\"80\" width=\"40\" height=\"120\" fill=\"white\"/><rect x=\"100\" y=\"40\" width=\"30\" height=\"160\" fill=\"white\"/><rect x=\"140\" y=\"60\" width=\"50\" height=\"140\" fill=\"white\"/><rect x=\"200\" y=\"20\" width=\"35\" height=\"180\" fill=\"white\"/><rect x=\"250\" y=\"90\" width=\"60\" height=\"110\" fill=\"white\"/><rect x=\"320\" y=\"50\" width=\"25\" height=\"150\" fill=\"white\"/><rect x=\"360\" y=\"70\" width=\"45\" height=\"130\" fill=\"white\"/><rect x=\"420\" y=\"30\" width=\"30\" height=\"170\" fill=\"white\"/><rect x=\"470\" y=\"100\" width=\"55\" height=\"100\" fill=\"white\"/><rect x=\"540\" y=\"10\" width=\"28\" height=\"190\" fill=\"white\"/><rect x=\"580\" y=\"60\" width=\"40\" height=\"140\" fill=\"white\"/><rect x=\"640\" y=\"45\" width=\"35\" height=\"155\" fill=\"white\"/><rect x=\"690\" y=\"80\" width=\"50\" height=\"120\" fill=\"white\"/><rect x=\"760\" y=\"25\" width=\"32\" height=\"175\" fill=\"white\"/><rect x=\"810\" y=\"55\" width=\"45\" height=\"145\" fill=\"white\"/><rect x=\"870\" y=\"70\" width=\"38\" height=\"130\" fill=\"white\"/><rect x=\"920\" y=\"40\" width=\"28\" height=\"160\" fill=\"white\"/><rect x=\"960\" y=\"90\" width=\"55\" height=\"110\" fill=\"white\"/><rect x=\"1030\" y=\"35\" width=\"30\" height=\"165\" fill=\"white\"/><rect x=\"1080\" y=\"65\" width=\"42\" height=\"135\" fill=\"white\"/><rect x=\"1140\" y=\"50\" width=\"35\" height=\"150\" fill=\"white\"/></svg>') repeat-x bottom",
-        backgroundSize: "100% 100%"
-      }} />
       {/* Glow accents */}
       <div className="absolute -top-40 -right-40 h-[600px] w-[600px] rounded-full bg-german-gold/[0.04] blur-[100px]" />
       <div className="absolute -bottom-40 -left-40 h-[500px] w-[500px] rounded-full bg-german-red/[0.04] blur-[100px]" />

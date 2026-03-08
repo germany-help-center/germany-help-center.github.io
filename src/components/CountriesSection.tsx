@@ -1,33 +1,61 @@
+import { GraduationCap, Briefcase, ArrowRight, Plane } from "lucide-react";
+
 const countries = [
-  { name: "India", flag: "🇮🇳" },
-  { name: "Canada", flag: "🇨🇦" },
-  { name: "Czech Republic", flag: "🇨🇿" },
-  { name: "Latvia", flag: "🇱🇻" },
-  { name: "Finland", flag: "🇫🇮" },
-  { name: "Netherlands", flag: "🇳🇱" },
-  { name: "Turkey", flag: "🇹🇷" },
-  { name: "Pakistan", flag: "🇵🇰" },
-  { name: "Nigeria", flag: "🇳🇬" },
-  { name: "Bangladesh", flag: "🇧🇩" },
+  { name: "India", code: "IN", flag: "🇮🇳" },
+  { name: "Latvia", code: "LV", flag: "🇱🇻" },
+  { name: "Canada", code: "CA", flag: "🇨🇦" },
+  { name: "UK", code: "GB", flag: "🇬🇧" },
+  { name: "Czech Republic", code: "CZ", flag: "🇨🇿" },
+  { name: "Poland", code: "PL", flag: "🇵🇱" },
+  { name: "Netherlands", code: "NL", flag: "🇳🇱" },
+  { name: "Denmark", code: "DK", flag: "🇩🇰" },
 ];
 
 const CountriesSection = () => {
   return (
-    <section className="border-b bg-card py-12">
+    <section className="border-b border-border/50 bg-card py-16">
       <div className="container mx-auto px-4">
-        <p className="mb-6 text-center text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-          Successfully processed visas from 10+ countries
-        </p>
-        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+        <div className="mx-auto mb-8 max-w-2xl text-center">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-german-red">
+            Global Reach, Germany Focus
+          </p>
+          <h2 className="mb-3 text-2xl font-extrabold tracking-tight md:text-3xl">
+            We've Helped Students & Professionals from These Countries Reach Germany
+          </h2>
+          <p className="text-sm text-muted-foreground">
+            Our clients from 8+ countries have successfully secured German visas for studies, careers, and family reunions.
+          </p>
+        </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
           {countries.map((c) => (
             <div
               key={c.name}
-              className="flex items-center gap-2 rounded-full border border-border/50 bg-muted/50 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary/30 hover:bg-primary/5"
+              className="group flex items-center gap-3 rounded-xl border border-border/50 bg-background px-5 py-3 text-sm font-medium text-foreground shadow-sm transition-all hover:border-german-gold/30 hover:shadow-md hover:-translate-y-0.5"
             >
-              <span className="text-lg">{c.flag}</span>
-              {c.name}
+              <span className="text-2xl">{c.flag}</span>
+              <div className="text-left">
+                <span className="block font-semibold">{c.name}</span>
+                <span className="block text-xs text-muted-foreground">Students & Professionals</span>
+              </div>
+              <ArrowRight className="h-4 w-4 text-german-gold opacity-0 transition-opacity group-hover:opacity-100" />
             </div>
           ))}
+        </div>
+
+        <div className="mt-8 flex items-center justify-center gap-6 text-sm text-muted-foreground">
+          <div className="flex items-center gap-1.5">
+            <GraduationCap className="h-4 w-4 text-german-gold" />
+            <span>University Admissions</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <Briefcase className="h-4 w-4 text-german-red" />
+            <span>Job Seeker Visas</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <Plane className="h-4 w-4 text-german-gold" />
+            <span>Family Reunions</span>
+          </div>
         </div>
       </div>
     </section>
