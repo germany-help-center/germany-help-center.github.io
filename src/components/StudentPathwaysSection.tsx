@@ -5,12 +5,21 @@ const bachelorPathways = [
   {
     title: "Pathway 1: Directly After 12th Standard",
     desc: "Apply to German government universities right after completing your 12th standard. Begin your tuition-free bachelor's degree without any gap year.",
-    steps: ["Complete 12th Standard", "Apply to Studienkolleg or Direct Admission", "Start Bachelor's in Germany"],
+    steps: [
+      { label: "Complete 12th Standard", detail: "With strong academic scores" },
+      { label: "Apply for Studienkolleg or Preparatory Course", detail: "Foundation year in Germany" },
+      { label: "Clear Assessment Test", detail: "Qualify for university admission" },
+      { label: "Start Bachelor's in Germany", detail: "Tuition-free government university" },
+    ],
   },
   {
     title: "Pathway 2: After 12th + 1 Year of College in India",
     desc: "Completed one year of college in India? You qualify for direct admission to German government universities — no Studienkolleg required.",
-    steps: ["Complete 12th + 1 Year College", "Direct University Admission", "Start Bachelor's in Germany"],
+    steps: [
+      { label: "Complete 12th + 1 Year College", detail: "Any recognised Indian university" },
+      { label: "Direct University Admission", detail: "No Studienkolleg needed" },
+      { label: "Start Bachelor's in Germany", detail: "Tuition-free government university" },
+    ],
   },
 ];
 
@@ -18,14 +27,56 @@ const masterPathways = [
   {
     title: "Master's After Bachelor's Degree",
     desc: "Hold a bachelor's degree from India? Apply directly to German government universities for a tuition-free master's program in your field.",
-    steps: ["Complete Bachelor's in India", "Apply to German Universities", "Start Master's in Germany"],
+    steps: [
+      { label: "Complete Bachelor's in India", detail: "In a relevant field" },
+      { label: "Apply to German Universities", detail: "We handle everything" },
+      { label: "Start Master's in Germany", detail: "Tuition-free government university" },
+    ],
   },
   {
     title: "Double Master's Program",
     desc: "Already completed a master's in India? Pursue a second master's at a German government university — tuition-free — to boost your career prospects in Europe.",
-    steps: ["Complete Master's in India", "Apply for 2nd Master's", "Start Double Master's in Germany"],
+    steps: [
+      { label: "Complete Master's in India", detail: "Any recognised degree" },
+      { label: "Apply for 2nd Master's", detail: "Expand your specialisation" },
+      { label: "Start Double Master's in Germany", detail: "Tuition-free government university" },
+    ],
   },
 ];
+
+interface PathwayStep {
+  label: string;
+  detail: string;
+}
+
+const StepTimeline = ({ steps, color }: { steps: PathwayStep[]; color: "red" | "gold" }) => {
+  const dotBg = color === "red" ? "bg-german-red" : "bg-german-gold";
+  const lineBg = color === "red" ? "bg-german-red/20" : "bg-german-gold/20";
+  const textColor = color === "red" ? "text-german-red" : "text-german-dark";
+
+  return (
+    <div className="mt-5 space-y-0">
+      {steps.map((step, i) => (
+        <div key={i} className="flex items-start gap-4">
+          {/* Timeline line + dot */}
+          <div className="flex flex-col items-center">
+            <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full ${dotBg} text-xs font-bold text-white`}>
+              {i + 1}
+            </div>
+            {i < steps.length - 1 && (
+              <div className={`w-0.5 flex-1 min-h-[32px] ${lineBg}`} />
+            )}
+          </div>
+          {/* Content */}
+          <div className="pb-5">
+            <p className={`text-sm font-semibold ${textColor}`}>{step.label}</p>
+            <p className="text-xs text-muted-foreground">{step.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 const StudentPathwaysSection = () => {
   return (
@@ -41,7 +92,7 @@ const StudentPathwaysSection = () => {
           </h2>
           <p className="text-lg text-muted-foreground">
             Study at Germany's prestigious government universities with <span className="font-semibold text-foreground">zero tuition fees</span>. 
-            Multiple pathways available for Indian students at every academic stage.
+            Multiple pathways available for students at every academic stage.
           </p>
         </div>
 
@@ -67,25 +118,11 @@ const StudentPathwaysSection = () => {
             {bachelorPathways.map((p) => (
               <div
                 key={p.title}
-                className="rounded-2xl border border-border/50 bg-card p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
+                className="rounded-2xl border border-border/50 bg-card p-6 shadow-sm transition-all hover:shadow-md"
               >
-                <h4 className="mb-2 text-lg font-bold">{p.title}</h4>
-                <p className="mb-4 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
-                <div className="flex items-center gap-2">
-                  {p.steps.map((step, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-german-red/10 px-3 py-1 text-xs font-medium text-german-red">
-                        <span className="flex h-4 w-4 items-center justify-center rounded-full bg-german-red text-[10px] font-bold text-white">
-                          {i + 1}
-                        </span>
-                        {step}
-                      </span>
-                      {i < p.steps.length - 1 && (
-                        <ArrowRight className="h-3 w-3 shrink-0 text-muted-foreground" />
-                      )}
-                    </div>
-                  ))}
-                </div>
+                <h4 className="text-lg font-bold">{p.title}</h4>
+                <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                <StepTimeline steps={p.steps} color="red" />
               </div>
             ))}
           </div>
@@ -103,25 +140,11 @@ const StudentPathwaysSection = () => {
             {masterPathways.map((p) => (
               <div
                 key={p.title}
-                className="rounded-2xl border border-border/50 bg-card p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
+                className="rounded-2xl border border-border/50 bg-card p-6 shadow-sm transition-all hover:shadow-md"
               >
-                <h4 className="mb-2 text-lg font-bold">{p.title}</h4>
-                <p className="mb-4 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
-                <div className="flex items-center gap-2">
-                  {p.steps.map((step, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-german-gold/15 px-3 py-1 text-xs font-medium text-german-dark">
-                        <span className="flex h-4 w-4 items-center justify-center rounded-full bg-german-gold text-[10px] font-bold text-german-dark">
-                          {i + 1}
-                        </span>
-                        {step}
-                      </span>
-                      {i < p.steps.length - 1 && (
-                        <ArrowRight className="h-3 w-3 shrink-0 text-muted-foreground" />
-                      )}
-                    </div>
-                  ))}
-                </div>
+                <h4 className="text-lg font-bold">{p.title}</h4>
+                <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                <StepTimeline steps={p.steps} color="gold" />
               </div>
             ))}
           </div>
