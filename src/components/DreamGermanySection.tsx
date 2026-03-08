@@ -65,7 +65,7 @@ const DreamGermanySection = () => {
                 <h3 className="mb-3 text-2xl font-extrabold tracking-tight md:text-3xl">{dream.title}</h3>
                 <p className="mb-6 text-muted-foreground leading-relaxed text-base">{dream.desc}</p>
                 <Button className="bg-german-red hover:bg-german-red/90 text-white shadow-md border-none" asChild>
-                  <a href="https://wa.me/+919824925434?text=Hi%2C%20I%20would%20like%20to%20claim%20my%20free%20consultation%20call." target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/+919824925434?text=Hi%2C%20I%20would%20like%20to%20claim%20my%20free%20consultation%20call.%0A%0AMy%20Full%20Name%3A%0ACity%3A%0AInterested%20in%3A%20Bachelors%20%2F%20Masters%20%2F%20Opportunity%20Card" target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="mr-2 h-4 w-4" />
                     Get Free Consultation
                   </a>

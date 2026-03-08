@@ -142,7 +142,7 @@ const OpportunityCardSection = () => {
                 asChild
               >
                 <a
-                  href="https://wa.me/+919824925434?text=Hi%2C%20I%20would%20like%20to%20claim%20my%20free%20consultation%20call%20for%20the%20Opportunity%20Card."
+                  href="https://wa.me/+919824925434?text=Hi%2C%20I%20would%20like%20to%20claim%20my%20free%20consultation%20call%20for%20the%20Opportunity%20Card.%0A%0AMy%20Full%20Name%3A%0ACity%3A%0AInterested%20in%3A%20Bachelors%20%2F%20Masters%20%2F%20Opportunity%20Card"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
