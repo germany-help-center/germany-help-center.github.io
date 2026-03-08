@@ -82,7 +82,7 @@ const GermanCitiesSection = () => {
         </div>
 
         {/* Expert highlight */}
-        <div className="mt-16 mx-auto max-w-2xl rounded-2xl border border-german-gold/20 bg-german-gold/[0.05] p-8 text-center">
+        <div className="mt-12 mx-auto max-w-2xl rounded-2xl border border-german-gold/20 bg-german-gold/[0.05] p-8 text-center">
           <Award className="mx-auto mb-3 h-8 w-8 text-german-gold" />
           <h3 className="mb-2 text-lg font-bold">Germany Expert Since 2014</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">

@@ -93,7 +93,7 @@ const HeroSection = () => {
         </div>
 
         {/* Trust badges */}
-        <div className="mt-16 flex flex-wrap items-center justify-center gap-6 md:gap-10">
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-6 md:gap-10">
           {badges.map((b) => (
             <div key={b.label} className="flex items-center gap-2 rounded-full border border-border bg-white/80 backdrop-blur-sm px-5 py-2.5 shadow-sm">
               <b.icon className="h-5 w-5 text-german-gold" />

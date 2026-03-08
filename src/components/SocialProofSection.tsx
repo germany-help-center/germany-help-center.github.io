@@ -12,9 +12,9 @@ const testimonials = [
 
 const SocialProofSection = () => {
   return (
-    <section className="bg-muted/50 py-20 lg:py-28">
+    <section className="bg-muted/50 py-14 lg:py-20">
       <div className="container mx-auto px-4">
-        <div className="mx-auto mb-14 max-w-2xl text-center">
+        <div className="mx-auto mb-10 max-w-2xl text-center">
           <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-german-red">Testimonials</p>
           <h2 className="mb-4 text-3xl font-extrabold tracking-tight md:text-4xl">What Our Clients Say</h2>
           <p className="text-muted-foreground">Trusted by hundreds of successful applicants worldwide.</p>

@@ -42,7 +42,7 @@ const DreamGermanySection = () => {
           </p>
         </div>
 
-        <div className="space-y-16">
+        <div className="space-y-12">
           {dreams.map((dream, i) => (
             <div key={dream.title} className={`flex flex-col items-center gap-8 lg:gap-12 ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
               {/* Image */}
