@@ -68,13 +68,46 @@ const SocialProofSection = () => {
             </Button>
           </a>
           <div className="rounded-xl border border-border/50 bg-card p-8 text-center">
-            <p className="mb-3 text-2xl font-bold">📸 Follow Us on Instagram</p>
-            <div className="grid grid-cols-3 gap-2">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="aspect-square rounded-lg bg-muted" />
+            <p className="mb-4 text-2xl font-bold">📸 Follow Us on Instagram</p>
+            <div className="flex justify-center">
+              <iframe
+                src="https://www.instagram.com/reel/DNC6WnQvH3w/embed"
+                className="rounded-lg border-0"
+                width="100%"
+                height="480"
+                allowTransparency
+                allow="encrypted-media"
+                title="Instagram Reel"
+              />
+            </div>
+            <div className="mt-4 flex flex-wrap justify-center gap-2">
+              {[
+                { id: "DNC6WnQvH3w", label: "Reel 1" },
+                { id: "DN6RoEcANeS", label: "Reel 2" },
+                { id: "DLCk-p1v14H", label: "Reel 3" },
+                { id: "DNwyTftXofF", label: "Reel 4" },
+                { id: "DCs93qFtSp8", label: "Reel 5" },
+                { id: "DBErqHkNLpd", label: "Reel 6" },
+              ].map((reel) => (
+                <a
+                  key={reel.id}
+                  href={`https://www.instagram.com/reel/${reel.id}/`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground hover:bg-german-red hover:text-white transition-colors"
+                >
+                  ▶ {reel.label}
+                </a>
               ))}
             </div>
-            <p className="mt-3 text-sm text-muted-foreground">@germanhelpcenter</p>
+            <a
+              href="https://www.instagram.com/germanhelpcenter/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-block text-sm font-semibold text-german-red hover:underline"
+            >
+              @germanhelpcenter
+            </a>
           </div>
         </div>
       </div>
