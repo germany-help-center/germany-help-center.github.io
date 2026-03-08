@@ -27,7 +27,7 @@ const dreams = [
 
 const DreamGermanySection = () => {
   return (
-    <section className="py-20 lg:py-28 bg-background">
+    <section className="py-14 lg:py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="mx-auto mb-14 max-w-2xl text-center">
           <p className="mb-2 inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-widest text-german-red">
