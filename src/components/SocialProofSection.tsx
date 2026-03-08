@@ -69,45 +69,32 @@ const SocialProofSection = () => {
           </a>
           <div className="rounded-xl border border-border/50 bg-card p-8 text-center">
             <p className="mb-4 text-2xl font-bold">📸 Follow Us on Instagram</p>
-            <div className="flex justify-center">
-              <iframe
-                src="https://www.instagram.com/reel/DNC6WnQvH3w/embed"
-                className="rounded-lg border-0"
-                width="100%"
-                height="480"
-                allowTransparency
-                allow="encrypted-media"
-                title="Instagram Reel"
-              />
-            </div>
-            <div className="mt-4 flex flex-wrap justify-center gap-2">
+            <div className="grid grid-cols-3 gap-3">
               {[
-                { id: "DNC6WnQvH3w", label: "Reel 1" },
-                { id: "DN6RoEcANeS", label: "Reel 2" },
-                { id: "DLCk-p1v14H", label: "Reel 3" },
-                { id: "DNwyTftXofF", label: "Reel 4" },
-                { id: "DCs93qFtSp8", label: "Reel 5" },
-                { id: "DBErqHkNLpd", label: "Reel 6" },
+                { id: "DNC6WnQvH3w", label: "🎓 Student Journey" },
+                { id: "DN6RoEcANeS", label: "✈️ Visa Success" },
+                { id: "DLCk-p1v14H", label: "🏫 University Life" },
+                { id: "DNwyTftXofF", label: "📋 Tips & Tricks" },
+                { id: "DCs93qFtSp8", label: "🎉 Client Stories" },
+                { id: "DBErqHkNLpd", label: "🇩🇪 Life in Germany" },
               ].map((reel) => (
                 <a
                   key={reel.id}
                   href={`https://www.instagram.com/reel/${reel.id}/`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground hover:bg-german-red hover:text-white transition-colors"
+                  className="flex aspect-square items-center justify-center rounded-xl bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-border/30 text-xs font-medium text-foreground hover:from-purple-500/20 hover:to-pink-500/20 hover:shadow-md transition-all p-2 text-center"
                 >
-                  ▶ {reel.label}
+                  {reel.label}
                 </a>
               ))}
             </div>
-            <a
-              href="https://www.instagram.com/germanhelpcenter/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 inline-block text-sm font-semibold text-german-red hover:underline"
-            >
-              @germanhelpcenter
-            </a>
+            <Button asChild size="sm" className="mt-4 bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white">
+              <a href="https://www.instagram.com/germanhelpcenter/" target="_blank" rel="noopener noreferrer">
+                <ExternalLink className="mr-2 h-4 w-4" />
+                @germanhelpcenter
+              </a>
+            </Button>
           </div>
         </div>
       </div>
