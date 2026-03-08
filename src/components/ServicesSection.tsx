@@ -85,7 +85,7 @@ const ServicesSection = () => {
               </CardContent>
               <CardFooter className="relative">
                 <Button variant="ghost" size="sm" className="gap-1 px-0 text-german-red hover:text-german-red/80" asChild>
-                  <a href="#booking">
+                  <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer">
                     Get Started <ArrowRight className="h-4 w-4" />
                   </a>
                 </Button>

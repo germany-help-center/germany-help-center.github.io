@@ -47,14 +47,9 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center md:flex">
           <Button size="sm" className="bg-german-red hover:bg-german-red/90 text-white border-none shadow-sm" asChild>
             <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer">Contact Us</a>
-          </Button>
-          <Button size="icon" variant="outline" className="bg-whatsapp text-whatsapp-foreground border-none hover:bg-whatsapp/90 shadow-sm" asChild>
-            <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-              <MessageCircle className="h-4 w-4" />
-            </a>
           </Button>
         </div>
 
@@ -85,14 +80,9 @@ const Header = () => {
               </a>
             ))}
           </nav>
-          <div className="mt-4 flex gap-3">
-            <Button size="sm" className="flex-1 bg-german-red hover:bg-german-red/90 text-white border-none" asChild>
+          <div className="mt-4">
+            <Button size="sm" className="w-full bg-german-red hover:bg-german-red/90 text-white border-none" asChild>
               <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer">Contact Us</a>
-            </Button>
-            <Button size="icon" className="bg-whatsapp text-whatsapp-foreground border-none hover:bg-whatsapp/90" asChild>
-              <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                <MessageCircle className="h-4 w-4" />
-              </a>
             </Button>
           </div>
         </div>
