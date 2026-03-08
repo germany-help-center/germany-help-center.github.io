@@ -47,10 +47,9 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center md:flex">
           <Button size="sm" className="bg-german-red hover:bg-german-red/90 text-white border-none shadow-sm" asChild>
             <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer">Contact Us</a>
-          </Button>
           </Button>
         </div>
 
