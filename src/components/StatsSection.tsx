@@ -1,32 +1,32 @@
-import { CheckCircle, Globe, Star, Users, Shield, Headphones, Clock } from "lucide-react";
+import { CheckCircle, Globe, Star, Users, Shield, Headphones, Clock, Award } from "lucide-react";
 
 const stats = [
   { icon: CheckCircle, value: "100+", label: "Successful Visas" },
   { icon: Globe, value: "10+", label: "Countries Served" },
   { icon: Star, value: "5.0", label: "Google Rating" },
-  { icon: Users, value: "500+", label: "Happy Clients" },
+  { icon: Clock, value: "10+", label: "Years in Germany" },
 ];
 
 const values = [
   {
     icon: Shield,
     title: "Personalized Guidance",
-    desc: "Every case gets individual attention from our experienced consultants. No cookie-cutter approaches.",
+    desc: "Every case gets individual attention. Our Germany-based expert personally reviews your application.",
+  },
+  {
+    icon: Award,
+    title: "Germany-Only Expertise",
+    desc: "We specialize exclusively in Germany — visas, universities, job market, and settlement. No other country, just deep German expertise.",
   },
   {
     icon: Headphones,
     title: "Online-First Approach",
-    desc: "Complete your entire process from home — no office visits needed. WhatsApp, video calls & email support.",
-  },
-  {
-    icon: Globe,
-    title: "Multilingual Support",
-    desc: "We speak English, Hindi, German, and more to serve you better across all time zones.",
+    desc: "Complete your entire process from home — WhatsApp, video calls & email support with our team in India and Germany.",
   },
   {
     icon: Clock,
     title: "2-Hour Response Time",
-    desc: "We value your time. Get a response within 2 hours on WhatsApp — even on weekends.",
+    desc: "Get a response within 2 hours on WhatsApp — even on weekends. Our Germany-based team covers European time zones.",
   },
 ];
 
@@ -37,7 +37,7 @@ const StatsSection = () => {
         <div className="mx-auto mb-14 max-w-2xl text-center">
           <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-german-red">Why Us</p>
           <h2 className="mb-4 text-3xl font-extrabold tracking-tight md:text-4xl">Why Choose Germany Help Center?</h2>
-          <p className="text-muted-foreground">Trusted by hundreds of clients across 10+ countries for reliable, efficient immigration services.</p>
+          <p className="text-muted-foreground">Germany-only specialists with real on-ground experience since 2014 — not just consultants, but people who've lived the journey.</p>
         </div>
 
         {/* Stats bar */}
