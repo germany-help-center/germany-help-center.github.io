@@ -1,4 +1,4 @@
-import { Calendar, MessageCircle } from "lucide-react";
+import { Calendar, MessageCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const BookingSection = () => {
@@ -12,36 +12,33 @@ const BookingSection = () => {
 
       <div className="container relative z-10 mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
-          <Calendar className="mx-auto mb-4 h-12 w-12 text-white/80" />
+          <Phone className="mx-auto mb-4 h-12 w-12 text-white/80" />
           <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
-            Book Your Free 30-Minute Consultation
+            Claim Your Free Consultation Call
           </h2>
-          <p className="mx-auto mb-8 max-w-xl text-lg text-white/70">
-            Speak directly with our Germany-based expert about your visa, university admission, or career path in Germany.
+          <p className="mx-auto mb-4 max-w-xl text-lg text-white/80">
+            Get a <span className="font-bold text-white">free 30-minute consultation</span> with our Germany-based expert. No obligations, no hidden fees — just honest guidance.
           </p>
-
-          <div className="mx-auto mb-8 max-w-2xl overflow-hidden rounded-2xl border border-white/20 bg-white/10">
-            <div className="flex items-center justify-center p-16">
-              <div className="text-center text-white/50">
-                <Calendar className="mx-auto mb-3 h-10 w-10" />
-                <p className="text-sm font-medium">Calendly Booking Widget</p>
-                <p className="mt-1 text-xs">Embed will appear here once connected</p>
-              </div>
-            </div>
-          </div>
+          <p className="mx-auto mb-8 max-w-lg text-sm text-white/60">
+            We'll assess your profile, discuss the best visa pathway, and give you a clear roadmap to Germany.
+          </p>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button
               size="lg"
-              className="bg-whatsapp text-whatsapp-foreground hover:bg-whatsapp/90 px-8 text-base shadow-xl border-none"
+              className="bg-white text-german-red hover:bg-white/90 px-10 text-base shadow-xl border-none font-bold"
               asChild
             >
-              <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/+919824925434?text=Hi%2C%20I%20would%20like%20to%20claim%20my%20free%20consultation%20call." target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-5 w-5" />
-                Or Message on WhatsApp
+                Claim Free Consultation Now
               </a>
             </Button>
           </div>
+
+          <p className="mt-4 text-xs text-white/50">
+            💬 Message us on WhatsApp and our team will schedule your call within 2 hours
+          </p>
         </div>
       </div>
     </section>
