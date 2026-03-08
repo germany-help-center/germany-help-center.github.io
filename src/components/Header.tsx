@@ -6,14 +6,11 @@ import logo from "@/assets/logo.png";
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "Why Germany", href: "#why-germany" },
-  { label: "Cities", href: "#cities" },
-  { label: "Countries", href: "#countries" },
-  { label: "Opportunity Card", href: "#opportunity-card" },
   { label: "Services", href: "#services" },
+  { label: "Opportunity Card", href: "#opportunity-card" },
   { label: "How It Works", href: "#how-it-works" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
 ];
 
 const Header = () => {
