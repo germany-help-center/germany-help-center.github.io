@@ -6,8 +6,8 @@ import logo from "@/assets/logo.png";
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "Why Germany", href: "#why-germany" },
-  { label: "Services", href: "#services" },
   { label: "Opportunity Card", href: "#opportunity-card" },
+  { label: "Services", href: "#services" },
   { label: "How It Works", href: "#how-it-works" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "FAQ", href: "#faq" },
