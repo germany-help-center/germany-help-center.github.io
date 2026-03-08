@@ -13,7 +13,7 @@ const countries = [
 
 const CountriesSection = () => {
   return (
-    <section className="border-b border-border/50 bg-card py-16">
+    <section id="countries" className="border-b border-border/50 bg-card py-16">
       <div className="container mx-auto px-4">
         <div className="mx-auto mb-8 max-w-2xl text-center">
           <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-german-red">

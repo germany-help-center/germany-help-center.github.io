@@ -5,8 +5,14 @@ import logo from "@/assets/logo.png";
 
 const navLinks = [
   { label: "Home", href: "#home" },
+  { label: "Why Germany", href: "#why-germany" },
+  { label: "Cities", href: "#cities" },
+  { label: "Countries", href: "#countries" },
+  { label: "Opportunity Card", href: "#opportunity-card" },
   { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
+  { label: "How It Works", href: "#how-it-works" },
+  { label: "Testimonials", href: "#testimonials" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -35,7 +41,7 @@ const Header = () => {
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-4 lg:flex">
           {navLinks.map((l) => (
             <a
               key={l.href}
@@ -47,14 +53,14 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="hidden items-center md:flex">
+        <div className="hidden items-center lg:flex">
           <Button size="sm" className="bg-german-red hover:bg-german-red/90 text-white border-none shadow-sm" asChild>
             <a href="https://wa.me/+919824925434?text=Hi%2C%20I%20would%20like%20to%20claim%20my%20free%20consultation%20call." target="_blank" rel="noopener noreferrer">Free Consultation</a>
           </Button>
         </div>
 
         <button
-          className="md:hidden"
+          className="lg:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -67,7 +73,7 @@ const Header = () => {
       </div>
 
       {mobileOpen && (
-        <div className="border-t bg-card px-4 pb-4 md:hidden">
+        <div className="border-t bg-card px-4 pb-4 lg:hidden">
           <nav className="flex flex-col gap-3 pt-3">
             {navLinks.map((l) => (
               <a
