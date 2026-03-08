@@ -61,6 +61,11 @@ const HowItWorksSection = () => {
           <p className="text-muted-foreground">
             From first call to settling in Germany — our streamlined 8-step process makes your journey completely stress-free.
           </p>
+          <div className="mt-4 inline-block rounded-xl border border-german-gold/30 bg-german-gold/10 px-5 py-3">
+            <p className="text-sm font-medium text-foreground">
+              🏆 Built from <span className="font-bold text-german-red">100+ successful visa applications</span> — we are a continuously learning team, refining every step to deliver a seamless experience on your journey to Germany.
+            </p>
+          </div>
         </div>
 
         <div className="relative mx-auto max-w-6xl">
