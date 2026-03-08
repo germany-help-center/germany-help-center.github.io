@@ -90,9 +90,9 @@ const SocialProofSection = () => {
               ))}
             </div>
             <Button asChild size="sm" className="mt-4 bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white">
-              <a href="https://www.instagram.com/germanhelpcenter/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/germanyhelpcenter/" target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="mr-2 h-4 w-4" />
-                @germanhelpcenter
+                @germanyhelpcenter
               </a>
             </Button>
           </div>

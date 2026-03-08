@@ -80,7 +80,7 @@ const Footer = () => {
             <a href="#" className="hover:text-foreground transition-colors" aria-label="Google Reviews">
               <Star className="h-5 w-5" />
             </a>
-            <a href="https://www.instagram.com/germanyhelpcenter" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors" aria-label="Instagram">
+            <a href="https://www.instagram.com/germanyhelpcenter/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors" aria-label="Instagram">
               <Instagram className="h-5 w-5" />
             </a>
           </div>
