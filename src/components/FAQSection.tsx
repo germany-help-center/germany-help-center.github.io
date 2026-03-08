@@ -3,31 +3,31 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const faqs = [
   {
     q: "What services does Germany Help Center offer?",
-    a: "We provide end-to-end support for Student Visas, Opportunity Card (Job Seeker) Visas, Family Reunion Visas, Travel/Schengen Visas, Fair Visit Visas, and Online German Language Classes (A1–B2). From document preparation to embassy appointments — we handle everything.",
+    a: "Whether you're a student dreaming of a German university, a working professional eyeing the Opportunity Card, or a family wanting to reunite in Germany — we've got you covered. We offer end-to-end support for Student Visas, Opportunity Card (Chancenkarte) Visas, Family Reunion Visas, Travel/Schengen Visas, Fair Visit Visas, and Online German Language Classes from A1 to B2. Think of us as your one-stop shop — from the first document to the final visa stamp.",
   },
   {
     q: "How much does the consultation cost?",
-    a: "Our initial 30-minute consultation is completely free! During this call, we assess your profile, discuss your goals, and recommend the best visa pathway for you. There are no hidden charges for the first session.",
+    a: "Your first 30-minute consultation is 100% free — no strings attached, no hidden charges. We know how many 'consultants' in India charge just to have a conversation. We don't believe in that. We sit with you, understand your profile, your goals, and tell you honestly what's possible and what the best path forward looks like. Only after that do we talk about next steps.",
   },
   {
     q: "Which countries do you serve?",
-    a: "We serve candidates from across the globe who dream of building their future in Germany. As an online-first agency, geography is no barrier. We have successfully helped clients from India, Latvia, Canada, UK, Czech Republic, Poland, Netherlands, Denmark, and many more countries to reach Germany and start their new life — whether for studies, career, or family reunion.",
+    a: "We work with clients across India — whether you're in Delhi, Mumbai, Bangalore, Hyderabad, Chennai, or a smaller city. Geography is no barrier because we work 100% online. We've also helped clients from Latvia, Canada, the UK, Czech Republic, Poland, Netherlands, Denmark, and beyond. If you have a dream to reach Germany, we're here — wherever you are.",
   },
   {
     q: "What is the Opportunity Card (Chancenkarte) visa?",
-    a: "The Opportunity Card is Germany's points-based visa for skilled workers seeking employment. Points are awarded based on qualifications, language skills, work experience, and age. We help assess your eligibility and guide you through the entire application process.",
+    a: "The Opportunity Card is Germany's answer to the global talent shortage — a points-based visa that lets skilled professionals move to Germany and look for a job on the ground. Points are given for your qualifications, German language skills, work experience, and age. Many Indian IT professionals, engineers, healthcare workers, and tradespeople qualify without realising it. We'll assess your profile for free and tell you exactly where you stand.",
   },
   {
     q: "How long does the visa process take?",
-    a: "Processing times vary by visa type and country. Student visas typically take 6–12 weeks, while Opportunity Cards may take 8–16 weeks. We expedite the process by ensuring your application is complete and error-free from the start.",
+    a: "Timelines vary depending on the visa type and how prepared your documents are. Student visas generally take 6–12 weeks, Opportunity Cards around 8–16 weeks. One of the biggest reasons applications get delayed in India is incomplete or incorrect paperwork. We ensure your file is airtight from day one — saving you weeks of back-and-forth with the embassy.",
   },
   {
     q: "Do I need to know German to apply for a visa?",
-    a: "Language requirements vary by visa type. Student visas may require German or English proficiency depending on the program. Family reunion visas typically require A1 German. We offer German classes from A1 to B2 to help you meet any language requirements.",
+    a: "It depends on the visa. For student visas, many English-taught programs don't require German at all. For the Opportunity Card, even basic German (A1–B1) can boost your points significantly. Family reunion visas require A1 German for the spouse joining. The good news? We offer live online German classes from A1 to B2 — taught by qualified tutors — so language will never be the reason your dream gets delayed.",
   },
   {
     q: "Can I work with you fully online?",
-    a: "Absolutely! We are Germany's first fully online immigration agency. Everything from consultation to document submission can be done remotely via WhatsApp, video calls, and email. No office visits needed.",
+    a: "Yes — and this is actually one of our biggest advantages. Everything happens over WhatsApp, video calls, and email. No need to visit a consultancy office in your city, take a day off, or pay for travel. Whether you're in Pune, Patna, or a small town in UP — our process is exactly the same for you as it is for someone in a metro. India has taught us that the best service doesn't need a fancy address.",
   },
   {
     q: "How do you handle everything online? Why don't you need an office?",
@@ -35,9 +35,10 @@ const faqs = [
   },
   {
     q: "How does the visa process work with digital documents?",
-    a: "Since we have all your documents digitally, and Germany's current visa application process has been digitalized requiring minimum physical documents, we prepare a complete file for you — you just have to print it and you're ready for your visa appointment. Of course, we also explain everything over a video call and in a dedicated visa interview preparation session.",
+    a: "Once we have your documents digitally, we prepare a complete, embassy-ready visa file for you. Germany has digitized its visa process — meaning you need to carry very few physical documents to your appointment. We organise everything, do a quality check, and send you a print-ready file. Before your appointment, we also do a dedicated visa interview preparation session over video call — so you walk in confident, not nervous. You bring the passport; we bring the preparation.",
   },
 ];
+
 
 const FAQSection = () => {
   return (
