@@ -49,7 +49,12 @@ const SocialProofSection = () => {
 
         {/* Google Reviews + Instagram placeholders */}
         <div className="mt-16 grid gap-8 md:grid-cols-2">
-          <div className="rounded-xl border border-border/50 bg-card p-8 text-center">
+          <a
+            href="https://share.google/9w8dFRzE2N7vmm8DV"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group rounded-xl border border-border/50 bg-card p-8 text-center transition-all hover:shadow-lg hover:border-german-gold/50"
+          >
             <div className="mb-3 flex items-center justify-center gap-1">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} className="h-5 w-5 fill-german-gold text-german-gold" />
@@ -57,7 +62,11 @@ const SocialProofSection = () => {
             </div>
             <p className="text-2xl font-bold">5.0 on Google Reviews</p>
             <p className="mt-1 text-sm text-muted-foreground">Based on 50+ verified reviews</p>
-          </div>
+            <Button variant="outline" size="sm" className="mt-4 gap-2 group-hover:bg-german-red group-hover:text-white group-hover:border-german-red transition-colors">
+              <ExternalLink className="h-4 w-4" />
+              Read All Reviews on Google
+            </Button>
+          </a>
           <div className="rounded-xl border border-border/50 bg-card p-8 text-center">
             <p className="mb-3 text-2xl font-bold">📸 Follow Us on Instagram</p>
             <div className="grid grid-cols-3 gap-2">
