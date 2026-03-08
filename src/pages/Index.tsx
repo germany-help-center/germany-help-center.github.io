@@ -21,7 +21,7 @@ const Index = () => {
       <SocialProofSection />
       <StatsSection />
       <FAQSection />
-      <BookingSection />
+      
       <Footer />
       <WhatsAppFloat />
     </div>

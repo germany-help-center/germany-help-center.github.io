@@ -92,7 +92,7 @@ const Header = () => {
           </nav>
           <div className="mt-4 flex gap-3">
             <Button size="sm" className="flex-1" asChild>
-              <a href="#booking">Book 30-Min Slot</a>
+              <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer">Contact Us</a>
             </Button>
             <Button size="icon" className="bg-whatsapp text-whatsapp-foreground border-none hover:bg-whatsapp/90" asChild>
               <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
