@@ -29,7 +29,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/75 to-white/95" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 py-32 text-center lg:py-40">
+      <div className="container relative z-10 mx-auto px-4 py-24 text-center lg:py-32">
         <div className="mx-auto max-w-3xl animate-fade-in-up">
           {/* Logo + Company Name */}
           <div className="mb-8 flex flex-col items-center gap-3">
