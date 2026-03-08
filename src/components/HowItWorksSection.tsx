@@ -1,4 +1,4 @@
-import { MessageCircle, FileCheck, Send, CheckCircle2 } from "lucide-react";
+import { MessageCircle, FileCheck, Send, CalendarCheck, CheckCircle2, Plane } from "lucide-react";
 
 const steps = [
   {
@@ -20,10 +20,22 @@ const steps = [
     desc: "We prepare and review your complete application, book embassy appointments, and handle submissions.",
   },
   {
-    icon: CheckCircle2,
+    icon: CalendarCheck,
     step: "04",
+    title: "Visa Appointment & Preparation",
+    desc: "We coach you for the embassy interview, ensure all documents are in order, and accompany you through the appointment process.",
+  },
+  {
+    icon: CheckCircle2,
+    step: "05",
     title: "Visa Approved!",
-    desc: "Receive your visa and get post-arrival support — city registration, bank account, health insurance guidance.",
+    desc: "Receive your visa and get ready for your new life in Germany.",
+  },
+  {
+    icon: Plane,
+    step: "06",
+    title: "Onboarding in Germany",
+    desc: "Post-arrival support — city registration, bank account, health insurance, housing guidance, and settling-in assistance.",
   },
 ];
 
@@ -35,15 +47,15 @@ const HowItWorksSection = () => {
           <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-german-red">Simple Process</p>
           <h2 className="mb-4 text-3xl font-extrabold tracking-tight md:text-4xl">How It Works</h2>
           <p className="text-muted-foreground">
-            From first call to visa approval — our streamlined 4-step process makes your Germany journey hassle-free.
+            From first call to settling in Germany — our streamlined 6-step process makes your journey hassle-free.
           </p>
         </div>
 
-        <div className="relative mx-auto max-w-5xl">
+        <div className="relative mx-auto max-w-6xl">
           {/* Connector line */}
           <div className="absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-border lg:block" />
 
-          <div className="grid gap-8 lg:grid-cols-4">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {steps.map((s, i) => (
               <div key={s.step} className="group relative flex flex-col items-center text-center">
                 {/* Step number circle */}
