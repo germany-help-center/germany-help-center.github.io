@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     q: "How do you handle everything online? Why don't you need an office?",
-    a: "Every step to reach Germany is conducted online — be it the APS application, university application, or visa application. We just need your documents in digital format. Since the entire process is digital by nature, a physical office is simply not necessary. Not having office and other administrative costs helps us offer services to our clients at very convenient and competitive prices. We focus on customer value instead of premium or posh amenities — a German mentality.",
+    a: "Think about it — you book flights, file ITR, and even apply for Aadhaar updates online. Germany's immigration process works the same way. Every step — APS application, university admission, visa application — is done digitally. All we need from you are scanned copies of your documents, shared via WhatsApp or email. No need to travel to a metro city, take time off work, or sit in a waiting room. By not running a fancy office with high overheads, we pass those savings directly to you — offering expert guidance at fees that are genuinely affordable. We focus on results, not appearances. That's the German way — and honestly, it's the smart Indian way too.",
   },
   {
     q: "How does the visa process work with digital documents?",
