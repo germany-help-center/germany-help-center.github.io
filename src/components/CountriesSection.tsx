@@ -31,14 +31,13 @@ const CountriesSection = () => {
           {countries.map((c) => (
             <div
               key={c.name}
-              className="group flex items-center gap-3 rounded-xl border border-border/50 bg-background px-5 py-3 text-sm font-medium text-foreground shadow-sm transition-all hover:border-german-gold/30 hover:shadow-md hover:-translate-y-0.5"
+              className="flex items-center gap-3 rounded-xl border border-border/50 bg-background px-5 py-3 text-sm font-medium text-foreground shadow-sm"
             >
               <span className="text-2xl">{c.flag}</span>
               <div className="text-left">
                 <span className="block font-semibold">{c.name}</span>
                 <span className="block text-xs text-muted-foreground">Students & Professionals</span>
               </div>
-              <ArrowRight className="h-4 w-4 text-german-gold opacity-0 transition-opacity group-hover:opacity-100" />
             </div>
           ))}
         </div>
