@@ -85,8 +85,8 @@ const ServicesSection = () => {
               </CardContent>
               <CardFooter className="relative">
                 <Button variant="ghost" size="sm" className="gap-1 px-0 text-german-red hover:text-german-red/80" asChild>
-                  <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer">
-                    Get Started <ArrowRight className="h-4 w-4" />
+                  <a href="https://wa.me/+919824925434?text=Hi%2C%20I%20would%20like%20to%20claim%20my%20free%20consultation%20call." target="_blank" rel="noopener noreferrer">
+                    Get Free Consultation <ArrowRight className="h-4 w-4" />
                   </a>
                 </Button>
               </CardFooter>

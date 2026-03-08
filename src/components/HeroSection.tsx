@@ -71,18 +71,18 @@ const HeroSection = () => {
           </div>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button size="lg" className="bg-german-red hover:bg-german-red/90 text-white px-8 text-base shadow-lg shadow-german-red/20 border-none" asChild>
-              <a href="#services">Explore Services</a>
-            </Button>
             <Button
               size="lg"
-              className="bg-whatsapp text-whatsapp-foreground hover:bg-whatsapp/90 px-10 text-base shadow-lg shadow-whatsapp/20 border-none"
+              className="bg-german-red hover:bg-german-red/90 text-white px-10 text-base shadow-lg shadow-german-red/20 border-none"
               asChild
             >
-              <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/+919824925434?text=Hi%2C%20I%20would%20like%20to%20claim%20my%20free%20consultation%20call." target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-5 w-5" />
-                WhatsApp Us Now
+                Claim Your Free Consultation
               </a>
+            </Button>
+            <Button size="lg" variant="outline" className="px-8 text-base border-border shadow-sm" asChild>
+              <a href="#services">Explore Services</a>
             </Button>
           </div>
 

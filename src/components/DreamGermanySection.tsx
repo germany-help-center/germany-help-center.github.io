@@ -64,10 +64,10 @@ const DreamGermanySection = () => {
                 </div>
                 <h3 className="mb-3 text-2xl font-extrabold tracking-tight md:text-3xl">{dream.title}</h3>
                 <p className="mb-6 text-muted-foreground leading-relaxed text-base">{dream.desc}</p>
-                <Button className="bg-whatsapp text-whatsapp-foreground hover:bg-whatsapp/90 shadow-md border-none" asChild>
-                  <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer">
+                <Button className="bg-german-red hover:bg-german-red/90 text-white shadow-md border-none" asChild>
+                  <a href="https://wa.me/+919824925434?text=Hi%2C%20I%20would%20like%20to%20claim%20my%20free%20consultation%20call." target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="mr-2 h-4 w-4" />
-                    Start Your Journey — WhatsApp Us
+                    Get Free Consultation
                   </a>
                 </Button>
               </div>
