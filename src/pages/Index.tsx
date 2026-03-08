@@ -22,6 +22,7 @@ const Index = () => {
       <GermanCitiesSection />
       <CountriesSection />
       <OpportunityCardSection />
+      <StudentPathwaysSection />
       <ServicesSection />
       <HowItWorksSection />
       <SocialProofSection />
