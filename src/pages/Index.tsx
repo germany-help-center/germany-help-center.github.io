@@ -4,6 +4,7 @@ import DreamGermanySection from "@/components/DreamGermanySection";
 import GermanCitiesSection from "@/components/GermanCitiesSection";
 import CountriesSection from "@/components/CountriesSection";
 import OpportunityCardSection from "@/components/OpportunityCardSection";
+import StudentPathwaysSection from "@/components/StudentPathwaysSection";
 import ServicesSection from "@/components/ServicesSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import SocialProofSection from "@/components/SocialProofSection";
