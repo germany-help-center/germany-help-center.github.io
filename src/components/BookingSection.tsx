@@ -40,7 +40,7 @@ const BookingSection = () => {
               className="bg-whatsapp text-whatsapp-foreground hover:bg-whatsapp/90 px-8 text-base shadow-xl border-none"
               asChild
             >
-              <a href="https://wa.me/+49123456789" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-5 w-5" />
                 Or Message on WhatsApp
               </a>

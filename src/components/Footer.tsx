@@ -22,14 +22,20 @@ const Footer = () => {
           <div>
             <h4 className="mb-4 font-bold">Contact Us</h4>
             <div className="space-y-3 text-sm text-muted-foreground">
-              <a href="tel:+49123456789" className="flex items-center gap-2 hover:text-foreground">
-                <Phone className="h-4 w-4" /> +49 123 456 789
+              <a href="tel:+919824925434" className="flex items-center gap-2 hover:text-foreground">
+                <Phone className="h-4 w-4" /> +91 98249 25434 (Pareshbhai)
               </a>
-              <a href="mailto:info@germanyhelpcenter.com" className="flex items-center gap-2 hover:text-foreground">
-                <Mail className="h-4 w-4" /> info@germanyhelpcenter.com
+              <a href="tel:+491749074389" className="flex items-center gap-2 hover:text-foreground">
+                <Phone className="h-4 w-4" /> +49 1749 074389 (Jigarbhai, Germany)
               </a>
-              <a href="https://wa.me/+49123456789" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-foreground">
-                <MessageCircle className="h-4 w-4" /> WhatsApp
+              <a href="mailto:contact@germanyhelpcenter.com" className="flex items-center gap-2 hover:text-foreground">
+                <Mail className="h-4 w-4" /> contact@germanyhelpcenter.com
+              </a>
+              <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-foreground">
+                <MessageCircle className="h-4 w-4" /> WhatsApp (Pareshbhai)
+              </a>
+              <a href="https://wa.me/+491749074389" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-foreground">
+                <MessageCircle className="h-4 w-4" /> WhatsApp (Jigarbhai)
               </a>
               <div className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
@@ -57,7 +63,7 @@ const Footer = () => {
             <div className="overflow-hidden rounded-xl border border-border/50">
               <iframe
                 title="Germany Help Center Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10369.84913472!2d8.685!3d49.327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4797bef7fa1d3ccf%3A0x4237e36cf2c8770!2sNu%C3%9Floch!5e0!3m2!1sen!2sde!4v1"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.0!2d72.8311!3d21.1702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e59411d1563%3A0x4c0f3f23a8b3e01!2sGermany+Help+Center!5e0!3m2!1sen!2sin!4v1"
                 width="100%"
                 height="180"
                 style={{ border: 0 }}
@@ -75,7 +81,7 @@ const Footer = () => {
             <a href="#" className="hover:text-foreground" aria-label="Google Reviews">
               <Star className="h-5 w-5" />
             </a>
-            <a href="#" className="hover:text-foreground" aria-label="Instagram">
+            <a href="https://www.instagram.com/germanyhelpcenter" target="_blank" rel="noopener noreferrer" className="hover:text-foreground" aria-label="Instagram">
               <Instagram className="h-5 w-5" />
             </a>
           </div>
