@@ -26,7 +26,7 @@ const Footer = () => {
                 <Phone className="h-4 w-4" /> +91 98249 25434 (Pareshbhai Vithani)
               </a>
               <a href="tel:+491749074389" className="flex items-center gap-2 hover:text-foreground">
-                <Phone className="h-4 w-4" /> +49 1749 074389 (Jigarbhai, Germany)
+                <Phone className="h-4 w-4" /> +49 1749 074389 (Jigarbhai Vithani, Germany)
               </a>
               <a href="mailto:contact@germanyhelpcenter.com" className="flex items-center gap-2 hover:text-foreground">
                 <Mail className="h-4 w-4" /> contact@germanyhelpcenter.com
