@@ -1,12 +1,5 @@
-import { CheckCircle, Globe, Star, Clock, Heart, GraduationCap, FileCheck, Languages, Compass, Users, HandHeart } from "lucide-react";
+import { CheckCircle, Heart, GraduationCap, FileCheck, Languages, Compass, Users, HandHeart } from "lucide-react";
 import aboutUsHero from "@/assets/about-us-hero.jpg";
-
-const stats = [
-  { icon: CheckCircle, value: "100+", label: "Successful Visas" },
-  { icon: Globe, value: "10+", label: "Countries Served" },
-  { icon: Star, value: "5.0", label: "Google Rating" },
-  { icon: Clock, value: "10+", label: "Years in Germany" },
-];
 
 const aboutPoints = [
   { icon: GraduationCap, text: "Expert guidance for education and visa in Germany" },
