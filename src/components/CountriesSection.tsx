@@ -34,7 +34,7 @@ const CountriesSection = () => {
               key={c.name}
               className="flex items-center gap-3 rounded-xl border border-border/50 bg-background px-5 py-3 text-sm font-medium text-foreground shadow-sm"
             >
-              <span className="text-3xl leading-none">{c.flag}</span>
+              <span className={`fi fi-${c.code} text-2xl rounded-sm`} />
               <div className="text-left">
                 <span className="block font-semibold">{c.name}</span>
                 <span className="block text-xs text-muted-foreground">Students & Professionals</span>
