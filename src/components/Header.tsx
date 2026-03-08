@@ -23,13 +23,13 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-card/95 backdrop-blur-md shadow-lg" : "bg-transparent"
+        scrolled ? "bg-card/90 backdrop-blur-xl shadow-lg border-b border-border/50" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-4 py-3 lg:py-4">
-        <a href="#home" className="flex items-center gap-2">
-          <img src={logo} alt="Germany Help Center" className="h-10 w-10 object-contain" />
-          <span className={`text-lg font-bold transition-colors ${scrolled ? "text-foreground" : "text-white"}`}>
+        <a href="#home" className="flex items-center gap-2.5">
+          <img src={logo} alt="Germany Help Center" className="h-10 w-10 rounded-xl object-contain" />
+          <span className={`text-lg font-bold tracking-tight transition-colors ${scrolled ? "text-foreground" : "text-white"}`}>
             Germany Help Center
           </span>
         </a>
@@ -50,17 +50,16 @@ const Header = () => {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          <Button size="sm" className="bg-german-red hover:bg-german-red/90 text-white" asChild>
+          <Button size="sm" className="bg-german-red hover:bg-german-red/90 text-white border-none shadow-md" asChild>
             <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer">Contact Us</a>
           </Button>
-          <Button size="icon" variant="outline" className="bg-whatsapp text-whatsapp-foreground border-none hover:bg-whatsapp/90" asChild>
+          <Button size="icon" variant="outline" className="bg-whatsapp text-whatsapp-foreground border-none hover:bg-whatsapp/90 shadow-md" asChild>
             <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
               <MessageCircle className="h-4 w-4" />
             </a>
           </Button>
         </div>
 
-        {/* Mobile hamburger */}
         <button
           className="md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -74,9 +73,8 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
-        <div className="border-t bg-card px-4 pb-4 md:hidden">
+        <div className="border-t bg-card/95 backdrop-blur-xl px-4 pb-4 md:hidden">
           <nav className="flex flex-col gap-3 pt-3">
             {navLinks.map((l) => (
               <a
@@ -90,7 +88,7 @@ const Header = () => {
             ))}
           </nav>
           <div className="mt-4 flex gap-3">
-            <Button size="sm" className="flex-1 bg-german-red hover:bg-german-red/90 text-white" asChild>
+            <Button size="sm" className="flex-1 bg-german-red hover:bg-german-red/90 text-white border-none" asChild>
               <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer">Contact Us</a>
             </Button>
             <Button size="icon" className="bg-whatsapp text-whatsapp-foreground border-none hover:bg-whatsapp/90" asChild>
