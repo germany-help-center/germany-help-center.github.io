@@ -32,7 +32,7 @@ const HowItWorksSection = () => {
     <section className="py-20 lg:py-28 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="mx-auto mb-14 max-w-2xl text-center">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-primary">Simple Process</p>
+          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-german-red">Simple Process</p>
           <h2 className="mb-4 text-3xl font-extrabold tracking-tight md:text-4xl">How It Works</h2>
           <p className="text-muted-foreground">
             From first call to visa approval — our streamlined 4-step process makes your Germany journey hassle-free.
@@ -49,7 +49,7 @@ const HowItWorksSection = () => {
                 {/* Step number circle */}
                 <div className="relative mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg transition-transform group-hover:scale-110">
                   <s.icon className="h-7 w-7" />
-                  <span className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-yellow-400 text-xs font-bold text-gray-900">
+                  <span className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-german-gold text-xs font-bold text-german-dark">
                     {i + 1}
                   </span>
                 </div>

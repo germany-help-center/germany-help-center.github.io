@@ -15,7 +15,7 @@ const SocialProofSection = () => {
     <section className="bg-muted/50 py-20 lg:py-28">
       <div className="container mx-auto px-4">
         <div className="mx-auto mb-14 max-w-2xl text-center">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-primary">Testimonials</p>
+          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-german-red">Testimonials</p>
           <h2 className="mb-4 text-3xl font-extrabold tracking-tight md:text-4xl">What Our Clients Say</h2>
           <p className="text-muted-foreground">Trusted by hundreds of successful applicants worldwide.</p>
         </div>
@@ -27,11 +27,11 @@ const SocialProofSection = () => {
                 <CarouselItem key={i} className="md:basis-1/2">
                   <Card className="h-full border-border/50">
                     <CardContent className="flex h-full flex-col p-6">
-                      <Quote className="mb-3 h-8 w-8 text-primary/20" />
+                      <Quote className="mb-3 h-8 w-8 text-german-gold/30" />
                       <p className="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground">{t.text}</p>
                       <div className="flex items-center gap-1 mb-2">
                         {Array.from({ length: t.rating }).map((_, j) => (
-                          <Star key={j} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                          <Star key={j} className="h-4 w-4 fill-german-gold text-german-gold" />
                         ))}
                       </div>
                       <p className="text-sm font-semibold">{t.name}</p>
@@ -51,7 +51,7 @@ const SocialProofSection = () => {
           <div className="rounded-xl border border-border/50 bg-card p-8 text-center">
             <div className="mb-3 flex items-center justify-center gap-1">
               {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                <Star key={i} className="h-5 w-5 fill-german-gold text-german-gold" />
               ))}
             </div>
             <p className="text-2xl font-bold">5.0 on Google Reviews</p>

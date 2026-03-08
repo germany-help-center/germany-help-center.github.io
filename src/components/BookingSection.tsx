@@ -7,15 +7,15 @@ const BookingSection = () => {
       id="booking"
       className="relative overflow-hidden py-20 lg:py-28"
       style={{
-        background: "linear-gradient(135deg, hsl(217 91% 50%), hsl(224 76% 30%))",
+        background: "linear-gradient(135deg, hsl(20 10% 18%), hsl(20 12% 10%))",
       }}
     >
-      <div className="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-white/5" />
-      <div className="absolute -bottom-32 -left-16 h-96 w-96 rounded-full bg-white/5" />
+      <div className="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-german-gold/5" />
+      <div className="absolute -bottom-32 -left-16 h-96 w-96 rounded-full bg-german-red/5" />
 
       <div className="container relative z-10 mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
-          <Calendar className="mx-auto mb-4 h-12 w-12 text-yellow-300" />
+          <Calendar className="mx-auto mb-4 h-12 w-12 text-german-gold" />
           <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
             Book Your Free 30-Minute Consultation
           </h2>
@@ -37,7 +37,7 @@ const BookingSection = () => {
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button
               size="lg"
-              className="bg-whatsapp text-whatsapp-foreground hover:bg-whatsapp/90 px-8 text-base shadow-xl border-none"
+              className="bg-whatsapp text-whatsapp-foreground hover:bg-whatsapp/90 px-8 text-base shadow-2xl border-none ring-2 ring-whatsapp/30 ring-offset-2 ring-offset-transparent"
               asChild
             >
               <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer">

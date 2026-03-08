@@ -51,6 +51,9 @@ export default {
           DEFAULT: "hsl(var(--whatsapp))",
           foreground: "hsl(var(--whatsapp-foreground))",
         },
+        "german-red": "hsl(var(--german-red))",
+        "german-gold": "hsl(var(--german-gold))",
+        "german-dark": "hsl(var(--german-dark))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
