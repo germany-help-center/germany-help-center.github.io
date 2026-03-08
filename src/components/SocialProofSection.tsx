@@ -1,4 +1,4 @@
-import { Star, Quote, ExternalLink, CheckCircle, Globe, Clock } from "lucide-react";
+import { Star, Quote, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
@@ -11,29 +11,10 @@ const testimonials = [
   { name: "Jānis Bērziņš", country: "Latvia", text: "Professional, responsive, and truly knowledgeable about German immigration. My fair visit visa was approved in record time.", rating: 5 },
 ];
 
-const stats = [
-  { icon: CheckCircle, value: "100+", label: "Successful Visas" },
-  { icon: Globe, value: "10+", label: "Countries Served" },
-  { icon: Star, value: "5.0", label: "Google Rating" },
-  { icon: Clock, value: "10+", label: "Years in Germany" },
-];
-
 const SocialProofSection = () => {
   return (
     <section id="testimonials" className="bg-muted/50 py-14 lg:py-20">
       <div className="container mx-auto px-4">
-        {/* Stats bar */}
-        <div className="mb-16 rounded-2xl border border-border/50 bg-primary p-1">
-          <div className="grid grid-cols-2 gap-1 md:grid-cols-4">
-            {stats.map((s) => (
-              <div key={s.label} className="rounded-xl bg-primary p-6 text-center text-primary-foreground">
-                <s.icon className="mx-auto mb-2 h-7 w-7 text-german-gold" />
-                <p className="text-3xl font-extrabold">{s.value}</p>
-                <p className="mt-1 text-sm text-primary-foreground/70">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
 
         <div className="mx-auto mb-10 max-w-2xl text-center">
           <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-german-red">Testimonials</p>
