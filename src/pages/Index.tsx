@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import DreamGermanySection from "@/components/DreamGermanySection";
 import GermanCitiesSection from "@/components/GermanCitiesSection";
 import CountriesSection from "@/components/CountriesSection";
+import OpportunityCardSection from "@/components/OpportunityCardSection";
 import ServicesSection from "@/components/ServicesSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import SocialProofSection from "@/components/SocialProofSection";
@@ -19,6 +20,7 @@ const Index = () => {
       <DreamGermanySection />
       <GermanCitiesSection />
       <CountriesSection />
+      <OpportunityCardSection />
       <ServicesSection />
       <HowItWorksSection />
       <SocialProofSection />
