@@ -1,4 +1,4 @@
-import { MessageCircle, FileCheck, Send, CalendarCheck, CheckCircle2, Plane, ShieldCheck, GraduationCap } from "lucide-react";
+import { MessageCircle, FileCheck, Send, CalendarCheck, CheckCircle2, Plane, ShieldCheck, GraduationCap, Users } from "lucide-react";
 
 const steps = [
   {
