@@ -75,7 +75,7 @@ const HeroSection = () => {
 
           <div className="mt-6 flex items-center justify-center gap-1 text-sm text-white/50">
             <MapPin className="h-4 w-4" />
-            Nußloch, Baden-Württemberg, Germany
+            Mahidharpura, Surat - 395003, India
           </div>
         </div>
 
