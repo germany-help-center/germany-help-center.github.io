@@ -23,19 +23,19 @@ const Footer = () => {
             <h4 className="mb-4 font-bold">Contact Us</h4>
             <div className="space-y-3 text-sm text-muted-foreground">
               <a href="tel:+919824925434" className="flex items-center gap-2 hover:text-foreground">
-                <Phone className="h-4 w-4" /> +91 98249 25434 (Pareshbhai)
+                <Phone className="h-4 w-4" /> +91 98249 25434 (Pareshbhai Vithani)
               </a>
               <a href="tel:+491749074389" className="flex items-center gap-2 hover:text-foreground">
-                <Phone className="h-4 w-4" /> +49 1749 074389 (Jigarbhai, Germany)
+                <Phone className="h-4 w-4" /> +49 1749 074389 (Jigarbhai Vithani, Germany)
               </a>
               <a href="mailto:contact@germanyhelpcenter.com" className="flex items-center gap-2 hover:text-foreground">
                 <Mail className="h-4 w-4" /> contact@germanyhelpcenter.com
               </a>
               <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-foreground">
-                <MessageCircle className="h-4 w-4" /> WhatsApp (Pareshbhai)
+                <MessageCircle className="h-4 w-4" /> WhatsApp (Pareshbhai Vithani)
               </a>
               <a href="https://wa.me/+491749074389" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-foreground">
-                <MessageCircle className="h-4 w-4" /> WhatsApp (Jigarbhai)
+                <MessageCircle className="h-4 w-4" /> WhatsApp (Jigarbhai Vithani)
               </a>
               <div className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
