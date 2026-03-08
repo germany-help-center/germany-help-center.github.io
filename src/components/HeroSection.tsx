@@ -10,7 +10,7 @@ const badges = [
 ];
 
 const quickActions = [
-  { icon: GraduationCap, label: "Study in Germany", href: "#for-students" },
+  { icon: GraduationCap, label: "Study in Germany", href: "#student-pathways" },
   { icon: Briefcase, label: "Work in Germany", href: "#opportunity-card" },
   { icon: Users, label: "Family Reunion", href: "#services" },
   { icon: Plane, label: "Visit Germany", href: "#services" },
