@@ -1,4 +1,5 @@
 import { Phone, Mail, MessageCircle, MapPin, Instagram, Star } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -8,9 +9,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold text-lg">
-                G
-              </div>
+              <img src={logo} alt="Germany Help Center" className="h-10 w-10 object-contain" />
               <span className="text-lg font-bold">Germany Help Center</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">

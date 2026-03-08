@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -27,10 +28,8 @@ const Header = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-4 py-3 lg:py-4">
         <a href="#home" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold text-lg">
-            G
-          </div>
-          <span className={`text-lg font-bold transition-colors ${scrolled ? "text-foreground" : "text-primary-foreground"}`}>
+          <img src={logo} alt="Germany Help Center" className="h-10 w-10 object-contain" />
+          <span className={`text-lg font-bold transition-colors ${scrolled ? "text-foreground" : "text-white"}`}>
             Germany Help Center
           </span>
         </a>
@@ -41,8 +40,8 @@ const Header = () => {
             <a
               key={l.href}
               href={l.href}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                scrolled ? "text-foreground" : "text-primary-foreground/80"
+              className={`text-sm font-medium transition-colors hover:text-german-gold ${
+                scrolled ? "text-foreground" : "text-white/90"
               }`}
             >
               {l.label}
@@ -51,7 +50,7 @@ const Header = () => {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          <Button size="sm" asChild>
+          <Button size="sm" className="bg-german-red hover:bg-german-red/90 text-white" asChild>
             <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer">Contact Us</a>
           </Button>
           <Button size="icon" variant="outline" className="bg-whatsapp text-whatsapp-foreground border-none hover:bg-whatsapp/90" asChild>
@@ -68,9 +67,9 @@ const Header = () => {
           aria-label="Toggle menu"
         >
           {mobileOpen ? (
-            <X className={`h-6 w-6 ${scrolled ? "text-foreground" : "text-primary-foreground"}`} />
+            <X className={`h-6 w-6 ${scrolled ? "text-foreground" : "text-white"}`} />
           ) : (
-            <Menu className={`h-6 w-6 ${scrolled ? "text-foreground" : "text-primary-foreground"}`} />
+            <Menu className={`h-6 w-6 ${scrolled ? "text-foreground" : "text-white"}`} />
           )}
         </button>
       </div>
@@ -83,7 +82,7 @@ const Header = () => {
               <a
                 key={l.href}
                 href={l.href}
-                className="text-sm font-medium text-foreground hover:text-primary"
+                className="text-sm font-medium text-foreground hover:text-german-red"
                 onClick={() => setMobileOpen(false)}
               >
                 {l.label}
@@ -91,7 +90,7 @@ const Header = () => {
             ))}
           </nav>
           <div className="mt-4 flex gap-3">
-            <Button size="sm" className="flex-1" asChild>
+            <Button size="sm" className="flex-1 bg-german-red hover:bg-german-red/90 text-white" asChild>
               <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer">Contact Us</a>
             </Button>
             <Button size="icon" className="bg-whatsapp text-whatsapp-foreground border-none hover:bg-whatsapp/90" asChild>

@@ -36,7 +36,7 @@ const FAQSection = () => {
     <section className="py-20 lg:py-28 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="mx-auto mb-14 max-w-2xl text-center">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-primary">Got Questions?</p>
+          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-german-red">Got Questions?</p>
           <h2 className="mb-4 text-3xl font-extrabold tracking-tight md:text-4xl">Frequently Asked Questions</h2>
           <p className="text-muted-foreground">Everything you need to know about our services and processes.</p>
         </div>
