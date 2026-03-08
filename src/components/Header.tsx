@@ -7,6 +7,7 @@ const navLinks = [
   { label: "Home", href: "#home" },
   { label: "Why Germany", href: "#why-germany" },
   { label: "Opportunity Card", href: "#opportunity-card" },
+  { label: "For Students", href: "#student-pathways" },
   { label: "Services", href: "#services" },
   { label: "How It Works", href: "#how-it-works" },
   { label: "Testimonials", href: "#testimonials" },
