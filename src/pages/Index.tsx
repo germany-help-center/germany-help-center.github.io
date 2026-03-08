@@ -20,6 +20,7 @@ const Index = () => {
       <DreamGermanySection />
       <GermanCitiesSection />
       <CountriesSection />
+      <OpportunityCardSection />
       <ServicesSection />
       <HowItWorksSection />
       <SocialProofSection />
