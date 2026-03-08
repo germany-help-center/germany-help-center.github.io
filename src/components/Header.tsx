@@ -95,7 +95,7 @@ const Header = () => {
               <a href="#booking">Book 30-Min Slot</a>
             </Button>
             <Button size="icon" className="bg-whatsapp text-whatsapp-foreground border-none hover:bg-whatsapp/90" asChild>
-              <a href="https://wa.me/+49123456789" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+              <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
                 <MessageCircle className="h-4 w-4" />
               </a>
             </Button>
