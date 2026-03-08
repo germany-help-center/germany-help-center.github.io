@@ -1,4 +1,4 @@
-import { MessageCircle, FileCheck, Send, CalendarCheck, CheckCircle2, Plane } from "lucide-react";
+import { MessageCircle, FileCheck, Send, CalendarCheck, CheckCircle2, Plane, ShieldCheck, GraduationCap } from "lucide-react";
 
 const steps = [
   {
@@ -11,29 +11,35 @@ const steps = [
     icon: FileCheck,
     step: "02",
     title: "Document Preparation",
-    desc: "We guide you through every document — translations, blocked accounts, cover letters, and financial proofs.",
+    desc: "We collect and prepare all required documents — school certificates, university transcripts, letters of recommendation (LOR), motivation letters, and certified translations.",
   },
   {
-    icon: Send,
+    icon: ShieldCheck,
     step: "03",
-    title: "Application & Filing",
-    desc: "We prepare and review your complete application, book embassy appointments, and handle submissions.",
+    title: "APS Verification",
+    desc: "We prepare your complete APS file, review every detail, and submit your documents to APS for academic credential verification and approval.",
+  },
+  {
+    icon: GraduationCap,
+    step: "04",
+    title: "University Application & Immatriculation",
+    desc: "We shortlist the best universities for your profile, submit applications before deadlines, and once admission is confirmed, handle the full immatriculation process — a completely stress-free experience.",
   },
   {
     icon: CalendarCheck,
-    step: "04",
+    step: "05",
     title: "Visa Appointment & Preparation",
     desc: "We coach you for the embassy interview, ensure all documents are in order, and accompany you through the appointment process.",
   },
   {
     icon: CheckCircle2,
-    step: "05",
+    step: "06",
     title: "Visa Approved!",
     desc: "Receive your visa and get ready for your new life in Germany.",
   },
   {
     icon: Plane,
-    step: "06",
+    step: "07",
     title: "Onboarding in Germany",
     desc: "Post-arrival support — city registration, bank account, health insurance, housing guidance, and settling-in assistance.",
   },
