@@ -35,7 +35,7 @@ const Footer = () => {
                 <MessageCircle className="h-4 w-4" /> WhatsApp (Pareshbhai Vithani)
               </a>
               <a href="https://wa.me/+491749074389" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-foreground">
-                <MessageCircle className="h-4 w-4" /> WhatsApp (Jigarbhai)
+                <MessageCircle className="h-4 w-4" /> WhatsApp (Jigarbhai Vithani)
               </a>
               <div className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
