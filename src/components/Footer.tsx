@@ -60,18 +60,18 @@ const Footer = () => {
           {/* Map */}
           <div>
             <h4 className="mb-4 font-bold">Find Us</h4>
-            <div className="overflow-hidden rounded-xl border border-border/50">
+            <a href="https://maps.app.goo.gl/b7wALqS7V52Hf6w3A" target="_blank" rel="noopener noreferrer" className="block overflow-hidden rounded-xl border border-border/50">
               <iframe
                 title="Germany Help Center Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.0!2d72.8345046!3d21.201624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04f3a5e0b1a5f%3A0x1234567890abcdef!2sGermany%20Help%20Center!5e0!3m2!1sen!2sin!4v1"
                 width="100%"
                 height="180"
-                style={{ border: 0 }}
+                style={{ border: 0, pointerEvents: "none" }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
-            </div>
+            </a>
           </div>
         </div>
 
