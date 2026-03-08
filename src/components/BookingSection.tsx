@@ -29,7 +29,7 @@ const BookingSection = () => {
               className="bg-white text-german-red hover:bg-white/90 px-10 text-base shadow-xl border-none font-bold"
               asChild
             >
-              <a href="https://wa.me/+919824925434?text=Hi%2C%20I%20would%20like%20to%20claim%20my%20free%20consultation%20call.%0A%0AMy%20Full%20Name%3A%0ACity%3A%0AInterested%20in%3A%20Bachelors%20%2F%20Masters%20%2F%20Opportunity%20Card" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/+919824925434?text=Hi%2C%20I%20would%20like%20to%20claim%20my%20free%20consultation%20call.%0A%0AMy%20Full%20Name%3A%0ACity%3A%0AInterested%20in%3A%20Bachelors%20Visa%20%2F%20Masters%20Visa%20%2F%20Opportunity%20Card%20%2F%20Spouse%20Visa%20%2F%20Travel%20Visa%20%2F%20Fair%20Visit%20Visa%20%2F%20General%20Inquiry" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-5 w-5" />
                 Claim Free Consultation Now
               </a>
