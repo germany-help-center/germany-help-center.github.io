@@ -23,7 +23,7 @@ const Footer = () => {
             <h4 className="mb-4 font-bold">Contact Us</h4>
             <div className="space-y-3 text-sm text-muted-foreground">
               <a href="tel:+919824925434" className="flex items-center gap-2 hover:text-foreground">
-                <Phone className="h-4 w-4" /> +91 98249 25434 (Pareshbhai)
+                <Phone className="h-4 w-4" /> +91 98249 25434 (Pareshbhai Vithani)
               </a>
               <a href="tel:+491749074389" className="flex items-center gap-2 hover:text-foreground">
                 <Phone className="h-4 w-4" /> +49 1749 074389 (Jigarbhai, Germany)
