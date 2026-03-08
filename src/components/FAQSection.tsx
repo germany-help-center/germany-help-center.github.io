@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     q: "Which countries do you serve?",
-    a: "We have successfully processed visa applications from over 10 countries including India, Canada, Czech Republic, Latvia, Finland, Netherlands, Turkey, Pakistan, Nigeria, and Bangladesh. As an online-first agency, we can serve clients worldwide.",
+    a: "We serve candidates from across the globe who dream of building their future in Germany. As an online-first agency, geography is no barrier. We have successfully helped clients from India, Latvia, Canada, UK, Czech Republic, Poland, Netherlands, Denmark, and many more countries to reach Germany and start their new life — whether for studies, career, or family reunion.",
   },
   {
     q: "What is the Opportunity Card (Chancenkarte) visa?",
