@@ -122,7 +122,7 @@ const OpportunityCardSection = () => {
               <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-german-gold">Meet Your Expert</p>
               <h3 className="mb-3 text-xl font-bold text-white">Jigar Vithani</h3>
               <p className="mb-4 text-sm leading-relaxed text-white/80">
-                With extensive experience in the German job market, Jigat brings first-hand knowledge of what German employers look for. 
+                With extensive experience in the German job market, Jigar brings first-hand knowledge of what German employers look for. 
                 His mission is to help professionals from around the world start a better life in Germany — guiding you from application to your first day at work.
               </p>
               <ul className="mb-5 space-y-2 text-sm text-white/70">
