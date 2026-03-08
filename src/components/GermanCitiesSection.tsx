@@ -28,7 +28,7 @@ const GermanCitiesSection = () => {
   return (
     <section className="py-14 lg:py-20 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="mx-auto mb-14 max-w-2xl text-center">
+        <div className="mx-auto mb-10 max-w-2xl text-center">
           <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-german-red">Top German Destinations</p>
           <h2 className="mb-4 text-3xl font-extrabold tracking-tight md:text-4xl">
             Study & Work in Germany's Best Cities
