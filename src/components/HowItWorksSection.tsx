@@ -59,7 +59,7 @@ const HowItWorksSection = () => {
           <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-german-red">Simple Process</p>
           <h2 className="mb-4 text-3xl font-extrabold tracking-tight md:text-4xl">How It Works</h2>
           <p className="text-muted-foreground">
-            From first call to settling in Germany — our streamlined 7-step process makes your journey completely stress-free.
+            From first call to settling in Germany — our streamlined 8-step process makes your journey completely stress-free.
           </p>
         </div>
 
