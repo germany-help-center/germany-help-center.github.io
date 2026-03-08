@@ -2,14 +2,14 @@ import { GraduationCap, Briefcase, Plane } from "lucide-react";
 import "flag-icons/css/flag-icons.min.css";
 
 const countries = [
-  { name: "India", code: "in" },
-  { name: "Latvia", code: "lv" },
-  { name: "Canada", code: "ca" },
-  { name: "UK", code: "gb" },
-  { name: "Czech Republic", code: "cz" },
-  { name: "Poland", code: "pl" },
-  { name: "Netherlands", code: "nl" },
-  { name: "Denmark", code: "dk" },
+  { name: "India", code: "in", type: "Students & Professionals" },
+  { name: "Latvia", code: "lv", type: "Spouse Visa" },
+  { name: "Canada", code: "ca", type: "Travel Visa" },
+  { name: "UK", code: "gb", type: "Fair Visit Visa" },
+  { name: "Czech Republic", code: "cz", type: "Students & Professionals" },
+  { name: "Poland", code: "pl", type: "Spouse Visa" },
+  { name: "Netherlands", code: "nl", type: "Travel Visa" },
+  { name: "Denmark", code: "dk", type: "Fair Visit Visa" },
 ];
 
 const CountriesSection = () => {
@@ -37,7 +37,7 @@ const CountriesSection = () => {
               <span className={`fi fi-${c.code} text-2xl rounded-sm`} />
               <div className="text-left">
                 <span className="block font-semibold">{c.name}</span>
-                <span className="block text-xs text-muted-foreground">Students & Professionals</span>
+                <span className="block text-xs text-muted-foreground">{c.type}</span>
               </div>
             </div>
           ))}
