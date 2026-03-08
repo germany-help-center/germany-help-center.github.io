@@ -73,7 +73,7 @@ const Header = () => {
       </div>
 
       {mobileOpen && (
-        <div className="border-t bg-card px-4 pb-4 md:hidden">
+        <div className="border-t bg-card px-4 pb-4 lg:hidden">
           <nav className="flex flex-col gap-3 pt-3">
             {navLinks.map((l) => (
               <a
