@@ -29,6 +29,14 @@ const faqs = [
     q: "Can I work with you fully online?",
     a: "Absolutely! We are Germany's first fully online immigration agency. Everything from consultation to document submission can be done remotely via WhatsApp, video calls, and email. No office visits needed.",
   },
+  {
+    q: "How do you handle everything online? Why don't you need an office?",
+    a: "Every step to reach Germany is conducted online — be it the APS application, university application, or visa application. We just need your documents in digital format. Since the entire process is digital by nature, a physical office is simply not necessary.",
+  },
+  {
+    q: "How does the visa process work with digital documents?",
+    a: "Since we have all your documents digitally, and Germany's current visa application process has been digitalized requiring minimum physical documents, we prepare a complete file for you — you just have to print it and you're ready for your visa appointment. Of course, we also explain everything over a video call and in a dedicated visa interview preparation session.",
+  },
 ];
 
 const FAQSection = () => {
