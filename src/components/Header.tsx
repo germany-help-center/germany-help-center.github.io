@@ -51,10 +51,6 @@ const Header = () => {
           <Button size="sm" className="bg-german-red hover:bg-german-red/90 text-white border-none shadow-sm" asChild>
             <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer">Contact Us</a>
           </Button>
-          <Button size="icon" variant="outline" className="bg-whatsapp text-whatsapp-foreground border-none hover:bg-whatsapp/90 shadow-sm" asChild>
-            <a href="https://wa.me/+919824925434" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-              <MessageCircle className="h-4 w-4" />
-            </a>
           </Button>
         </div>
 
