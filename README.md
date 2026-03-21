@@ -74,7 +74,7 @@ This repository is configured to deploy automatically to GitHub Pages.
 
 Expected GitHub Pages URL for this repository:
 
-- `https://germany-help-center.github.io/germany-helpcenter/`
+- `https://germanyhelpcenter.com/germany-helpcenter/`
 
 ## Can I connect a custom domain to my Lovable project?
 
