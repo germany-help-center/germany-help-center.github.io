@@ -62,12 +62,40 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+This repository is configured to deploy automatically to GitHub Pages.
+
+### Publish to GitHub Pages
+
+1. Push changes to the `main` branch.
+2. Open the repository Settings page on GitHub.
+3. Go to Pages.
+4. Set Source to `GitHub Actions`.
+5. The workflow in `.github/workflows/deploy-pages.yml` will build and publish the `dist` folder automatically.
+
+Expected GitHub Pages URL for this repository:
+
+- `https://germany-help-center.github.io/germany-helpcenter/`
 
 ## Can I connect a custom domain to my Lovable project?
 
 Yes, you can!
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Connect a custom domain on GitHub Pages
+
+1. Open the repository Settings page on GitHub.
+2. Go to Pages.
+3. Enter your domain in the Custom domain field.
+4. Add the required DNS records with your domain provider.
+
+Typical DNS setup:
+
+- For a subdomain like `www.example.com`, create a `CNAME` record pointing to `germany-help-center.github.io`.
+- For an apex domain like `example.com`, create `A` or `ALIAS/ANAME` records using GitHub Pages guidance.
+
+After DNS is configured:
+
+1. Enable `Enforce HTTPS` in the GitHub Pages settings.
+2. Wait for GitHub Pages to finish certificate provisioning.
+3. If you want the custom domain stored in the repo, add a `public/CNAME` file containing only your domain name.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
