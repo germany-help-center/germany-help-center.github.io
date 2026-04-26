@@ -40,6 +40,19 @@
   <meta name="twitter:title" content="Germany Help Center – Visas, Immigration &amp; German Language Classes">
   <meta property="og:description" content="Germany&#39;s first online immigration agency. 100+ successful visas from India, Canada, Czech Republic, Latvia, Finland, Netherlands &amp; more. Book your free consultation today.">
   <meta name="twitter:description" content="Germany&#39;s first online immigration agency. 100+ successful visas from India, Canada, Czech Republic, Latvia, Finland, Netherlands &amp; more. Book your free consultation today.">
+
+  <script>
+    // Restore the original deep-link URL after a GitHub Pages 404.html redirect.
+    (function () {
+      var redirect = sessionStorage.getItem('spa-redirect-path');
+      if (redirect) {
+        sessionStorage.removeItem('spa-redirect-path');
+        if (redirect && redirect !== '/' && redirect !== window.location.pathname + window.location.search + window.location.hash) {
+          window.history.replaceState(null, '', redirect);
+        }
+      }
+    })();
+  </script>
 </head>
 
   <body>
