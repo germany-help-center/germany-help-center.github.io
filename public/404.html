@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Germany Help Center</title>
+    <script>
+      // SPA redirect for GitHub Pages.
+      // Stores the path (and query/hash) in sessionStorage and redirects to "/",
+      // where index.html restores the original URL via History API.
+      (function () {
+        var l = window.location;
+        sessionStorage.setItem(
+          'spa-redirect-path',
+          l.pathname + l.search + l.hash
+        );
+        l.replace(l.protocol + '//' + l.host + '/');
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
