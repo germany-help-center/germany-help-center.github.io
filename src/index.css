@@ -143,9 +143,19 @@
   body {
     @apply bg-background text-ink-body;
     font-family: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-    font-feature-settings: "ss01", "cv01";
+    /* Deliberately no `-webkit-font-smoothing: antialiased` or
+       `text-rendering: optimizeLegibility` here. Both thin out dark-on-light
+       text and can suppress the platform's own hinting, which reads as soft or
+       blurry — most visibly on Windows in the light theme. Grayscale smoothing
+       is applied only on the dark grounds below, where light-on-dark type
+       genuinely benefits from it. */
+  }
+
+  /* Light-on-dark type only: subpixel rendering fringes on dark grounds. */
+  .ink-ground,
+  .dark body {
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1,
@@ -252,13 +262,22 @@
       linear-gradient(160deg, hsl(28 16% 13%) 0%, hsl(var(--ink-ground)) 70%);
   }
 
-  /* very fine paper grain — kills the flatness of large gradient fields */
+  /* Very fine paper grain — breaks up the flatness of large gradient fields.
+     `isolation` + `z-index: -1` are load-bearing: without them the absolutely
+     positioned pseudo-element paints ABOVE the section's in-flow content, laying
+     noise over every headline and making the type look soft. It must sit above
+     the section's own background and below its text. */
+  .grain {
+    isolation: isolate;
+  }
+
   .grain::after {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: -1;
     pointer-events: none;
-    opacity: 0.5;
+    opacity: 0.35;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E");
   }

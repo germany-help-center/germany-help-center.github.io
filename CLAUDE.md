@@ -92,6 +92,12 @@ src/components/*.tsx       one file per page section (Header, HeroSection, …, 
 src/components/Flag.tsx    German-flag motifs (FlagRail / FlagSpine / FlagChip) — decorative
 src/components/SectionHeading.tsx   the shared eyebrow → H2 → gold rule → subtitle block
 src/components/ThemeToggle.tsx      light/dark switch; initial class set by index.html
+src/components/Cta.tsx     shared conversion components — WhatsAppCta / CtaPair / CtaTrust /
+                           ChecklistCta. Use these, don't hand-roll a CTA (see Conversion below)
+src/components/MobileActionBar.tsx  persistent Call + WhatsApp bar, mobile only
+src/components/EligibilityCheck.tsx client-side self-check; its rules mirror the page's stated facts
+src/components/ConsentBanner.tsx    opt-in gate for GA4; renders nothing until an ID is configured
+src/lib/analytics.ts       GA4 behind consent + `trackCta()` attribution
 src/components/ui/*.tsx    unmodified shadcn/ui primitives — don't hand-edit these
 src/lib/motion.tsx         Reveal / useInView / useCountUp / useScrollProgress / useReducedMotion
 src/lib/cta.ts             single source of truth for WhatsApp / dMAT / phone / address links
@@ -159,6 +165,26 @@ Third-party figures — blocked account €11,904/€992 per month, visa fee €
 Two figures are deliberately **not** published because sources disagree: the Opportunity Card
 proof-of-funds amount and its processing time. Confirm with the mission before adding either.
 
+## Conversion
+
+Two rules, because the page previously had 24 contact CTAs and only one mechanic behind all of them:
+
+1. **Never hand-roll a contact CTA.** Use `CtaPair` (primary + both phone numbers), `WhatsAppCta`,
+   or `ChecklistCta` from `src/components/Cta.tsx`, and put `CtaTrust` underneath. Every ask must carry
+   the response-time promise and the "free / no payment details" line, and every click must call
+   `trackCta(action, location)` — otherwise there is no way to tell which placements work.
+2. **Always offer a smaller step.** Most visitors arrive researching a single fact and are nowhere near
+   booking a call. `ChecklistCta` and the `#check` self-check exist so those visitors have somewhere to
+   go other than away. Don't remove them in favour of "more prominent" primary CTAs.
+
+Deliberately **not** done: a CTA in every section (Cities, Countries and StatsBar are kept clean for
+rhythm — when everything shouts, nothing does), and exit-intent popups.
+
+`BOOKING_URL` in `src/lib/cta.ts` is empty, so every booking CTA falls back to WhatsApp via
+`bookingHref()`. Set it to a real Cal.com / Google Calendar URL and all of them switch over at once.
+`GA_MEASUREMENT_ID` in `src/lib/analytics.ts` is likewise empty: with no ID, no script loads and no
+consent banner appears, so this is safe to ship un-configured.
+
 ## Known follow-ups
 
 1. **Prerender the SPA.** The served HTML is a ~3 KB shell, so Bing and most LLM/AI retrieval crawlers see
@@ -167,14 +193,19 @@ proof-of-funds amount and its processing time. Confirm with the mission before a
 2. **Create a Google Business Profile.** Highest commercial ROI of anything outstanding, and the only thing
    that produces map-pack results or makes a rating legitimately displayable. `germany education consultant
    in surat` is a low-competition, high-intent term.
-3. **Founder verifiability.** Real photographs of both founders and LinkedIn URLs (then add them to
-   `sameAs` in the `index.html` JSON-LD). A named person in Germany since 2014 is the one uncopyable asset,
-   and it is currently unverifiable to a sceptical visitor.
+3. **Paste the two IDs.** `GA_MEASUREMENT_ID` (`src/lib/analytics.ts`) and `BOOKING_URL`
+   (`src/lib/cta.ts`). Both are intentionally empty and degrade gracefully, but nothing about CTA
+   performance is measurable until the first one is set.
 4. **A written fee table.** `CostsSection` promises a fixed fee in writing but publishes no number.
    No competitor publishes fees — doing so would directly answer the ambassador's criticism.
-5. **Split into real routes** (`/study-in-germany-from-india`, `/aps-certificate-india`,
+5. **Pareshbhai's photo and LinkedIn.** Jigarbhai's are in (`MentorSection`, `Person` JSON-LD);
+   the India-side co-founder is still unillustrated and unverifiable.
+6. **The employer question.** Jigarbhai's LinkedIn names his employer; the site deliberately says
+   "German engineering industry" instead, to avoid implying an endorsement by that company. Revisit only
+   if he confirms he's comfortable naming it.
+7. **Split into real routes** (`/study-in-germany-from-india`, `/aps-certificate-india`,
    `/opportunity-card-chancenkarte`, …). One URL can only hold one topical identity; this page currently
    targets eleven keyword clusters.
-6. **Get a German lawyer's read** on how these services may be described. Since Jan 2025, unlicensed legal
+8. **Get a German lawyer's read** on how these services may be described. Since Jan 2025, unlicensed legal
    advice is an administrative offence under §20(1) No. 1 RDG with fines up to €50,000 per case. The footer
    and FAQ already disclaim it; confirm the wording is sufficient.

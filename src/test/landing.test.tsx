@@ -3,7 +3,14 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import Index from "@/pages/Index";
 import { faqs } from "@/lib/faqs";
-import { DMAT_URL, PHONE_IN } from "@/lib/cta";
+import {
+  DMAT_URL,
+  LINKEDIN_JIGAR,
+  PHONE_DE,
+  PHONE_IN,
+  RESPONSE_TIME,
+  bookingHref,
+} from "@/lib/cta";
 
 /**
  * Smoke + guardrail tests for the landing page.
@@ -72,6 +79,8 @@ describe("landing page", () => {
     for (const id of [
       "top",
       "why-germany",
+      "mentor",
+      "check",
       "study",
       "aps",
       "dmat",
@@ -80,6 +89,7 @@ describe("landing page", () => {
       "costs",
       "process",
       "about",
+      "stories",
       "faq",
     ]) {
       expect(container.querySelector(`#${id}`), `missing section #${id}`).not.toBeNull();
@@ -120,6 +130,34 @@ describe("required disclosures", () => {
   it("routes its primary CTA to the WhatsApp enquiry number", () => {
     const { container } = renderPage();
     expect(container.querySelector(`a[href*="wa.me/${PHONE_IN}"]`)).not.toBeNull();
+  });
+
+  it("links the founder's LinkedIn, which is the site's key verification link", () => {
+    const { container } = renderPage();
+    expect(container.querySelector(`a[href="${LINKEDIN_JIGAR}"]`)).not.toBeNull();
+  });
+});
+
+describe("conversion surfaces", () => {
+  it("offers a phone route, not only WhatsApp", () => {
+    const { container } = renderPage();
+    expect(container.querySelector(`a[href="tel:${PHONE_DE}"]`)).not.toBeNull();
+    expect(container.querySelector(`a[href="tel:${PHONE_IN}"]`)).not.toBeNull();
+  });
+
+  it("states the response-time promise next to CTAs", () => {
+    const { container } = renderPage();
+    expect(container.textContent).toContain(RESPONSE_TIME);
+  });
+
+  it("offers a low-commitment alternative for visitors not ready to talk", () => {
+    renderPage();
+    expect(screen.getAllByText(/not ready to talk yet/i).length).toBeGreaterThan(0);
+  });
+
+  it("has no dead-end booking CTA when no calendar URL is configured", () => {
+    // bookingHref() must always resolve to something — WhatsApp is the fallback.
+    expect(bookingHref("x")).toMatch(/^https:\/\//);
   });
 });
 

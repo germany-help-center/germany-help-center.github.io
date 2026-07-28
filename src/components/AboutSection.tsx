@@ -8,6 +8,7 @@ import {
   Users,
 } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
+import { CtaPair } from "@/components/Cta";
 import { Reveal } from "@/lib/motion";
 import { FlagChip } from "@/components/Flag";
 import aboutUsHero from "@/assets/about-us-hero.jpg";
@@ -140,6 +141,10 @@ const AboutSection = () => {
                 approved, every student enrolled, every family reunited is a bridge between two
                 countries. That&apos;s the whole business.
               </p>
+
+              <div className="mt-9">
+                <CtaPair location="about" topic="working with you" onDark />
+              </div>
             </div>
           </div>
         </Reveal>

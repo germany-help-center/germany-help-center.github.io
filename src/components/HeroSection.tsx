@@ -8,14 +8,17 @@ import {
   GraduationCap,
   MapPin,
   MessageCircle,
+  Phone,
   Plane,
   ShieldCheck,
   Users,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FlagChip } from "@/components/Flag";
+import { CtaTrust } from "@/components/Cta";
 import { Reveal, useCountUp, useReducedMotion } from "@/lib/motion";
-import { DMAT_URL, whatsapp } from "@/lib/cta";
+import { trackCta } from "@/lib/analytics";
+import { DMAT_URL, TEL_DE, bookingHref } from "@/lib/cta";
 import heroImg from "@/assets/germany-hero.jpg";
 import studentsImg from "@/assets/students-germany.jpg";
 import professionalImg from "@/assets/professional-germany.jpg";
@@ -151,9 +154,14 @@ const HeroSection = () => {
               size="lg"
               className="rounded-full bg-brand px-8 text-base font-bold text-white shadow-warm-lg hover:bg-brand-hover"
             >
-              <a href={whatsapp("my move to Germany")} target="_blank" rel="noopener noreferrer">
+              <a
+                href={bookingHref("my move to Germany")}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackCta("book", "hero")}
+              >
                 <MessageCircle className="mr-2 h-5 w-5" aria-hidden="true" />
-                Claim your free consultation
+                Book the free 30-min assessment
               </a>
             </Button>
             <Button
@@ -162,12 +170,25 @@ const HeroSection = () => {
               variant="outline"
               className="rounded-full border-white/25 bg-white/[0.06] px-7 text-base font-bold text-white backdrop-blur-sm hover:bg-white/15 hover:text-white"
             >
-              <a href="#dmat">
-                Preparing for the dMAT?
+              <a href="#check">
+                Check if you qualify — 2 min
                 <ArrowUpRight className="ml-1.5 h-4 w-4" aria-hidden="true" />
               </a>
             </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="ghost"
+              className="rounded-full px-6 text-base font-bold text-white/80 hover:bg-white/10 hover:text-white"
+            >
+              <a href={TEL_DE} onClick={() => trackCta("call_de", "hero")}>
+                <Phone className="mr-2 h-4 w-4" aria-hidden="true" />
+                Call Germany
+              </a>
+            </Button>
           </div>
+
+          <CtaTrust className="mt-5" onDark align="left" />
 
           <ul
             className="animate-rise-in mt-9 flex flex-wrap gap-2.5"

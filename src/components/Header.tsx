@@ -8,12 +8,13 @@ import logo from "@/assets/logo.png";
 
 const navLinks = [
   { label: "Why Germany", href: "#why-germany" },
+  { label: "Your mentor", href: "#mentor" },
+  { label: "Do I qualify?", href: "#check" },
   { label: "Study", href: "#study" },
   { label: "Work", href: "#opportunity-card" },
   { label: "dMAT Prep", href: "#dmat" },
-  { label: "Services", href: "#services" },
+  { label: "Costs", href: "#costs" },
   { label: "Process", href: "#process" },
-  { label: "About", href: "#about" },
   { label: "FAQ", href: "#faq" },
 ];
 
@@ -83,6 +84,14 @@ const Header = () => {
     };
   }, [mobileOpen]);
 
+  /*
+   * The hero is a dark ground in BOTH themes, so while the bar floats over it
+   * the header must use on-dark colours regardless of the active theme.
+   * Using page-level (near-black) foreground colours here is what made the
+   * wordmark and nav look washed out and soft in the light theme.
+   */
+  const onDark = !scrolled;
+
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <FlagRail />
@@ -90,8 +99,8 @@ const Header = () => {
       <div
         className={`transition-[background-color,box-shadow,backdrop-filter] duration-300 ease-brand ${
           scrolled
-            ? "border-b border-border bg-background/85 shadow-warm-sm backdrop-blur-xl backdrop-saturate-150"
-            : "border-b border-transparent bg-background/40 backdrop-blur-sm"
+            ? "border-b border-border bg-background/90 shadow-warm-sm backdrop-blur-xl backdrop-saturate-150"
+            : "border-b border-white/10 bg-ink-ground/35 backdrop-blur-[2px]"
         }`}
       >
         <div className="shell flex h-[4.25rem] items-center gap-6">
@@ -100,10 +109,18 @@ const Header = () => {
               <img src={logo} alt="" className="h-full w-full object-contain" />
             </span>
             <span className="leading-tight">
-              <span className="block font-display text-[1.0625rem] font-extrabold tracking-tight text-foreground">
+              <span
+                className={`block font-display text-[1.0625rem] font-extrabold tracking-tight ${
+                  onDark ? "text-white" : "text-foreground"
+                }`}
+              >
                 Germany Help Center
               </span>
-              <span className="hidden text-[0.6875rem] uppercase tracking-[0.12em] text-ink-subtle sm:block">
+              <span
+                className={`hidden text-[0.6875rem] uppercase tracking-[0.12em] sm:block ${
+                  onDark ? "text-white/65" : "text-ink-subtle"
+                }`}
+              >
                 Immigration &amp; Education · Since 2014
               </span>
             </span>
@@ -118,15 +135,21 @@ const Header = () => {
                   href={link.href}
                   aria-current={isActive ? "true" : undefined}
                   className={`relative rounded-lg px-3 py-2 text-sm font-semibold transition-colors duration-200 ${
-                    isActive ? "text-foreground" : "text-ink-muted hover:text-foreground"
+                    onDark
+                      ? isActive
+                        ? "text-white"
+                        : "text-white/75 hover:text-white"
+                      : isActive
+                        ? "text-foreground"
+                        : "text-ink-muted hover:text-foreground"
                   }`}
                 >
                   {link.label}
                   <span
                     aria-hidden="true"
-                    className={`absolute inset-x-3 -bottom-0.5 h-0.5 origin-left rounded-full bg-brand transition-transform duration-300 ease-brand ${
-                      isActive ? "scale-x-100" : "scale-x-0"
-                    }`}
+                    className={`absolute inset-x-3 -bottom-0.5 h-0.5 origin-left rounded-full transition-transform duration-300 ease-brand ${
+                      onDark ? "bg-gold-bright" : "bg-brand"
+                    } ${isActive ? "scale-x-100" : "scale-x-0"}`}
                   />
                 </a>
               );
@@ -135,13 +158,17 @@ const Header = () => {
 
           <div className="ml-auto flex items-center gap-2 xl:ml-0">
             <div className="hidden sm:block">
-              <ThemeToggle />
+              <ThemeToggle onDark={onDark} />
             </div>
 
             <Button
               asChild
               variant="outline"
-              className="hidden rounded-full border-border-strong font-bold lg:inline-flex"
+              className={`hidden rounded-full font-bold lg:inline-flex ${
+                onDark
+                  ? "border-white/30 bg-white/10 text-white hover:bg-white/20 hover:text-white"
+                  : "border-border-strong"
+              }`}
             >
               <a href={DMAT_URL} target="_blank" rel="noopener noreferrer">
                 dMAT Practice
@@ -158,7 +185,11 @@ const Header = () => {
 
             <button
               type="button"
-              className="grid h-10 w-10 place-items-center rounded-lg border border-border bg-surface text-foreground xl:hidden"
+              className={`grid h-10 w-10 place-items-center rounded-lg border xl:hidden ${
+                onDark
+                  ? "border-white/25 bg-white/10 text-white"
+                  : "border-border bg-surface text-foreground"
+              }`}
               onClick={() => setMobileOpen((open) => !open)}
               aria-expanded={mobileOpen}
               aria-controls="mobile-nav"

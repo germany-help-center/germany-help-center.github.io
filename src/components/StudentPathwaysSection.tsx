@@ -9,8 +9,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { FlagSpine } from "@/components/Flag";
 import SectionHeading from "@/components/SectionHeading";
+import { ChecklistCta, CtaPair } from "@/components/Cta";
 import { Reveal } from "@/lib/motion";
-import { DMAT_URL, whatsapp } from "@/lib/cta";
+import { DMAT_URL } from "@/lib/cta";
 
 interface Pathway {
   title: string;
@@ -225,20 +226,18 @@ const StudentPathwaysSection = () => {
           </div>
         </Reveal>
 
-        <Reveal direction="up" delay={140} className="mt-10 text-center">
-          <Button
-            asChild
-            size="lg"
-            className="rounded-full bg-brand px-9 text-base font-bold text-white shadow-warm-lg hover:bg-brand-hover"
-          >
-            <a href={whatsapp("my German university admission")} target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="mr-2 h-5 w-5" aria-hidden="true" />
-              Check which pathway fits you
-            </a>
-          </Button>
-          <p className="mt-3 text-sm text-ink-subtle">
-            Free 30-minute assessment. We'll tell you honestly if you don't qualify yet.
+        <Reveal direction="up" delay={140} className="mt-10">
+          <p className="mb-5 text-center text-sm text-ink-subtle">
+            Not sure which pathway is yours? We&apos;ll tell you honestly if you don&apos;t qualify yet.
           </p>
+          <CtaPair
+            location="study"
+            topic="my German university admission"
+            label="Check which pathway fits you"
+          />
+          <div className="mx-auto mt-6 max-w-xl">
+            <ChecklistCta location="study" />
+          </div>
         </Reveal>
       </div>
     </section>

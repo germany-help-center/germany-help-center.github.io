@@ -1,9 +1,10 @@
-import { ArrowUpRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { ArrowUpRight, Linkedin, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { FlagRail } from "@/components/Flag";
 import { reviewedOn } from "@/lib/faqs";
 import {
   DMAT_URL,
   EMAIL,
+  LINKEDIN_JIGAR,
   MAILTO,
   MAPS_URL,
   OFFICE_ADDRESS,
@@ -17,6 +18,8 @@ import logo from "@/assets/logo.png";
 
 const sectionLinks = [
   { label: "Why Germany", href: "#why-germany" },
+  { label: "Your mentor", href: "#mentor" },
+  { label: "Do I qualify?", href: "#check" },
   { label: "Study pathways", href: "#study" },
   { label: "APS India", href: "#aps" },
   { label: "dMAT prep", href: "#dmat" },
@@ -163,6 +166,17 @@ const Footer = () => {
                   >
                     <Mail className="h-4 w-4 shrink-0 text-white/40" aria-hidden="true" />
                     {EMAIL}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={LINKEDIN_JIGAR}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2.5 text-white/65 transition-colors hover:text-white"
+                  >
+                    <Linkedin className="h-4 w-4 shrink-0 text-[#70B5F9]" aria-hidden="true" />
+                    Jigarbhai on LinkedIn
                   </a>
                 </li>
                 <li>

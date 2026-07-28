@@ -4,14 +4,14 @@ import {
   CalendarDays,
   CheckCircle2,
   FileBadge,
-  MessageCircle,
   ShieldCheck,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FlagSpine } from "@/components/Flag";
 import SectionHeading from "@/components/SectionHeading";
+import { CtaPair } from "@/components/Cta";
 import { Reveal } from "@/lib/motion";
-import { DMAT_URL, whatsapp } from "@/lib/cta";
+import { DMAT_URL } from "@/lib/cta";
 
 const documents = [
   "School leaving certificates and mark sheets, all years",
@@ -190,17 +190,12 @@ const ApsSection = () => {
           </div>
         </div>
 
-        <Reveal direction="up" delay={100} className="mt-10 text-center">
-          <Button
-            asChild
-            size="lg"
-            className="rounded-full bg-brand px-9 text-base font-bold text-white shadow-warm-lg hover:bg-brand-hover"
-          >
-            <a href={whatsapp("my APS India application")} target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="mr-2 h-5 w-5" aria-hidden="true" />
-              Check if your marks clear the gate
-            </a>
-          </Button>
+        <Reveal direction="up" delay={100} className="mt-10">
+          <CtaPair
+            location="aps"
+            topic="my APS India application"
+            label="Check if your marks clear the gate"
+          />
         </Reveal>
       </div>
     </section>

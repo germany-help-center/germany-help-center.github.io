@@ -10,6 +10,7 @@ import {
   Users,
 } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
+import { ChecklistCta, CtaPair } from "@/components/Cta";
 import { Reveal, useScrollProgress } from "@/lib/motion";
 
 const steps = [
@@ -142,6 +143,14 @@ const HowItWorksSection = () => {
             Most delays in Indian applications come from incomplete paperwork, not from the embassy. We
             front-load the file so the queue is the only thing you're waiting on.
           </p>
+        </Reveal>
+
+        {/* Natural decision point: they've just seen exactly what they'd be buying. */}
+        <Reveal direction="up" delay={140} className="mx-auto mt-10 max-w-2xl">
+          <CtaPair location="process" topic="starting the process" label="Start at step one — free" />
+          <div className="mt-6">
+            <ChecklistCta location="process" />
+          </div>
         </Reveal>
       </div>
     </section>

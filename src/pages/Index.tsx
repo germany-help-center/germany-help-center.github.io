@@ -2,6 +2,8 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import StatsBar from "@/components/StatsBar";
 import DreamGermanySection from "@/components/DreamGermanySection";
+import MentorSection from "@/components/MentorSection";
+import EligibilityCheck from "@/components/EligibilityCheck";
 import StudentPathwaysSection from "@/components/StudentPathwaysSection";
 import ApsSection from "@/components/ApsSection";
 import DmatSection from "@/components/DmatSection";
@@ -14,18 +16,24 @@ import CountriesSection from "@/components/CountriesSection";
 import AboutSection from "@/components/AboutSection";
 import SocialProofSection from "@/components/SocialProofSection";
 import FAQSection from "@/components/FAQSection";
+import ShareSection from "@/components/ShareSection";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import MobileActionBar from "@/components/MobileActionBar";
+import ConsentBanner from "@/components/ConsentBanner";
 
 /**
  * The landing page outline.
  *
  * The order is deliberate: establish credibility (hero, numbers), give the
- * reason to move (why Germany), then answer the reader's own situation
- * (study → APS → dMAT → work), then the commercial detail (services, costs),
- * then how it runs, then who we are, then objections. Money and honesty sit
- * before the testimonials on purpose — a sceptical parent reaches the fee table
- * before they reach anything resembling a sales pitch.
+ * reason to move (why Germany), introduce the person accountable (mentor), then
+ * let the reader self-qualify (check) before the dense detail. Their own
+ * situation comes next (study → APS → dMAT → work), then the commercial detail
+ * (services, costs), then how it runs, then objections.
+ *
+ * Money and honesty sit before the testimonials on purpose — a sceptical parent
+ * reaches the fee table before anything resembling a sales pitch. The share
+ * prompt sits last, once the page has earned the recommendation.
  */
 const Index = () => (
   <div className="min-h-screen">
@@ -35,6 +43,8 @@ const Index = () => (
       <HeroSection />
       <StatsBar />
       <DreamGermanySection />
+      <MentorSection />
+      <EligibilityCheck />
       <StudentPathwaysSection />
       <ApsSection />
       <DmatSection />
@@ -47,10 +57,15 @@ const Index = () => (
       <AboutSection />
       <SocialProofSection />
       <FAQSection />
+      <ShareSection />
     </main>
 
     <Footer />
+
+    {/* Floating conversion surfaces: the bar owns mobile, the pill owns sm+. */}
+    <MobileActionBar />
     <WhatsAppFloat />
+    <ConsentBanner />
   </div>
 );
 

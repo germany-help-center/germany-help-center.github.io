@@ -10,7 +10,9 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/SectionHeading";
+import { CtaTrust } from "@/components/Cta";
 import { Reveal } from "@/lib/motion";
+import { trackCta } from "@/lib/analytics";
 import { whatsapp } from "@/lib/cta";
 
 /**
@@ -132,15 +134,23 @@ const CostsSection = () => {
               </p>
             </div>
 
-            <Button
-              asChild
-              size="lg"
-              className="w-full rounded-full bg-foreground px-8 text-base font-bold text-background hover:bg-foreground/85"
-            >
-              <a href={whatsapp("a written fee quote")} target="_blank" rel="noopener noreferrer">
-                Ask for a written quote
-              </a>
-            </Button>
+            <div>
+              <Button
+                asChild
+                size="lg"
+                className="w-full rounded-full bg-foreground px-8 text-base font-bold text-background hover:bg-foreground/85"
+              >
+                <a
+                  href={whatsapp("a written fee quote")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackCta("quote", "costs")}
+                >
+                  Ask for a written quote
+                </a>
+              </Button>
+              <CtaTrust className="mt-4" align="left" />
+            </div>
           </div>
         </Reveal>
       </div>

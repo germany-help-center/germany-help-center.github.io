@@ -28,6 +28,8 @@ const photos = [
   { file: "src/assets/professional-germany.jpg", width: 1200, quality: 76 },
   { file: "src/assets/germany-castle.jpg", width: 1200, quality: 76 },
   { file: "src/assets/about-us-hero.jpg", width: 1400, quality: 76 },
+  // The founder portrait. Rendered up to ~480 px; 800 covers 2x and the OG card.
+  { file: "src/assets/jigar-vithani.jpg", width: 800, quality: 82 },
 ];
 
 /** Illustrations with transparency: stay PNG, quantised. */
@@ -137,18 +139,67 @@ async function buildOgImage() {
         <text x="398" y="545" fill="#FFFFFF" font-size="27" font-weight="700">100+ students placed</text>
 
         <text x="80" y="588" fill="#8A8177" font-size="22" font-weight="600">germanyhelpcenter.com</text>
+
+        <!-- caption under the portrait -->
+        <text x="${W - 210}" y="452" fill="#FFBD5A" font-size="19" font-weight="700"
+              text-anchor="middle">Jigar Vithani</text>
+        <text x="${W - 210}" y="478" fill="#B4ABA0" font-size="16" font-weight="600"
+              text-anchor="middle">In Germany since 2014</text>
       </g>
     </svg>`);
 
+  // logo.png carries a baked-in white background, so it needs a rounded mask —
+  // a hard white square on a dark card looks like a mistake.
+  const L = 96;
   const logo = await sharp(await readFile(at("src/assets/logo.png")))
-    .resize({ width: 168, height: 168, fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } })
+    .resize({ width: L, height: L, fit: "contain", background: { r: 255, g: 255, b: 255, alpha: 1 } })
+    .composite([
+      {
+        input: Buffer.from(
+          `<svg xmlns="http://www.w3.org/2000/svg" width="${L}" height="${L}">
+             <rect width="${L}" height="${L}" rx="24" ry="24" fill="#fff"/>
+           </svg>`,
+        ),
+        blend: "dest-in",
+      },
+    ])
+    .png()
+    .toBuffer();
+
+  /* A face materially lifts click-through when the card is forwarded on
+     WhatsApp — which is this business's actual distribution channel. Masked to
+     a circle with a gold ring. */
+  const D = 232;
+  const portrait = await sharp(await readFile(at("src/assets/jigar-vithani.jpg")))
+    .resize({ width: D, height: D, fit: "cover", position: "top" })
+    .composite([
+      {
+        input: Buffer.from(
+          `<svg xmlns="http://www.w3.org/2000/svg" width="${D}" height="${D}">
+             <circle cx="${D / 2}" cy="${D / 2}" r="${D / 2}" fill="#fff"/>
+           </svg>`,
+        ),
+        blend: "dest-in",
+      },
+      {
+        input: Buffer.from(
+          `<svg xmlns="http://www.w3.org/2000/svg" width="${D}" height="${D}">
+             <circle cx="${D / 2}" cy="${D / 2}" r="${D / 2 - 3}" fill="none"
+                     stroke="#FFBD5A" stroke-width="5"/>
+           </svg>`,
+        ),
+        blend: "over",
+      },
+    ])
+    .png()
     .toBuffer();
 
   const target = at("public/og-image.jpg");
   const buffer = await sharp(background)
     .composite([
       { input: overlay, top: 0, left: 0 },
-      { input: logo, top: 78, left: W - 248 },
+      { input: portrait, top: 178, left: W - 210 - D / 2 },
+      { input: logo, top: 52, left: W - 210 - 48 },
     ])
     .jpeg({ quality: 84, progressive: true, mozjpeg: true })
     .toBuffer();

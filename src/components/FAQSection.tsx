@@ -1,14 +1,13 @@
-import { HelpCircle, MessageCircle } from "lucide-react";
+import { HelpCircle } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/SectionHeading";
+import { CtaPair } from "@/components/Cta";
 import { Reveal } from "@/lib/motion";
-import { whatsapp } from "@/lib/cta";
 import { faqs } from "@/lib/faqs";
 
 const FAQSection = () => {
@@ -46,20 +45,15 @@ const FAQSection = () => {
           </Accordion>
         </div>
 
-        <Reveal direction="up" delay={100} className="mx-auto mt-12 max-w-xl text-center">
-          <p className="text-[0.9375rem] text-ink-muted">
+        <Reveal direction="up" delay={100} className="mx-auto mt-12 max-w-2xl">
+          <p className="mb-5 text-center text-[0.9375rem] text-ink-muted">
             Still unsure? Ask the awkward question directly — that&apos;s what the free call is for.
           </p>
-          <Button
-            asChild
-            size="lg"
-            className="mt-5 rounded-full bg-brand px-8 text-base font-bold text-white shadow-warm-lg hover:bg-brand-hover"
-          >
-            <a href={whatsapp("a question I couldn't find answered")} target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="mr-2 h-5 w-5" aria-hidden="true" />
-              Ask us on WhatsApp
-            </a>
-          </Button>
+          <CtaPair
+            location="faq"
+            topic="a question I couldn't find answered"
+            label="Ask us — free"
+          />
         </Reveal>
       </div>
     </section>

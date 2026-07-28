@@ -1,5 +1,4 @@
 import { MessageCircle, Quote, ShieldQuestion, Star, Video } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselContent,
@@ -8,8 +7,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import SectionHeading from "@/components/SectionHeading";
+import { CtaPair } from "@/components/Cta";
 import { Reveal } from "@/lib/motion";
-import { whatsapp } from "@/lib/cta";
 import aboutUsHero from "@/assets/about-us-hero.jpg";
 
 /**
@@ -163,16 +162,14 @@ const SocialProofSection = () => {
                   ))}
                 </ul>
 
-                <Button
-                  asChild
-                  size="lg"
-                  className="mt-7 rounded-full bg-brand px-8 font-bold text-white shadow-warm-lg hover:bg-brand-hover"
-                >
-                  <a href={whatsapp("a call to verify your track record")} target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="mr-2 h-5 w-5" aria-hidden="true" />
-                    Book the free call
-                  </a>
-                </Button>
+                <div className="mt-7">
+                  <CtaPair
+                    location="stories"
+                    topic="a call to verify your track record"
+                    label="Book the free call"
+                    align="left"
+                  />
+                </div>
               </div>
             </div>
           </div>
