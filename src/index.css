@@ -138,6 +138,14 @@
     /* clears the fixed header when jumping to a #section */
     scroll-padding-top: 5.5rem;
     -webkit-tap-highlight-color: transparent;
+
+    /* Every centred block on this page uses `margin-inline: auto`, which centres
+       within the SCROLLABLE width — not the viewport. So a single decorative
+       element poking a couple of hundred pixels past the right edge silently
+       shifts the entire page right by half that, which reads as "the layout
+       isn't centred". `clip` rather than `hidden` because `hidden` on the root
+       breaks `position: sticky` for descendants (the dMAT card relies on it). */
+    overflow-x: clip;
   }
 
   body {
@@ -195,7 +203,11 @@
   .section {
     padding-block: clamp(3.5rem, 8vw, 7rem);
     content-visibility: auto;
-    contain-intrinsic-size: auto 1200px;
+    /* Block axis only. `contain-intrinsic-size: auto 1200px` applies the length
+       to BOTH axes, which hands every off-screen section a 1200px intrinsic
+       WIDTH while its contents are skipped — a horizontal-overflow hazard for
+       exactly the reason described on `html` above. Height is all we want here. */
+    contain-intrinsic-block-size: auto 1200px;
   }
 
   .shell {
