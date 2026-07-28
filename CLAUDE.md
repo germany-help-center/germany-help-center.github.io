@@ -51,11 +51,15 @@ Originally scaffolded by Lovable (`lovable-tagger` runs in dev mode only). No ba
 ```bash
 npm install
 npm run dev              # vite dev server on :8080
-npm run build            # vite build → dist/   ← run this to check your work
+npm run build            # client build → SSR build → prerender   ← run this to check your work
 npm run lint             # eslint .
 npm test                 # vitest run (jsdom)
+npm run preview          # serve dist/ — the only way to see the prerendered output
 npm run optimize:images  # one-shot; rewrites src/assets + public in place (see below)
 ```
+
+`npm run build` is three steps and **all three must pass** — `build:client`, `build:ssr`, then `prerender`.
+Don't run `vite build` on its own and assume you've built the site; that produces the empty shell.
 
 There is no typecheck script; `npm run build` type-checks via the Vite/SWC + tsc path. Always build before committing.
 
@@ -63,10 +67,13 @@ There is no typecheck script; `npm run build` type-checks via the Vite/SWC + tsc
 unmodified shadcn primitives. Leave them; don't "fix" generated UI code.
 
 `src/test/landing.test.tsx` renders the whole landing page in jsdom. It's the only thing that catches a
-broken hook or import, because `vite build` succeeds regardless. It also guards the disclosures that must
-not silently vanish: the dMAT non-affiliation disclaimer, the Baden-Württemberg tuition exception, the
-no-guaranteed-visa statement, and the continued **absence** of the Google-rating and Instagram blocks
-(removed deliberately — the Google profile they linked to isn't live, and an unlinkable rating is just a claim).
+broken hook or import, because the build succeeds regardless. It also guards the disclosures that must not
+silently vanish: the dMAT non-affiliation disclaimer, the Baden-Württemberg tuition exception, the
+no-guaranteed-visa statement, the phone route, and the rule that the Google profile is **linked but never
+quoted** — a printed rating or review count fails the test, while the link is required.
+
+`src/test/eligibility.test.tsx` covers `EligibilityCheck` verdict by verdict. A wrong "you qualify" would
+push someone toward a non-refundable ₹18,000 APS fee, so the blocking paths are tested explicitly.
 
 ## Deploy
 
@@ -76,17 +83,47 @@ no-guaranteed-visa statement, and the continued **absence** of the Google-rating
 `vite.config.ts` computes `base` from `GITHUB_REPOSITORY`: because the repo is named `<owner>.github.io`,
 `base` stays `/`. `App.tsx` derives the router `basename` from `import.meta.env.BASE_URL`.
 
-Deep links survive Pages' lack of SPA rewrites via a two-step hack: `public/404.html` stashes the requested path
-in `sessionStorage` and redirects to `/`; an inline script in `index.html` restores it with `history.replaceState`.
-Keep both halves in sync if you touch routing.
+### Prerendering (do not remove)
+
+`dist/` is **prerendered to static HTML** by `scripts/prerender.mjs`, the third step of `npm run build`.
+Without it the deployed page is a ~3 KB shell containing only `<div id="root"></div>`: Google renders that
+in a separate, capacity-limited queue (slow, unreliable indexing) and Bing plus most LLM/AI answer crawlers
+never execute JavaScript at all, so they see no content. Prerendered, the homepage serves ~355 kB of real
+HTML (48 kB gzipped, up from 7.5 kB) containing every fact on the page.
+
+How it fits together:
+
+- `src/App.tsx` exports **`AppShell`** — providers + `<Routes>`, deliberately *without* a router. `App`
+  wraps it in `BrowserRouter`; `src/entry-server.tsx` wraps it in `StaticRouter`. **If you add a provider,
+  add it inside `AppShell`, not around `App`,** or it won't exist during the prerender.
+- `scripts/prerender.mjs` renders each route in `routes[]` and writes `dist/<route>/index.html`. Adding a
+  route to `App.tsx` means adding it there too, with its own `title`/`description`/`canonical` — otherwise
+  it inherits the homepage's `<head>`, which is a duplicate-content signal.
+- The script **fails the build** if a route renders under 2 000 characters. A prerender that silently
+  produces an empty shell is worse than a red build, so don't soften that check.
+- The client boots with `createRoot`, which discards the prerendered DOM and re-renders rather than
+  hydrating. That is deliberate: `ThemeToggle`, `useReducedMotion`, `navigator.share` in `ShareSection` and
+  today's date in the dMAT calendar all legitimately differ between server and client, and `hydrateRoot`
+  would report mismatches for every one. SEO benefit is identical; only a little client work is duplicated.
+  Moving to `hydrateRoot` would mean gating each of those behind a mounted flag first.
+- Nothing in a module's top level may touch `window`/`document` — it runs in Node during the SSR build.
+  Guard with `typeof window === "undefined"` (see `src/lib/motion.tsx`) or move it into an effect.
+
+Deep links survive Pages' lack of SPA rewrites two ways: prerendered routes are real files, and anything
+else falls back to a two-step hack — `public/404.html` stashes the requested path in `sessionStorage` and
+redirects to `/`, where an inline script in `index.html` restores it with `history.replaceState`. Keep both
+halves in sync if you touch routing. The prerender strips that restore script from sub-route HTML, since
+those resolve directly.
 
 ## Layout
 
 ```
-index.html                 head meta + OG/Twitter + JSON-LD @graph + theme bootstrap +
-                           SPA-redirect restore + a <noscript> content summary
+index.html                 the prerender TEMPLATE — head meta + OG/Twitter + JSON-LD @graph +
+                           theme bootstrap + SPA-redirect restore + a <noscript> summary
 src/main.tsx               createRoot → App
-src/App.tsx                providers + routes (/, /privacy-policy, *)
+src/App.tsx                `AppShell` (providers + routes, router-less) and `App` (BrowserRouter)
+src/entry-server.tsx       build-time render entry — StaticRouter + renderToString
+scripts/prerender.mjs      renders each route to dist/*.html; fails the build on an empty render
 src/pages/Index.tsx        the landing page — an ordered list of section components
 src/components/*.tsx       one file per page section (Header, HeroSection, …, Footer, WhatsAppFloat)
 src/components/Flag.tsx    German-flag motifs (FlagRail / FlagSpine / FlagChip) — decorative
@@ -187,25 +224,24 @@ consent banner appears, so this is safe to ship un-configured.
 
 ## Known follow-ups
 
-1. **Prerender the SPA.** The served HTML is a ~3 KB shell, so Bing and most LLM/AI retrieval crawlers see
-   nothing and indexing is slow and unreliable. `vite-react-ssg` supports React Router 6 and this site has
-   two routes and no data fetching — close to the easiest possible case. Biggest single SEO lever left.
-2. **Create a Google Business Profile.** Highest commercial ROI of anything outstanding, and the only thing
-   that produces map-pack results or makes a rating legitimately displayable. `germany education consultant
-   in surat` is a low-competition, high-intent term.
-3. **Paste the two IDs.** `GA_MEASUREMENT_ID` (`src/lib/analytics.ts`) and `BOOKING_URL`
+1. **Grow the Google Business Profile.** It exists (KG entity `/g/11y9b6krmr`, linked in `sameAs`), so the
+   remaining work is reviews, categories and posts — not code. `germany education consultant in surat` is a
+   low-competition, high-intent term. Once the exact rating and review count are known, display them
+   *beside* the existing link ("5.0 from 57 reviews · read them on Google"); a precise, linked figure is
+   credible where "50+" is not. Still never in schema — see the guardrails above.
+2. **Paste the two IDs.** `GA_MEASUREMENT_ID` (`src/lib/analytics.ts`) and `BOOKING_URL`
    (`src/lib/cta.ts`). Both are intentionally empty and degrade gracefully, but nothing about CTA
    performance is measurable until the first one is set.
-4. **A written fee table.** `CostsSection` promises a fixed fee in writing but publishes no number.
+3. **A written fee table.** `CostsSection` promises a fixed fee in writing but publishes no number.
    No competitor publishes fees — doing so would directly answer the ambassador's criticism.
-5. **Pareshbhai's photo and LinkedIn.** Jigarbhai's are in (`MentorSection`, `Person` JSON-LD);
+4. **Pareshbhai's photo and LinkedIn.** Jigarbhai's are in (`MentorSection`, `Person` JSON-LD);
    the India-side co-founder is still unillustrated and unverifiable.
-6. **The employer question.** Jigarbhai's LinkedIn names his employer; the site deliberately says
+5. **The employer question.** Jigarbhai's LinkedIn names his employer; the site deliberately says
    "German engineering industry" instead, to avoid implying an endorsement by that company. Revisit only
    if he confirms he's comfortable naming it.
-7. **Split into real routes** (`/study-in-germany-from-india`, `/aps-certificate-india`,
+6. **Split into real routes** (`/study-in-germany-from-india`, `/aps-certificate-india`,
    `/opportunity-card-chancenkarte`, …). One URL can only hold one topical identity; this page currently
    targets eleven keyword clusters.
-8. **Get a German lawyer's read** on how these services may be described. Since Jan 2025, unlicensed legal
+7. **Get a German lawyer's read** on how these services may be described. Since Jan 2025, unlicensed legal
    advice is an administrative offence under §20(1) No. 1 RDG with fines up to €50,000 per case. The footer
    and FAQ already disclaim it; confirm the wording is sufficient.
