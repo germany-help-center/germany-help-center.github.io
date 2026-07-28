@@ -234,11 +234,43 @@
     margin-inline: auto;
   }
 
-  /* frosted card on a dark ground */
+  /* Frosted card for a permanently dark ground (dMAT band, vision, footer). */
   .glass {
     background: hsl(0 0% 100% / 0.06);
     border: 1px solid hsl(0 0% 100% / 0.14);
     backdrop-filter: blur(12px) saturate(160%);
+  }
+
+  /* Same idea, but on a surface that follows the theme — i.e. the hero card. */
+  .glass-auto {
+    background: hsl(var(--surface) / 0.78);
+    border: 1px solid hsl(var(--border));
+    backdrop-filter: blur(12px) saturate(160%);
+  }
+
+  .dark .glass-auto {
+    background: hsl(0 0% 100% / 0.06);
+    border-color: hsl(0 0% 100% / 0.14);
+  }
+
+  /* ------------------------------------------------------------------------
+     The hero ground follows the theme, unlike the always-dark anchor bands.
+     A theme toggle whose effect is invisible above the fold reads as broken,
+     and a light hero is no less premium — it's what the German institutional
+     references (Max Planck, ZEISS, Vitsœ) all do.
+     ---------------------------------------------------------------------- */
+  .hero-ground {
+    background:
+      radial-gradient(80% 120% at 78% 0%, hsl(var(--brand) / 0.08) 0, transparent 55%),
+      radial-gradient(60% 90% at 6% 18%, hsl(36 88% 59% / 0.16) 0, transparent 52%),
+      linear-gradient(172deg, hsl(40 60% 99%) 0%, hsl(var(--background)) 62%);
+  }
+
+  .dark .hero-ground {
+    background:
+      radial-gradient(80% 120% at 78% 0%, hsl(358 88% 38% / 0.42) 0, transparent 55%),
+      radial-gradient(60% 90% at 8% 20%, hsl(36 88% 59% / 0.14) 0, transparent 50%),
+      linear-gradient(160deg, hsl(28 16% 13%) 0%, hsl(var(--ink-ground)) 70%);
   }
 }
 
@@ -277,17 +309,42 @@
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    opacity: 0.35;
+    /* Lighter on paper: overlay noise is far more visible on a light ground. */
+    opacity: 0.16;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E");
   }
 
-  /* gold-to-brand text wash for a single emphasised word */
+  .dark .grain::after {
+    opacity: 0.35;
+  }
+
+  /* Emphasised-word wash. Brand red on paper, gold on ink — gold is illegible
+     on a light ground, so the two themes need different hues, not opacities. */
   .text-wash {
-    background: linear-gradient(100deg, hsl(var(--gold-bright)), hsl(36 96% 76%) 55%, hsl(var(--gold-bright)));
+    background: linear-gradient(100deg, hsl(var(--brand)), hsl(14 82% 44%) 55%, hsl(var(--brand)));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+
+  .dark .text-wash {
+    background: linear-gradient(100deg, hsl(var(--gold-bright)), hsl(36 96% 76%) 55%, hsl(var(--gold-bright)));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  /* In light mode the hero photograph dissolves upward into the paper, so the
+     headline sits on clean ground instead of over a scrimmed image. In dark
+     mode the photo stays full-bleed as a texture. */
+  .hero-photo {
+    -webkit-mask-image: linear-gradient(to top, black 0%, black 14%, transparent 58%);
+    mask-image: linear-gradient(to top, black 0%, black 14%, transparent 58%);
+  }
+
+  .dark .hero-photo {
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 
   /* fades the edges of a marquee track */

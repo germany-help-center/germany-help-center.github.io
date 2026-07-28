@@ -5,6 +5,7 @@ import Index from "@/pages/Index";
 import { faqs } from "@/lib/faqs";
 import {
   DMAT_URL,
+  GOOGLE_BUSINESS_URL,
   LINKEDIN_JIGAR,
   PHONE_DE,
   PHONE_IN,
@@ -161,10 +162,23 @@ describe("conversion surfaces", () => {
   });
 });
 
-describe("removed proof blocks stay removed", () => {
-  it("makes no Google review-score claim", () => {
+describe("social proof stays honest", () => {
+  /**
+   * Google reviews may be *linked* — they're off-domain proof the business can't
+   * edit. What must never appear is a rating or review count printed on the page,
+   * because a number the visitor can't click through to is just a claim, and
+   * self-reported scores are what the scam consultancies do.
+   */
+  it("prints no rating or review count anywhere", () => {
     const { container } = renderPage();
-    expect(container.textContent).not.toMatch(/google review|5\.0 on google/i);
+    expect(container.textContent).not.toMatch(/\b[1-5]([.,]\d)?\s*(\/\s*5|stars?|on google)/i);
+    expect(container.textContent).not.toMatch(/\d+\+?\s*(verified\s+)?reviews\b/i);
+  });
+
+  it("links the Google profile rather than quoting it", () => {
+    const { container } = renderPage();
+    const link = container.querySelector(`a[href="${GOOGLE_BUSINESS_URL}"]`);
+    expect(link).not.toBeNull();
   });
 
   it("embeds no Instagram content", () => {

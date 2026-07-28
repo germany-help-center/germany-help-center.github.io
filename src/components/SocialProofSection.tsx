@@ -1,4 +1,13 @@
-import { MessageCircle, Quote, ShieldQuestion, Star, Video } from "lucide-react";
+import {
+  ExternalLink,
+  Linkedin,
+  MessageCircle,
+  Quote,
+  ShieldQuestion,
+  Star,
+  Video,
+  type LucideIcon,
+} from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -9,6 +18,8 @@ import {
 import SectionHeading from "@/components/SectionHeading";
 import { CtaPair } from "@/components/Cta";
 import { Reveal } from "@/lib/motion";
+import { trackCta } from "@/lib/analytics";
+import { GOOGLE_BUSINESS_URL, LINKEDIN_JIGAR } from "@/lib/cta";
 import aboutUsHero from "@/assets/about-us-hero.jpg";
 
 /**
@@ -49,8 +60,31 @@ const stories = [
   },
 ];
 
-/** Concrete ways to check the firm out — the honest replacement for a star badge. */
-const verifications = [
+interface Verification {
+  icon: LucideIcon;
+  title: string;
+  desc: string;
+  /** Present when the check can be done off-site, which is the strongest kind. */
+  href?: string;
+  cta?: string;
+}
+
+/** Concrete ways to check the firm out — all off-domain, none self-reported. */
+const verifications: Verification[] = [
+  {
+    icon: Star,
+    title: "Read the Google reviews",
+    desc: "On Google's platform, not ours — we can't edit them and we don't quote a score at you. Read them yourself and draw your own conclusion.",
+    href: GOOGLE_BUSINESS_URL,
+    cta: "Open our Google profile",
+  },
+  {
+    icon: Linkedin,
+    title: "Check the founder's professional record",
+    desc: "German public university 2014–2018, then German engineering industry, plus IHK and Scrum certifications. All on LinkedIn, all checkable.",
+    href: LINKEDIN_JIGAR,
+    cta: "Open LinkedIn profile",
+  },
   {
     icon: Video,
     title: "Video-call the founder in Germany",
@@ -156,6 +190,18 @@ const SocialProofSection = () => {
                           <p className="mt-1 text-[0.875rem] leading-relaxed text-ink-muted">
                             {item.desc}
                           </p>
+                          {item.href && (
+                            <a
+                              href={item.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={() => trackCta("verify", item.title)}
+                              className="mt-2 inline-flex items-center gap-1.5 text-[0.8125rem] font-bold text-brand transition-colors hover:text-brand-hover"
+                            >
+                              {item.cta}
+                              <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                            </a>
+                          )}
                         </div>
                       </div>
                     </Reveal>

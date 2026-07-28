@@ -58,13 +58,24 @@ export const CtaTrust = ({
   align = "center",
 }: {
   className?: string;
-  onDark?: boolean;
+  /**
+   * `true` for the permanently dark anchor bands, `false` for page surfaces, and
+   * `"auto"` for the hero — which is paper in light mode and ink in dark, so it
+   * needs the colour to follow the theme rather than be fixed either way.
+   */
+  onDark?: boolean | "auto";
   align?: "center" | "left";
 }) => (
   <ul
     className={`flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs ${
       align === "center" ? "justify-center" : ""
-    } ${onDark ? "text-white/55" : "text-ink-subtle"} ${className}`}
+    } ${
+      onDark === "auto"
+        ? "text-ink-subtle dark:text-white/55"
+        : onDark
+          ? "text-white/55"
+          : "text-ink-subtle"
+    } ${className}`}
   >
     <li className="inline-flex items-center gap-1.5">
       <Clock className="h-3.5 w-3.5" aria-hidden="true" />

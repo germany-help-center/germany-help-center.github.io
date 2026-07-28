@@ -28,6 +28,25 @@ export const LINKEDIN_JIGAR = "https://www.linkedin.com/in/jigar-vithani-33255b1
 export const MAPS_URL = "https://maps.app.goo.gl/b7wALqS7V52Hf6w3A";
 
 /**
+ * The Google Business Profile.
+ *
+ * Reviews there are the one piece of social proof the business doesn't control,
+ * which is exactly why they're worth linking to. Deliberately no rating or
+ * review count is printed anywhere on this site: a number a visitor can't click
+ * through to is just a claim, and self-reported ratings are precisely what the
+ * scam consultancies do. Send people to the source and let them judge.
+ *
+ * The share link is used for the visitor-facing CTA because it opens the profile
+ * cleanly on mobile. `GOOGLE_KG_URL` is the canonical entity URL, derived from
+ * the Knowledge Graph MID the share link resolves to — it's stable, so it's what
+ * the JSON-LD `sameAs` in index.html points at.
+ */
+export const GOOGLE_BUSINESS_URL = "https://share.google/8cvObzMagH5hy0fKB";
+
+/** Canonical Google entity URL. MID: /g/11y9b6krmr */
+export const GOOGLE_KG_URL = "https://www.google.com/search?kgmid=/g/11y9b6krmr";
+
+/**
  * Booking link for the free 30-minute assessment.
  *
  * TODO(owner): replace with a real Cal.com / Google Calendar appointment URL.

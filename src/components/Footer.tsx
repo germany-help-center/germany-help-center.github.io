@@ -1,9 +1,10 @@
-import { ArrowUpRight, Linkedin, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { ArrowUpRight, Linkedin, Mail, MapPin, MessageCircle, Phone, Star } from "lucide-react";
 import { FlagRail } from "@/components/Flag";
 import { reviewedOn } from "@/lib/faqs";
 import {
   DMAT_URL,
   EMAIL,
+  GOOGLE_BUSINESS_URL,
   LINKEDIN_JIGAR,
   MAILTO,
   MAPS_URL,
@@ -177,6 +178,17 @@ const Footer = () => {
                   >
                     <Linkedin className="h-4 w-4 shrink-0 text-[#70B5F9]" aria-hidden="true" />
                     Jigarbhai on LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={GOOGLE_BUSINESS_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2.5 text-white/65 transition-colors hover:text-white"
+                  >
+                    <Star className="h-4 w-4 shrink-0 text-gold-bright" aria-hidden="true" />
+                    Read our Google reviews
                   </a>
                 </li>
                 <li>
