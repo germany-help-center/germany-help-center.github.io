@@ -6,15 +6,31 @@ import ThemeToggle from "@/components/ThemeToggle";
 import { DMAT_URL, WHATSAPP_PRIMARY } from "@/lib/cta";
 import logo from "@/assets/logo.png";
 
+/**
+ * Desktop nav. Deliberately short: the bar shares a 1248px shell with the
+ * wordmark, the theme toggle and the primary CTA, and nine items plus a second
+ * button did not fit — the items compressed into each other instead of wrapping.
+ * Everything omitted here is still reachable from the footer and the mobile sheet.
+ */
 const navLinks = [
   { label: "Why Germany", href: "#why-germany" },
-  { label: "Your mentor", href: "#mentor" },
-  { label: "Do I qualify?", href: "#check" },
+  { label: "Mentor", href: "#mentor" },
+  { label: "Qualify?", href: "#check" },
   { label: "Study", href: "#study" },
   { label: "Work", href: "#opportunity-card" },
-  { label: "dMAT Prep", href: "#dmat" },
+  { label: "dMAT", href: "#dmat" },
+  { label: "Costs", href: "#costs" },
+  { label: "FAQ", href: "#faq" },
+];
+
+/** The mobile sheet has room for the full set. */
+const mobileNavLinks = [
+  ...navLinks.slice(0, 5),
+  { label: "dMAT prep", href: "#dmat" },
+  { label: "Services", href: "#services" },
   { label: "Costs", href: "#costs" },
   { label: "Process", href: "#process" },
+  { label: "About us", href: "#about" },
   { label: "FAQ", href: "#faq" },
 ];
 
@@ -101,7 +117,11 @@ const Header = () => {
             : "border-b border-border/40 bg-background/45 backdrop-blur-[2px]"
         }`}
       >
-        <div className="shell flex h-[4.25rem] items-center gap-6">
+        {/* gap-5, not gap-6: the bar's three children plus their gaps have to fit
+            inside the shell's 1120px content box, or the right-hand cluster eats
+            into the right padding and the bar stops looking symmetric. Measured
+            headroom at gap-5 with the shortened tagline: ~54px. */}
+        <div className="shell flex h-[4.25rem] items-center gap-5">
           <a href="#top" className="group flex shrink-0 items-center gap-3" aria-label="Germany Help Center — home">
             <span className="grid h-11 w-11 place-items-center overflow-hidden rounded-xl bg-white p-1 shadow-warm-sm transition-transform duration-300 ease-brand group-hover:scale-105">
               <img src={logo} alt="" className="h-full w-full object-contain" />
@@ -110,13 +130,19 @@ const Header = () => {
               <span className="block font-display text-[1.0625rem] font-extrabold tracking-tight text-foreground">
                 Germany Help Center
               </span>
+              {/* "· Since 2014" removed here on purpose — the tagline was the widest
+                  element in the brand block (~75px of it) and the bar has no room to
+                  spare. The 2014 claim still leads the hero chip and the mentor band. */}
               <span className="hidden text-[0.6875rem] uppercase tracking-[0.12em] text-ink-subtle sm:block">
-                Immigration &amp; Education · Since 2014
+                Immigration &amp; Education
               </span>
             </span>
           </a>
 
-          <nav className="ml-auto hidden items-center gap-1 xl:flex" aria-label="Sections">
+          {/* `shrink-0` on the nav and the actions cluster is load-bearing: the
+              site-wide `min-width: 0` rule would otherwise let them compress into
+              one another when the bar runs short of space. */}
+          <nav className="ml-auto hidden shrink-0 items-center gap-0.5 xl:flex" aria-label="Sections">
             {navLinks.map((link) => {
               const isActive = active === link.href;
               return (
@@ -140,21 +166,13 @@ const Header = () => {
             })}
           </nav>
 
-          <div className="ml-auto flex items-center gap-2 xl:ml-0">
+          <div className="ml-auto flex shrink-0 items-center gap-2 xl:ml-3">
             <div className="hidden sm:block">
               <ThemeToggle />
             </div>
 
-            <Button
-              asChild
-              variant="outline"
-              className="hidden rounded-full border-border-strong font-bold lg:inline-flex"
-            >
-              <a href={DMAT_URL} target="_blank" rel="noopener noreferrer">
-                dMAT Practice
-                <ArrowUpRight className="ml-1 h-4 w-4" aria-hidden="true" />
-              </a>
-            </Button>
+            {/* The dMAT platform link lives in the nav ("dMAT"), the hero card and
+                the footer — a second header button cost ~150px the bar didn't have. */}
 
             <Button asChild className="hidden rounded-full bg-brand font-bold text-white hover:bg-brand-hover sm:inline-flex">
               <a href={WHATSAPP_PRIMARY} target="_blank" rel="noopener noreferrer">
@@ -193,7 +211,7 @@ const Header = () => {
         }`}
       >
         <nav className="shell flex flex-col py-4" aria-label="Sections">
-          {navLinks.map((link, i) => (
+          {mobileNavLinks.map((link, i) => (
             <a
               key={link.href}
               href={link.href}
