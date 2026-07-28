@@ -1,63 +1,89 @@
-import { GraduationCap, Briefcase, Plane } from "lucide-react";
-import "flag-icons/css/flag-icons.min.css";
+import { Globe2 } from "lucide-react";
+import { Reveal } from "@/lib/motion";
+
+/*
+ * Flags are imported as eight individual SVG assets rather than via
+ * `flag-icons/css/flag-icons.min.css`. That stylesheet inlines 400 base64 SVGs
+ * and ships ~470 KB of render-blocking CSS for the handful of flags below —
+ * the largest single Core Web Vitals cost on the page. Vite emits these as
+ * cacheable files instead.
+ */
+import inFlag from "flag-icons/flags/4x3/in.svg";
+import lvFlag from "flag-icons/flags/4x3/lv.svg";
+import caFlag from "flag-icons/flags/4x3/ca.svg";
+import gbFlag from "flag-icons/flags/4x3/gb.svg";
+import czFlag from "flag-icons/flags/4x3/cz.svg";
+import plFlag from "flag-icons/flags/4x3/pl.svg";
+import nlFlag from "flag-icons/flags/4x3/nl.svg";
+import dkFlag from "flag-icons/flags/4x3/dk.svg";
 
 const countries = [
-  { name: "India", code: "in", type: "Students & Professionals" },
-  { name: "Latvia", code: "lv", type: "Spouse Visa" },
-  { name: "Canada", code: "ca", type: "Travel Visa" },
-  { name: "UK", code: "gb", type: "Fair Visit Visa" },
-  { name: "Czech Republic", code: "cz", type: "Students & Professionals" },
-  { name: "Poland", code: "pl", type: "Spouse Visa" },
-  { name: "Netherlands", code: "nl", type: "Travel Visa" },
-  { name: "Denmark", code: "dk", type: "Fair Visit Visa" },
+  { name: "India", flag: inFlag, type: "Students & professionals" },
+  { name: "Latvia", flag: lvFlag, type: "Spouse visa" },
+  { name: "Canada", flag: caFlag, type: "Travel visa" },
+  { name: "United Kingdom", flag: gbFlag, type: "Trade-fair visa" },
+  { name: "Czech Republic", flag: czFlag, type: "Students & professionals" },
+  { name: "Poland", flag: plFlag, type: "Spouse visa" },
+  { name: "Netherlands", flag: nlFlag, type: "Travel visa" },
+  { name: "Denmark", flag: dkFlag, type: "Trade-fair visa" },
 ];
 
 const CountriesSection = () => {
   return (
-    <section id="countries" className="border-b border-border/50 bg-card py-16">
-      <div className="container mx-auto px-4">
-        <div className="mx-auto mb-8 max-w-2xl text-center">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-german-red">
-            Global Reach, Germany Focus
+    <section
+      id="countries"
+      className="border-y border-border bg-background py-14"
+      aria-label="Countries served"
+    >
+      <div className="shell">
+        <Reveal direction="up" className="text-center">
+          <p className="eyebrow justify-center">
+            <Globe2 className="h-3.5 w-3.5" aria-hidden="true" />
+            Global reach, one destination
           </p>
-          <h2 className="mb-3 text-2xl font-extrabold tracking-tight md:text-3xl">
-            We've Helped Students & Professionals from These Countries Reach Germany
+          <h2 className="mx-auto mt-3 max-w-3xl text-[clamp(1.375rem,2.6vw,1.875rem)] font-extrabold">
+            Clients from eight countries, all headed to the same place
           </h2>
-          <p className="text-sm text-muted-foreground">
-            Our clients from 8+ countries have successfully secured German visas for studies, careers, and family reunions.
-          </p>
-        </div>
+        </Reveal>
+      </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
-          {countries.map((c) => (
-            <div
-              key={c.name}
-              className="flex items-center gap-3 rounded-xl border border-border/50 bg-background px-5 py-3 text-sm font-medium text-foreground shadow-sm"
-            >
-              <span className={`fi fi-${c.code} text-2xl rounded-sm`} />
-              <div className="text-left">
-                <span className="block font-semibold">{c.name}</span>
-                <span className="block text-xs text-muted-foreground">{c.type}</span>
-              </div>
-            </div>
+      {/* Marquee: the track is duplicated and translated -50%, so the loop is
+          seamless. Pauses on hover so the labels stay readable. */}
+      <div className="edge-fade group relative mt-9 overflow-hidden" aria-hidden="true">
+        <div className="flex w-max animate-marquee gap-3.5 group-hover:[animation-play-state:paused]">
+          {[0, 1].map((copy) => (
+            <ul key={copy} className="flex shrink-0 gap-3.5">
+              {countries.map((country) => (
+                <li
+                  key={country.name}
+                  className="flex w-56 items-center gap-3 rounded-xl border border-border bg-surface px-5 py-3.5 shadow-warm-sm"
+                >
+                  <img
+                    src={country.flag}
+                    alt=""
+                    width="28"
+                    height="21"
+                    loading="lazy"
+                    decoding="async"
+                    className="h-[1.3125rem] w-7 shrink-0 rounded-[3px] object-cover shadow-warm-sm"
+                  />
+                  <span className="min-w-0">
+                    <span className="block truncate text-sm font-bold text-foreground">
+                      {country.name}
+                    </span>
+                    <span className="block truncate text-xs text-ink-subtle">{country.type}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
           ))}
         </div>
-
-        <div className="mt-8 flex items-center justify-center gap-6 text-sm text-muted-foreground">
-          <div className="flex items-center gap-1.5">
-            <GraduationCap className="h-4 w-4 text-german-gold" />
-            <span>University Admissions</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <Briefcase className="h-4 w-4 text-german-red" />
-            <span>Job Seeker Visas</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <Plane className="h-4 w-4 text-german-gold" />
-            <span>Family Reunions</span>
-          </div>
-        </div>
       </div>
+
+      {/* Accessible, static equivalent of the decorative marquee above. */}
+      <p className="sr-only">
+        Countries served: {countries.map((country) => `${country.name} (${country.type})`).join(", ")}.
+      </p>
     </section>
   );
 };

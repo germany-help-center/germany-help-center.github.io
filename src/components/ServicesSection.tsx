@@ -1,98 +1,188 @@
-import { GraduationCap, Briefcase, Users, Plane, Building2, BookOpen, ArrowRight, CheckCircle } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import {
+  ArrowRight,
+  BookOpen,
+  Briefcase,
+  Building2,
+  CheckCircle2,
+  GraduationCap,
+  Layers,
+  Plane,
+  Users,
+} from "lucide-react";
+import SectionHeading from "@/components/SectionHeading";
+import { Reveal } from "@/lib/motion";
+import { whatsapp } from "@/lib/cta";
+import studentsImg from "@/assets/students-germany.jpg";
 
 const services = [
   {
     icon: GraduationCap,
-    title: "Student Visa",
-    desc: "Complete guidance on German student visa requirements, university admission, blocked account setup, and embassy appointment preparation.",
-    highlights: ["University Admission", "Blocked Account", "Embassy Prep"],
-    color: "from-german-gold/10 to-german-gold/5",
+    title: "Student visa",
+    desc: "Public-university admission, APS verification, blocked account, health insurance and embassy preparation — the complete file, start to visa.",
+    tags: ["University admission", "APS", "Blocked account", "Embassy prep"],
+    topic: "a German student visa",
+    /** The one tile that carries a photograph — it's the flagship service. */
+    feature: true,
   },
   {
     icon: Briefcase,
-    title: "Opportunity Card Visa",
-    desc: "Navigate Germany's job-seeker visa with our expert support — eligibility assessment, point system guidance, and application filing.",
-    highlights: ["Eligibility Check", "Point System", "Job Search Support"],
-    color: "from-german-red/10 to-german-red/5",
+    title: "Opportunity Card",
+    desc: "Points assessment, qualification recognition, financial proof and filing — plus the career coaching to convert the year into a job.",
+    tags: ["Points check", "Recognition", "Job support"],
+    topic: "the Opportunity Card",
   },
   {
     icon: Users,
-    title: "Family Reunion Visa",
-    desc: "Reunite with your family in Germany. We handle spousal and dependent visa documentation, language requirements, and consulate submissions.",
-    highlights: ["Spousal Visa", "Dependent Visa", "Language Cert"],
-    color: "from-german-gold/10 to-german-gold/5",
+    title: "Family reunion & spouse visa",
+    desc: "Spouse and dependent visas, marriage-document legalisation, and the A1 German the joining partner needs.",
+    tags: ["Spouse visa", "Dependent visa", "A1 certificate"],
+    topic: "a family reunion visa",
   },
   {
     icon: Plane,
-    title: "Travel Visa",
-    desc: "Schengen short-stay visa made easy. Itinerary planning, travel insurance, financial proof, and embassy interview coaching.",
-    highlights: ["Schengen Visa", "Travel Insurance", "Interview Coaching"],
-    color: "from-german-red/10 to-german-red/5",
+    title: "Schengen travel visa",
+    desc: "Short-stay applications done properly: itinerary, insurance, financial evidence and interview preparation.",
+    tags: ["Schengen", "Insurance", "Interview prep"],
+    topic: "a Schengen travel visa",
   },
   {
     icon: Building2,
-    title: "Fair Visit Visa",
-    desc: "Attend trade fairs and exhibitions in Germany. We manage invitation letters, business documentation, and expedited processing.",
-    highlights: ["Invitation Letter", "Business Docs", "Fast Processing"],
-    color: "from-german-gold/10 to-german-gold/5",
+    title: "Trade-fair visit visa",
+    desc: "Business travel to Hannover Messe, drupa, K, Automechanika and the rest — invitation letters and company documentation handled.",
+    tags: ["Invitation letter", "Business docs"],
+    topic: "a trade-fair visit visa",
   },
   {
     icon: BookOpen,
-    title: "Online German Classes",
-    desc: "Live interactive sessions from A1 to B2. Certified instructors, flexible schedules, and exam preparation for Goethe/TestDaF.",
-    highlights: ["A1 to B2 Levels", "Live Sessions", "Exam Prep"],
-    color: "from-german-red/10 to-german-red/5",
+    title: "Online German classes",
+    desc: "Live A1 to B2 with qualified tutors, in batches small enough that you have to speak. Goethe and TestDaF preparation included.",
+    tags: ["A1–B2", "Live classes", "Goethe / TestDaF"],
+    topic: "online German classes",
   },
 ];
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="py-14 lg:py-20">
-      <div className="container mx-auto px-4">
-        <div className="mx-auto mb-10 max-w-2xl text-center">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-german-red">What We Offer</p>
-          <h2 className="mb-4 text-3xl font-extrabold tracking-tight md:text-4xl">Our Services</h2>
-          <p className="text-muted-foreground">
-            From visa applications to language mastery — everything you need for your Germany journey.
-          </p>
-        </div>
+    <section id="services" className="section bg-background">
+      <div className="shell">
+        <SectionHeading
+          eyebrow="What we do"
+          icon={Layers}
+          title={
+            <>
+              Six services. <span className="text-brand">One country.</span>
+            </>
+          }
+          subtitle="We don't place students in Canada, Australia or the UK. Germany is the whole business, which is why the detail is right."
+        />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s) => (
-            <Card
-              key={s.title}
-              className="group relative overflow-hidden border-border/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+        {/* Bento: the flagship service spans two columns and two rows on desktop. */}
+        <div className="mt-14 grid auto-rows-fr gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((service, i) => (
+            <Reveal
+              as="article"
+              key={service.title}
+              direction="up"
+              delay={i * 70}
+              className={service.feature ? "sm:col-span-2 lg:row-span-2" : ""}
             >
-              <div className={`absolute inset-0 bg-gradient-to-br ${s.color} opacity-0 transition-opacity group-hover:opacity-100`} />
-              <CardHeader className="relative">
-                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-german-red/10 text-german-red transition-colors group-hover:bg-german-red group-hover:text-white">
-                  <s.icon className="h-6 w-6" />
+              <a
+                href={whatsapp(service.topic)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface p-7 shadow-warm-sm transition-[transform,box-shadow,border-color] duration-300 ease-brand hover:-translate-y-1.5 hover:border-brand/30 hover:shadow-warm-xl"
+              >
+                {service.feature && (
+                  <>
+                    <img
+                      src={studentsImg}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 h-full w-full object-cover opacity-[0.14] transition-transform duration-1000 ease-brand group-hover:scale-105 dark:opacity-[0.1]"
+                      aria-hidden="true"
+                    />
+                    <div
+                      className="absolute inset-0 bg-gradient-to-t from-surface via-surface/85 to-surface/60"
+                      aria-hidden="true"
+                    />
+                  </>
+                )}
+
+                {/* brand wash that fades in on hover */}
+                <div
+                  className="absolute inset-0 bg-gradient-to-br from-brand-soft to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  aria-hidden="true"
+                />
+
+                <div className="relative flex flex-1 flex-col">
+                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-brand-soft text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
+                    <service.icon className="h-6 w-6" aria-hidden="true" />
+                  </span>
+
+                  <h3
+                    className={`mt-5 font-extrabold ${
+                      service.feature ? "text-[1.625rem]" : "text-xl"
+                    }`}
+                  >
+                    {service.title}
+                  </h3>
+
+                  <p
+                    className={`mt-2.5 leading-relaxed text-ink-muted ${
+                      service.feature ? "text-[1.0625rem]" : "text-sm"
+                    }`}
+                  >
+                    {service.desc}
+                  </p>
+
+                  <ul className="mt-5 flex flex-wrap gap-2">
+                    {service.tags.map((tag) => (
+                      <li
+                        key={tag}
+                        className="inline-flex items-center gap-1 rounded-full bg-sunken px-2.5 py-1 text-xs font-semibold text-ink-muted"
+                      >
+                        <CheckCircle2 className="h-3 w-3 text-brand" aria-hidden="true" />
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <span className="mt-auto flex items-center gap-1.5 pt-6 text-sm font-bold text-brand">
+                    Talk to us
+                    <ArrowRight
+                      className="h-4 w-4 transition-transform duration-200 ease-brand group-hover:translate-x-1"
+                      aria-hidden="true"
+                    />
+                  </span>
                 </div>
-                <CardTitle className="text-xl">{s.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="relative">
-                <CardDescription className="mb-4 text-sm leading-relaxed">{s.desc}</CardDescription>
-                <div className="flex flex-wrap gap-2">
-                  {s.highlights.map((h) => (
-                    <span key={h} className="inline-flex items-center gap-1 rounded-full bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground">
-                      <CheckCircle className="h-3 w-3 text-german-red" />
-                      {h}
-                    </span>
-                  ))}
-                </div>
-              </CardContent>
-              <CardFooter className="relative">
-                <Button variant="ghost" size="sm" className="gap-1 px-0 text-german-red hover:text-german-red/80" asChild>
-                  <a href="https://wa.me/+919824925434?text=Hi%2C%20I%20would%20like%20to%20claim%20my%20free%20consultation%20call.%0A%0AMy%20Full%20Name%3A%0ACity%3A%0AInterested%20in%3A%20Bachelors%20Visa%20%2F%20Masters%20Visa%20%2F%20Opportunity%20Card%20%2F%20Spouse%20Visa%20%2F%20Travel%20Visa%20%2F%20Fair%20Visit%20Visa%20%2F%20General%20Inquiry" target="_blank" rel="noopener noreferrer">
-                    Get Free Consultation <ArrowRight className="h-4 w-4" />
-                  </a>
-                </Button>
-              </CardFooter>
-            </Card>
+              </a>
+            </Reveal>
           ))}
         </div>
+
+        {/* honesty panel — the thing scam consultancies never print */}
+        <Reveal direction="up" delay={120} className="mx-auto mt-12 max-w-3xl">
+          <div className="rounded-2xl border border-border bg-sunken p-7">
+            <h3 className="text-[1.0625rem] font-extrabold">What we will not do</h3>
+            <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+              {[
+                "Promise you a visa. Nobody can — the decision is the embassy's.",
+                "Fabricate documents, experience letters or bank statements.",
+                "Push you toward a private college because it pays us commission.",
+                "Charge you for the first consultation, or for a profile assessment.",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <span
+                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand"
+                    aria-hidden="true"
+                  />
+                  <span className="text-[0.875rem] leading-relaxed text-ink-muted">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

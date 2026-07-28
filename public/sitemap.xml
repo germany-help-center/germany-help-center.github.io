@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Absolute URLs only, and no #anchor entries — fragments are not separate
+  documents. Bump <lastmod> when the content genuinely changes, not on every
+  deploy: a lastmod that always equals the build date is noise.
+  dmat.germanyhelpcenter.com is a different origin and needs its own sitemap.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://germanyhelpcenter.com/</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://germanyhelpcenter.com/privacy-policy</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>

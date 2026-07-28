@@ -1,97 +1,223 @@
-import { useState, useEffect } from "react";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, Menu, MessageCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { FlagRail } from "@/components/Flag";
+import ThemeToggle from "@/components/ThemeToggle";
+import { DMAT_URL, WHATSAPP_PRIMARY } from "@/lib/cta";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
   { label: "Why Germany", href: "#why-germany" },
-  { label: "About Us", href: "#about" },
-  { label: "Opportunity Card", href: "#opportunity-card" },
-  { label: "For Students", href: "#student-pathways" },
+  { label: "Study", href: "#study" },
+  { label: "Work", href: "#opportunity-card" },
+  { label: "dMAT Prep", href: "#dmat" },
   { label: "Services", href: "#services" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Testimonials", href: "#testimonials" },
+  { label: "Process", href: "#process" },
+  { label: "About", href: "#about" },
   { label: "FAQ", href: "#faq" },
 ];
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [active, setActive] = useState<string>("");
   const [mobileOpen, setMobileOpen] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
 
+  // Condense the bar and drive the reading-progress line.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    let frame = 0;
+    const measure = () => {
+      frame = 0;
+      const scrollY = window.scrollY;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setScrolled(scrollY > 24);
+      setProgress(max > 0 ? Math.min(scrollY / max, 1) : 0);
+    };
+    const onScroll = () => {
+      if (frame === 0) frame = requestAnimationFrame(measure);
+    };
+    measure();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
+  // Highlight the nav item for whichever section owns the upper viewport.
+  useEffect(() => {
+    const sections = navLinks
+      .map((link) => document.querySelector<HTMLElement>(link.href))
+      .filter((el): el is HTMLElement => el !== null);
+    if (sections.length === 0 || typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        if (visible) setActive(`#${visible.target.id}`);
+      },
+      { rootMargin: "-20% 0px -70% 0px", threshold: 0 },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  // Lock the page behind the mobile sheet, and close it on Escape.
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previous;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [mobileOpen]);
+
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-card/95 backdrop-blur-xl shadow-md border-b border-border/50" : "bg-background/80 backdrop-blur-sm"
-      }`}
-    >
-      <div className="container mx-auto flex items-center justify-between px-4 py-3 lg:py-4">
-        <a href="#home" className="flex items-center gap-2.5">
-          <img src={logo} alt="Germany Help Center" className="h-10 w-10 object-contain" />
-          <span className="text-lg font-bold tracking-tight text-foreground">
-            Germany Help Center
-          </span>
-        </a>
+    <header className="fixed inset-x-0 top-0 z-50">
+      <FlagRail />
 
-        {/* Desktop nav */}
-        <nav className="hidden items-center gap-4 lg:flex">
-          {navLinks.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-german-red"
-            >
-              {l.label}
-            </a>
-          ))}
-        </nav>
+      <div
+        className={`transition-[background-color,box-shadow,backdrop-filter] duration-300 ease-brand ${
+          scrolled
+            ? "border-b border-border bg-background/85 shadow-warm-sm backdrop-blur-xl backdrop-saturate-150"
+            : "border-b border-transparent bg-background/40 backdrop-blur-sm"
+        }`}
+      >
+        <div className="shell flex h-[4.25rem] items-center gap-6">
+          <a href="#top" className="group flex shrink-0 items-center gap-3" aria-label="Germany Help Center — home">
+            <span className="grid h-11 w-11 place-items-center overflow-hidden rounded-xl bg-white p-1 shadow-warm-sm transition-transform duration-300 ease-brand group-hover:scale-105">
+              <img src={logo} alt="" className="h-full w-full object-contain" />
+            </span>
+            <span className="leading-tight">
+              <span className="block font-display text-[1.0625rem] font-extrabold tracking-tight text-foreground">
+                Germany Help Center
+              </span>
+              <span className="hidden text-[0.6875rem] uppercase tracking-[0.12em] text-ink-subtle sm:block">
+                Immigration &amp; Education · Since 2014
+              </span>
+            </span>
+          </a>
 
-        <div className="hidden items-center lg:flex">
-          <Button size="sm" className="bg-german-red hover:bg-german-red/90 text-white border-none shadow-sm" asChild>
-            <a href="https://wa.me/+919824925434?text=Hi%2C%20I%20would%20like%20to%20claim%20my%20free%20consultation%20call.%0A%0AMy%20Full%20Name%3A%0ACity%3A%0AInterested%20in%3A%20Bachelors%20Visa%20%2F%20Masters%20Visa%20%2F%20Opportunity%20Card%20%2F%20Spouse%20Visa%20%2F%20Travel%20Visa%20%2F%20Fair%20Visit%20Visa%20%2F%20General%20Inquiry" target="_blank" rel="noopener noreferrer">Free Consultation</a>
-          </Button>
-        </div>
-
-        <button
-          className="lg:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? (
-            <X className="h-6 w-6 text-foreground" />
-          ) : (
-            <Menu className="h-6 w-6 text-foreground" />
-          )}
-        </button>
-      </div>
-
-      {mobileOpen && (
-        <div className="border-t bg-card px-4 pb-4 lg:hidden">
-          <nav className="flex flex-col gap-3 pt-3">
-            {navLinks.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="text-sm font-medium text-foreground hover:text-german-red"
-                onClick={() => setMobileOpen(false)}
-              >
-                {l.label}
-              </a>
-            ))}
+          <nav className="ml-auto hidden items-center gap-1 xl:flex" aria-label="Sections">
+            {navLinks.map((link) => {
+              const isActive = active === link.href;
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  aria-current={isActive ? "true" : undefined}
+                  className={`relative rounded-lg px-3 py-2 text-sm font-semibold transition-colors duration-200 ${
+                    isActive ? "text-foreground" : "text-ink-muted hover:text-foreground"
+                  }`}
+                >
+                  {link.label}
+                  <span
+                    aria-hidden="true"
+                    className={`absolute inset-x-3 -bottom-0.5 h-0.5 origin-left rounded-full bg-brand transition-transform duration-300 ease-brand ${
+                      isActive ? "scale-x-100" : "scale-x-0"
+                    }`}
+                  />
+                </a>
+              );
+            })}
           </nav>
-          <div className="mt-4">
-            <Button size="sm" className="w-full bg-german-red hover:bg-german-red/90 text-white border-none" asChild>
-              <a href="https://wa.me/+919824925434?text=Hi%2C%20I%20would%20like%20to%20claim%20my%20free%20consultation%20call.%0A%0AMy%20Full%20Name%3A%0ACity%3A%0AInterested%20in%3A%20Bachelors%20Visa%20%2F%20Masters%20Visa%20%2F%20Opportunity%20Card%20%2F%20Spouse%20Visa%20%2F%20Travel%20Visa%20%2F%20Fair%20Visit%20Visa%20%2F%20General%20Inquiry" target="_blank" rel="noopener noreferrer">Free Consultation</a>
+
+          <div className="ml-auto flex items-center gap-2 xl:ml-0">
+            <div className="hidden sm:block">
+              <ThemeToggle />
+            </div>
+
+            <Button
+              asChild
+              variant="outline"
+              className="hidden rounded-full border-border-strong font-bold lg:inline-flex"
+            >
+              <a href={DMAT_URL} target="_blank" rel="noopener noreferrer">
+                dMAT Practice
+                <ArrowUpRight className="ml-1 h-4 w-4" aria-hidden="true" />
+              </a>
             </Button>
+
+            <Button asChild className="hidden rounded-full bg-brand font-bold text-white hover:bg-brand-hover sm:inline-flex">
+              <a href={WHATSAPP_PRIMARY} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="mr-1.5 h-4 w-4" aria-hidden="true" />
+                Free Consultation
+              </a>
+            </Button>
+
+            <button
+              type="button"
+              className="grid h-10 w-10 place-items-center rounded-lg border border-border bg-surface text-foreground xl:hidden"
+              onClick={() => setMobileOpen((open) => !open)}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-nav"
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            >
+              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
           </div>
         </div>
-      )}
+
+        {/* reading progress */}
+        <div
+          aria-hidden="true"
+          className="h-px w-full origin-left bg-gradient-to-r from-brand via-flag-red to-gold-bright transition-opacity duration-300"
+          style={{ transform: `scaleX(${progress})`, opacity: scrolled ? 1 : 0 }}
+        />
+      </div>
+
+      {/* mobile sheet */}
+      <div
+        id="mobile-nav"
+        ref={panelRef}
+        className={`overflow-hidden border-b border-border bg-surface transition-[max-height,opacity] duration-300 ease-brand xl:hidden ${
+          mobileOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <nav className="shell flex flex-col py-4" aria-label="Sections">
+          {navLinks.map((link, i) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center justify-between border-b border-border/60 py-3 text-[0.9375rem] font-semibold text-foreground last:border-0"
+              style={{ transitionDelay: `${i * 25}ms` }}
+            >
+              {link.label}
+              <span className="tnum text-xs text-ink-subtle">{String(i + 1).padStart(2, "0")}</span>
+            </a>
+          ))}
+
+          <div className="mt-4 grid gap-2.5">
+            <Button asChild className="w-full rounded-full bg-brand font-bold text-white hover:bg-brand-hover">
+              <a href={WHATSAPP_PRIMARY} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="mr-1.5 h-4 w-4" aria-hidden="true" />
+                Claim Free Consultation
+              </a>
+            </Button>
+            <Button asChild variant="outline" className="w-full rounded-full border-border-strong font-bold">
+              <a href={DMAT_URL} target="_blank" rel="noopener noreferrer">
+                dMAT Practice Platform
+                <ArrowUpRight className="ml-1 h-4 w-4" aria-hidden="true" />
+              </a>
+            </Button>
+            <div className="pt-1 sm:hidden">
+              <ThemeToggle />
+            </div>
+          </div>
+        </nav>
+      </div>
     </header>
   );
 };

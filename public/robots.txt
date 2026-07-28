@@ -1,14 +1,14 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
+# https://germanyhelpcenter.com/robots.txt
+#
+# One wildcard group, deliberately. Per-bot groups override `User-agent: *`
+# entirely, so the previous per-bot Allow blocks added nothing and would have
+# silently exempted those crawlers from any future Disallow.
+#
+# AI/LLM crawlers are left allowed on purpose: being cited in answers about
+# German student visas is upside for this business.
 
 User-agent: *
 Allow: /
+Disallow: /assets/*.map$
+
+Sitemap: https://germanyhelpcenter.com/sitemap.xml

@@ -1,86 +1,130 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================================
+   Germany Help Center — design tokens.
+
+   A warm paper/ink German-flag identity: warm off-white paper, warm near-black
+   ink, brand red and gold as the only chromatic accents. Deliberately shared
+   with the dMAT platform (../dMatApp/app/globals.css) so germanyhelpcenter.com
+   and dmat.germanyhelpcenter.com read as one brand.
+
+   Values are HSL triples (no hsl() wrapper) so Tailwind can compose them with
+   opacity modifiers. shadcn/ui's canonical variable names are preserved.
+   ========================================================================== */
+
 @layer base {
   :root {
-    --background: 220 15% 96%;
-    --foreground: 220 20% 10%;
+    /* paper / surfaces */
+    --background: 40 47% 96%; /* #FAF7F1 warm paper — never pure white */
+    --surface: 0 0% 100%;
+    --sunken: 40 29% 92%; /* #F0ECE4 */
+    --ink-ground: 30 13% 9%; /* #1A1714 dark section ground */
 
-    --card: 0 0% 100%;
-    --card-foreground: 220 20% 10%;
+    /* text */
+    --foreground: 30 13% 9%;
+    --ink-body: 27 12% 15%; /* #2B2622 */
+    --ink-muted: 32 7% 34%; /* #5E5851 */
+    --ink-subtle: 38 8% 45%; /* #7C7569 */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 10%;
+    /* brand */
+    --brand: 358 88% 38%; /* #B50C13 */
+    --brand-hover: 356 85% 31%; /* #930C14 */
+    --brand-soft: 4 88% 97%; /* #FEF1F0 */
+    --flag-red: 0 87% 44%; /* #D10F0F — the logo red, flag motifs only */
+    --gold: 36 88% 59%; /* #F2A93A */
+    --gold-hover: 35 76% 47%; /* #D2871C */
+    --gold-bright: 36 100% 68%; /* #FFBD5A — on dark grounds */
+    --gold-deep: 34 74% 28%; /* #7E4F13 — gold text on light */
+    --gold-soft: 38 100% 96%; /* #FFF8EC */
 
-    --primary: 220 15% 13%;
-    --primary-foreground: 45 100% 65%;
-
-    --secondary: 220 12% 93%;
-    --secondary-foreground: 220 20% 10%;
-
-    --muted: 220 10% 94%;
-    --muted-foreground: 220 8% 46%;
-
-    --accent: 45 95% 55%;
-    --accent-foreground: 220 20% 10%;
-
-    --destructive: 0 75% 45%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 220 12% 90%;
-    --input: 220 12% 90%;
-    --ring: 0 75% 45%;
-
-    --radius: 0.75rem;
-
-    --whatsapp: 142 70% 40%;
+    /* semantic */
+    --success: 148 49% 27%;
+    --success-soft: 138 29% 93%;
+    --whatsapp: 142 70% 49%;
     --whatsapp-foreground: 0 0% 100%;
 
-    --german-red: 0 75% 45%;
-    --german-gold: 45 95% 55%;
-    --german-dark: 220 15% 13%;
+    /* borders */
+    --border: 38 22% 86%; /* #E3DDD3 */
+    --border-strong: 37 13% 73%; /* #C2BBB0 */
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 220 15% 13%;
-    --sidebar-primary-foreground: 45 100% 65%;
-    --sidebar-accent: 220 12% 93%;
-    --sidebar-accent-foreground: 220 20% 10%;
-    --sidebar-border: 220 12% 90%;
-    --sidebar-ring: 0 75% 45%;
+    /* shadcn/ui contract */
+    --card: 0 0% 100%;
+    --card-foreground: 27 12% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 27 12% 15%;
+    --primary: 358 88% 38%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 40 29% 92%;
+    --secondary-foreground: 27 12% 15%;
+    --muted: 40 29% 92%;
+    --muted-foreground: 32 7% 34%;
+    --accent: 40 29% 92%;
+    --accent-foreground: 30 13% 9%;
+    --destructive: 358 88% 38%;
+    --destructive-foreground: 0 0% 100%;
+    --input: 38 22% 86%;
+    --ring: 358 88% 38%;
+    --radius: 1.25rem;
+
+    /* warm-tinted elevation — ink, never neutral black */
+    --shadow-sm: 0 1px 3px hsl(30 13% 9% / 0.08), 0 1px 2px hsl(30 13% 9% / 0.04);
+    --shadow-md: 0 4px 12px hsl(30 13% 9% / 0.08), 0 2px 4px hsl(30 13% 9% / 0.05);
+    --shadow-lg: 0 12px 28px hsl(30 13% 9% / 0.12), 0 4px 8px hsl(30 13% 9% / 0.06);
+    --shadow-xl: 0 24px 56px hsl(30 13% 9% / 0.16), 0 8px 16px hsl(30 13% 9% / 0.07);
+    --shadow-gold: 0 12px 34px hsl(36 88% 47% / 0.3);
   }
 
   .dark {
-    --background: 220 18% 7%;
-    --foreground: 220 10% 95%;
-    --card: 220 18% 11%;
-    --card-foreground: 220 10% 95%;
-    --popover: 220 18% 11%;
-    --popover-foreground: 220 10% 95%;
-    --primary: 45 95% 55%;
-    --primary-foreground: 220 15% 8%;
-    --secondary: 220 15% 16%;
-    --secondary-foreground: 220 10% 95%;
-    --muted: 220 15% 16%;
-    --muted-foreground: 220 10% 60%;
-    --accent: 0 75% 50%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 220 10% 95%;
-    --border: 220 15% 18%;
-    --input: 220 15% 18%;
-    --ring: 45 95% 55%;
-    --sidebar-background: 220 18% 9%;
-    --sidebar-foreground: 220 10% 95%;
-    --sidebar-primary: 45 95% 55%;
-    --sidebar-primary-foreground: 220 15% 8%;
-    --sidebar-accent: 220 15% 14%;
-    --sidebar-accent-foreground: 220 10% 95%;
-    --sidebar-border: 220 15% 16%;
-    --sidebar-ring: 45 95% 55%;
+    --background: 20 18% 7%; /* #14100E */
+    --surface: 27 16% 11%; /* #201B17 */
+    --sunken: 27 12% 15%; /* #2B2622 */
+    --ink-ground: 24 20% 5%; /* #0F0C0A */
+
+    --foreground: 40 47% 96%;
+    --ink-body: 35 26% 87%; /* #E7E0D6 */
+    --ink-muted: 33 12% 67%; /* #B4ABA0 */
+    --ink-subtle: 32 8% 50%; /* #8A8177 */
+
+    --brand: 3 73% 57%; /* #E24B43 — lifted for contrast on ink */
+    --brand-hover: 3 79% 71%;
+    --brand-soft: 3 73% 57% / 0.14;
+    --flag-red: 0 87% 44%;
+    --gold: 36 100% 68%;
+    --gold-hover: 38 100% 74%;
+    --gold-bright: 36 100% 68%;
+    --gold-deep: 38 100% 81%;
+    --gold-soft: 36 100% 68% / 0.12;
+
+    --success: 149 39% 49%;
+    --success-soft: 159 41% 13%;
+
+    --border: 30 16% 17%; /* #332C25 */
+    --border-strong: 30 16% 24%; /* #473D33 */
+
+    --card: 27 16% 11%;
+    --card-foreground: 35 26% 87%;
+    --popover: 27 16% 11%;
+    --popover-foreground: 35 26% 87%;
+    --primary: 3 73% 57%;
+    --primary-foreground: 30 13% 9%;
+    --secondary: 27 12% 15%;
+    --secondary-foreground: 35 26% 87%;
+    --muted: 27 12% 15%;
+    --muted-foreground: 33 12% 67%;
+    --accent: 27 12% 15%;
+    --accent-foreground: 40 47% 96%;
+    --destructive: 3 73% 57%;
+    --destructive-foreground: 30 13% 9%;
+    --input: 30 16% 17%;
+    --ring: 36 100% 68%;
+
+    --shadow-sm: 0 1px 3px hsl(0 0% 0% / 0.5);
+    --shadow-md: 0 4px 14px hsl(0 0% 0% / 0.5);
+    --shadow-lg: 0 14px 32px hsl(0 0% 0% / 0.55);
+    --shadow-xl: 0 26px 60px hsl(0 0% 0% / 0.6);
+    --shadow-gold: 0 14px 40px hsl(0 0% 0% / 0.5);
   }
 }
 
@@ -88,14 +132,206 @@
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', sans-serif;
-  }
+
   html {
     scroll-behavior: smooth;
+    /* clears the fixed header when jumping to a #section */
+    scroll-padding-top: 5.5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-ink-body;
+    font-family: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-feature-settings: "ss01", "cv01";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Bricolage Grotesque", "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+    @apply text-foreground;
+    font-weight: 700;
+    line-height: 1.06;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* visible, on-brand focus ring everywhere */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand ring-offset-2 ring-offset-background;
+  }
+
+  ::selection {
+    background: hsl(var(--gold) / 0.35);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer components {
+  /* section shell — consistent vertical rhythm that scales with the viewport.
+     `content-visibility` lets the browser skip layout and paint for sections
+     still off screen; the size hint keeps the scrollbar honest so it doesn't
+     jump as they render in. */
+  .section {
+    padding-block: clamp(3.5rem, 8vw, 7rem);
+    content-visibility: auto;
+    contain-intrinsic-size: auto 1200px;
+  }
+
+  .shell {
+    width: 100%;
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 5vw, 4rem);
+  }
+
+  /* eyebrow / kicker above section titles */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-brand;
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 3.8vw, 2.85rem);
+  }
+
+  .display-title {
+    font-size: clamp(2.25rem, 5.6vw, 4rem);
+    letter-spacing: -0.03em;
+  }
+
+  /* the 56×4 gold rule under section titles */
+  .rule::after {
+    content: "";
+    display: block;
+    width: 3.5rem;
+    height: 0.25rem;
+    border-radius: 999px;
+    background: hsl(var(--gold));
+    margin-top: 1.125rem;
+  }
+
+  .rule-center::after {
+    margin-inline: auto;
+  }
+
+  /* frosted card on a dark ground */
+  .glass {
+    background: hsl(0 0% 100% / 0.06);
+    border: 1px solid hsl(0 0% 100% / 0.14);
+    backdrop-filter: blur(12px) saturate(160%);
+  }
+}
+
+@layer utilities {
+  /* tabular numerals for stats, timers and scores */
+  .tnum {
+    font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+
+  .font-display {
+    font-family: "Bricolage Grotesque", "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* the dark editorial ground used by the hero and the dMAT band */
+  .ink-ground {
+    background:
+      radial-gradient(80% 120% at 78% 0%, hsl(358 88% 38% / 0.42) 0, transparent 55%),
+      radial-gradient(60% 90% at 8% 20%, hsl(36 88% 59% / 0.14) 0, transparent 50%),
+      linear-gradient(160deg, hsl(28 16% 13%) 0%, hsl(var(--ink-ground)) 70%);
+  }
+
+  /* very fine paper grain — kills the flatness of large gradient fields */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E");
+  }
+
+  /* gold-to-brand text wash for a single emphasised word */
+  .text-wash {
+    background: linear-gradient(100deg, hsl(var(--gold-bright)), hsl(36 96% 76%) 55%, hsl(var(--gold-bright)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* fades the edges of a marquee track */
+  .edge-fade {
+    mask-image: linear-gradient(to right, transparent, black 6rem, black calc(100% - 6rem), transparent);
+  }
+
+  .shadow-warm-sm {
+    box-shadow: var(--shadow-sm);
+  }
+  .shadow-warm-md {
+    box-shadow: var(--shadow-md);
+  }
+  .shadow-warm-lg {
+    box-shadow: var(--shadow-lg);
+  }
+  .shadow-warm-xl {
+    box-shadow: var(--shadow-xl);
+  }
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Scroll-reveal contract, driven by src/lib/motion.tsx.
+   Elements start displaced and transparent; the IntersectionObserver adds
+   [data-revealed] to settle them. Only opacity/transform animate, so nothing
+   here can trigger layout.
+   ------------------------------------------------------------------------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(var(--reveal-x, 0), var(--reveal-y, 1.5rem), 0) scale(var(--reveal-scale, 1));
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 0.7, 0.2, 1),
+    transform 0.7s cubic-bezier(0.22, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-reveal][data-revealed] {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+/* Anyone who asked for less motion gets the destination, not the journey. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
