@@ -134,7 +134,7 @@ const MentorSection = () => {
                 </div>
 
                 <div
-                  className="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-2xl bg-gold/25 transition-transform duration-500 ease-brand group-hover:-bottom-3 group-hover:-right-3"
+                  className="absolute -bottom-3 right-0 -z-10 h-full w-full rounded-2xl bg-gold/25 transition-transform duration-500 ease-brand sm:-bottom-4 sm:-right-4 sm:group-hover:-bottom-3 sm:group-hover:-right-3"
                   aria-hidden="true"
                 />
               </div>
@@ -148,9 +148,12 @@ const MentorSection = () => {
                   Nothing on this page asks you to take our word for it. The education, the
                   certifications and the employment history are all on the record.
                 </p>
+                {/* `whitespace-normal` overrides shadcn Button's nowrap: at 402px this
+                    label is 386px un-wrappable, which was setting the grid track width
+                    and pushing the whole column past the viewport. */}
                 <Button
                   asChild
-                  className="mt-4 w-full rounded-full bg-[#0A66C2] font-bold text-white hover:bg-[#0A66C2]/90"
+                  className="mt-4 h-auto w-full whitespace-normal rounded-full bg-[#0A66C2] py-3 text-center font-bold text-white hover:bg-[#0A66C2]/90"
                 >
                   <a href={LINKEDIN_JIGAR} target="_blank" rel="noopener noreferrer">
                     <Linkedin className="mr-2 h-4 w-4" aria-hidden="true" />

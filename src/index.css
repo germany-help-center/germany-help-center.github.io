@@ -184,6 +184,30 @@
     text-wrap: pretty;
   }
 
+  /*
+   * Grid and flex items default to `min-width: auto`, meaning they refuse to
+   * shrink below their content's min-content width. A single non-wrapping child
+   * — a `whitespace-nowrap` button, a long unbreakable word — therefore widens
+   * the entire track past the viewport.
+   *
+   * Measured symptom at 402px before this rule: the hero H1 sat at left=20 but
+   * right=413 (11px past the edge), and the mentor column was 426px wide in a
+   * 402px viewport, because a nowrap button (386px) plus its card padding (40px)
+   * set the track width. With `overflow-x: clip` on the root that didn't scroll —
+   * it just clipped, which reads as "content shifted right, text cut off".
+   *
+   * Zeroing min-width lets tracks shrink to the viewport so text wraps instead.
+   * Items that genuinely must keep their size use `shrink-0`, which is
+   * flex-shrink and unaffected by this.
+   */
+  /* Note both halves: several sections put `grid`/`flex` ON the `.shell` element
+     itself, so a descendant-only selector would miss exactly those — which is
+     why the hero H1 stayed 11px over the edge after the first attempt. */
+  .shell:is(.grid, .flex) > *,
+  .shell :is(.grid, .flex, [class*="grid-cols-"]) > * {
+    min-width: 0;
+  }
+
   /* visible, on-brand focus ring everywhere */
   :focus-visible {
     @apply outline-none ring-2 ring-brand ring-offset-2 ring-offset-background;

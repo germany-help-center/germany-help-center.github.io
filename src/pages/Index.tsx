@@ -35,8 +35,10 @@ import ConsentBanner from "@/components/ConsentBanner";
  * reaches the fee table before anything resembling a sales pitch. The share
  * prompt sits last, once the page has earned the recommendation.
  */
+/* `pb-28` clears the fixed MobileActionBar so it can't sit over the last rows of
+   the footer; the bar is hidden from `sm` up, so the padding goes with it. */
 const Index = () => (
-  <div className="min-h-screen">
+  <div className="min-h-screen pb-28 sm:pb-0">
     <Header />
 
     <main>

@@ -8,7 +8,6 @@ import {
   GraduationCap,
   MapPin,
   MessageCircle,
-  Phone,
   Plane,
   ShieldCheck,
   Users,
@@ -18,7 +17,7 @@ import { FlagChip } from "@/components/Flag";
 import { CtaTrust } from "@/components/Cta";
 import { Reveal, useCountUp, useReducedMotion } from "@/lib/motion";
 import { trackCta } from "@/lib/analytics";
-import { DMAT_URL, TEL_DE, bookingHref } from "@/lib/cta";
+import { DMAT_URL, bookingHref } from "@/lib/cta";
 import heroImg from "@/assets/germany-hero.jpg";
 import studentsImg from "@/assets/students-germany.jpg";
 import professionalImg from "@/assets/professional-germany.jpg";
@@ -187,17 +186,6 @@ const HeroSection = () => {
               <a href="#check">
                 Check if you qualify — 2 min
                 <ArrowUpRight className="ml-1.5 h-4 w-4" aria-hidden="true" />
-              </a>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="ghost"
-              className="rounded-full px-6 text-base font-bold text-ink-muted hover:text-foreground dark:text-white/80 dark:hover:bg-white/10 dark:hover:text-white"
-            >
-              <a href={TEL_DE} onClick={() => trackCta("call_de", "hero")}>
-                <Phone className="mr-2 h-4 w-4" aria-hidden="true" />
-                Call Germany
               </a>
             </Button>
           </div>

@@ -118,7 +118,11 @@ const SocialProofSection = () => {
         />
 
         <Reveal direction="up" delay={100} className="mt-14">
-          <Carousel opts={{ loop: true, align: "start" }} className="mx-auto max-w-5xl px-12">
+          {/* The arrows sit 48px OUTSIDE the carousel box, so they only fit once the
+              shell's own padding (clamp(1.25rem, 5vw, 4rem)) exceeds that — i.e. from
+              about 960px. Below `lg` they're hidden and the track is swiped/dragged,
+              which is the expected mobile and tablet interaction anyway. */}
+          <Carousel opts={{ loop: true, align: "start" }} className="mx-auto max-w-5xl px-0 lg:px-12">
             <CarouselContent>
               {stories.map((story) => (
                 <CarouselItem key={story.name} className="md:basis-1/2 lg:basis-1/3">
@@ -138,8 +142,8 @@ const SocialProofSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious aria-label="Previous story" />
-            <CarouselNext aria-label="Next story" />
+            <CarouselPrevious aria-label="Previous story" className="hidden lg:inline-flex" />
+            <CarouselNext aria-label="Next story" className="hidden lg:inline-flex" />
           </Carousel>
         </Reveal>
 

@@ -58,7 +58,7 @@ const AboutSection = () => {
                 />
               </div>
               <div
-                className="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-2xl bg-gold/25 transition-transform duration-500 ease-brand group-hover:-bottom-3 group-hover:-right-3"
+                className="absolute -bottom-3 right-0 -z-10 h-full w-full rounded-2xl bg-gold/25 transition-transform duration-500 ease-brand sm:-bottom-4 sm:-right-4 sm:group-hover:-bottom-3 sm:group-hover:-right-3"
                 aria-hidden="true"
               />
 
