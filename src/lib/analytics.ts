@@ -7,11 +7,15 @@
  * in index.html precisely so that "no consent" means "never loaded", not
  * "loaded and asked not to look".
  *
- * TODO(owner): paste the real GA4 Measurement ID below. While it is empty,
- * nothing loads and no banner is shown — the site behaves exactly as it does
- * today, so this is safe to ship un-configured.
+ * Not a secret — a Measurement ID is public by design and is visible in the
+ * client bundle of every GA4 site. Setting it to "" disables analytics entirely
+ * and hides the consent banner.
+ *
+ * Deliberately NOT installed via Google's own gtag snippet: that fires on page
+ * load, i.e. before consent, which would invalidate the Art. 6(1)(a) GDPR basis
+ * stated in section 6 of the privacy policy. Keep the injection in loadGtag().
  */
-export const GA_MEASUREMENT_ID = "";
+export const GA_MEASUREMENT_ID = "G-312XCD60RN";
 
 const CONSENT_KEY = "ghc-analytics-consent";
 

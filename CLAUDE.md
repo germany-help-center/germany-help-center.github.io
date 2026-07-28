@@ -75,6 +75,12 @@ quoted** — a printed rating or review count fails the test, while the link is 
 `src/test/eligibility.test.tsx` covers `EligibilityCheck` verdict by verdict. A wrong "you qualify" would
 push someone toward a non-refundable ₹18,000 APS fee, so the blocking paths are tested explicitly.
 
+`src/test/analytics.test.ts` guards the consent gate, which is a legal promise rather than a preference:
+section 6 of the privacy policy states that no Google script is requested before consent. It asserts nothing
+loads while undecided or declined, that the script appears exactly once after `grantConsent()`, that
+`anonymize_ip` is set, and that `trackCta()` is a silent no-op pre-consent. **Never install GA via Google's
+own gtag snippet in `index.html`** — that fires on page load and would make the policy false.
+
 ## Deploy
 
 `.github/workflows/deploy-pages.yml` builds and publishes `dist/` to GitHub Pages on **every push to `main`**.
@@ -229,19 +235,27 @@ consent banner appears, so this is safe to ship un-configured.
    low-competition, high-intent term. Once the exact rating and review count are known, display them
    *beside* the existing link ("5.0 from 57 reviews · read them on Google"); a precise, linked figure is
    credible where "50+" is not. Still never in schema — see the guardrails above.
-2. **Paste the two IDs.** `GA_MEASUREMENT_ID` (`src/lib/analytics.ts`) and `BOOKING_URL`
-   (`src/lib/cta.ts`). Both are intentionally empty and degrade gracefully, but nothing about CTA
-   performance is measurable until the first one is set.
-3. **A written fee table.** `CostsSection` promises a fixed fee in writing but publishes no number.
+2. **Verify Google Search Console** and submit `sitemap.xml`. The `google-site-verification` slot in
+   `index.html` is commented out and waiting for a token. This matters more than Analytics: it's the only
+   way to see whether pages are actually indexed and which queries they surface for. Do it right after the
+   first deploy of the prerendered build, since that's when there's finally real HTML to crawl.
+3. **Paste `BOOKING_URL`** (`src/lib/cta.ts`) — a Cal.com or Google Calendar link. Empty today, so
+   `bookingHref()` falls back to WhatsApp and no CTA is a dead end; a real calendar slot converts better
+   than "message us" because the visitor knows exactly what happens next.
+
+   GA4 **is** configured (`G-312XCD60RN`, opt-in gated). Three settings still worth changing in the GA4
+   admin: turn **Google signals off**, set **data retention to 14 months** (the default 2 is useless), and
+   review the account-level data-sharing checkboxes.
+4. **A written fee table.** `CostsSection` promises a fixed fee in writing but publishes no number.
    No competitor publishes fees — doing so would directly answer the ambassador's criticism.
-4. **Pareshbhai's photo and LinkedIn.** Jigarbhai's are in (`MentorSection`, `Person` JSON-LD);
+5. **Pareshbhai's photo and LinkedIn.** Jigarbhai's are in (`MentorSection`, `Person` JSON-LD);
    the India-side co-founder is still unillustrated and unverifiable.
-5. **The employer question.** Jigarbhai's LinkedIn names his employer; the site deliberately says
+6. **The employer question.** Jigarbhai's LinkedIn names his employer; the site deliberately says
    "German engineering industry" instead, to avoid implying an endorsement by that company. Revisit only
    if he confirms he's comfortable naming it.
-6. **Split into real routes** (`/study-in-germany-from-india`, `/aps-certificate-india`,
+7. **Split into real routes** (`/study-in-germany-from-india`, `/aps-certificate-india`,
    `/opportunity-card-chancenkarte`, …). One URL can only hold one topical identity; this page currently
    targets eleven keyword clusters.
-7. **Get a German lawyer's read** on how these services may be described. Since Jan 2025, unlicensed legal
+8. **Get a German lawyer's read** on how these services may be described. Since Jan 2025, unlicensed legal
    advice is an administrative offence under §20(1) No. 1 RDG with fines up to €50,000 per case. The footer
    and FAQ already disclaim it; confirm the wording is sufficient.
