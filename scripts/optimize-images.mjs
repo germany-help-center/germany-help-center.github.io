@@ -30,6 +30,8 @@ const photos = [
   { file: "src/assets/about-us-hero.jpg", width: 1400, quality: 76 },
   // The founder portrait. Rendered up to ~480 px; 800 covers 2x and the OG card.
   { file: "src/assets/jigar-vithani.jpg", width: 800, quality: 82 },
+  // The co-founder portrait in the India-desk band. Rendered up to ~240 px.
+  { file: "src/assets/paresh-vithani.jpg", width: 800, quality: 82 },
 ];
 
 /** Illustrations with transparency: stay PNG, quantised. */

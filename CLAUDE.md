@@ -248,8 +248,15 @@ consent banner appears, so this is safe to ship un-configured.
    review the account-level data-sharing checkboxes.
 4. **A written fee table.** `CostsSection` promises a fixed fee in writing but publishes no number.
    No competitor publishes fees — doing so would directly answer the ambassador's criticism.
-5. **Pareshbhai's photo and LinkedIn.** Jigarbhai's are in (`MentorSection`, `Person` JSON-LD);
-   the India-side co-founder is still unillustrated and unverifiable.
+5. **Pareshbhai's LinkedIn.** His photo, duties (documentation, finance, B2B relations) and the
+   documentation-record claim are now in the India-desk band at the foot of `MentorSection`, plus his
+   `Person` JSON-LD and the `<noscript>` summary. What's still missing is a verification link:
+   Jigarbhai's LinkedIn is the site's strongest trust signal and the India-side co-founder has no
+   equivalent. Add it to his card and to `sameAs` when he confirms one.
+
+   Note how the expertise claim is worded — "across 100+ visa files, not one has come back from the
+   embassy with a query about a document", followed by the mission-decides caveat. It is a
+   **documentation** record, deliberately not a visa-approval rate; keep it that way if you edit it.
 6. **The employer question.** Jigarbhai's LinkedIn names his employer; the site deliberately says
    "German engineering industry" instead, to avoid implying an endorsement by that company. Revisit only
    if he confirms he's comfortable naming it.

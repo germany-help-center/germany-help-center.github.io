@@ -66,7 +66,7 @@ export const faqs: Faq[] = [
   {
     question: "You work entirely online — where are you actually based?",
     answer:
-      "Jigarbhai Vithani lives in Nußloch, Baden-Württemberg, and has been in Germany since 2014 — he handles everything that has to happen on German soil, on a German number. Pareshbhai Vithani is in Surat, Gujarat, and takes the first call. We have a registered address in Surat, but deliberately no walk-in counselling office anywhere: the German process is digital end to end, so an office would add overhead to your fee and nothing to your outcome. Everything runs over WhatsApp, video calls and email — identically whether you're in Mumbai or a small town in Gujarat.",
+      "Jigarbhai Vithani lives in Nußloch, Baden-Württemberg, and has been in Germany since 2014 — he handles everything that has to happen on German soil, on a German number. Pareshbhai Vithani is in Surat, Gujarat: he takes the first call and runs documentation, finance and partner relations, so your file is checked in India before it is ever seen in Germany. We have a registered address in Surat, but deliberately no walk-in counselling office anywhere: the German process is digital end to end, so an office would add overhead to your fee and nothing to your outcome. Everything runs over WhatsApp, video calls and email — identically whether you're in Mumbai or a small town in Gujarat.",
   },
   {
     question: "What happens after I land in Germany?",

@@ -42,7 +42,7 @@ const AboutSection = () => {
               Building bridges. <span className="text-brand">Changing lives.</span>
             </>
           }
-          subtitle="Two people, two countries, one destination. Pareshbhai in Surat takes the first call; Jigarbhai in Baden-Württemberg handles everything that has to happen on German soil."
+          subtitle="Two people, two countries, one destination. Pareshbhai in Surat takes the first call and builds the file — documentation, finance, partner relations; Jigarbhai in Baden-Württemberg handles everything that has to happen on German soil."
         />
 
         <div className="mt-14 grid items-center gap-12 lg:grid-cols-2 lg:gap-16">

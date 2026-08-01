@@ -1,20 +1,26 @@
 import {
   BadgeCheck,
+  FileCheck,
   GraduationCap,
+  Handshake,
   Languages,
   Linkedin,
   MessageCircle,
+  Phone,
   Quote,
+  ScanEye,
   Sparkles,
   Users,
   Video,
+  Wallet,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FlagChip, FlagSpine } from "@/components/Flag";
 import SectionHeading from "@/components/SectionHeading";
 import { Reveal, useCountUp } from "@/lib/motion";
-import { LINKEDIN_JIGAR, whatsapp } from "@/lib/cta";
+import { LINKEDIN_JIGAR, PHONE_IN, TEL_IN, whatsapp } from "@/lib/cta";
 import portrait from "@/assets/jigar-vithani.jpg";
+import portraitParesh from "@/assets/paresh-vithani.jpg";
 
 /**
  * The founder's own journey, told as the argument for the whole business: he
@@ -74,6 +80,32 @@ const mentoring = [
     icon: Languages,
     title: "English, Hindi, Gujarati and German",
     detail: "Explained in whichever language the difficult part lands best in.",
+  },
+];
+
+/**
+ * The India desk. Kept in this section rather than About because it belongs to
+ * the same argument: the file is checked by two people, in two countries,
+ * before it reaches a consulate.
+ */
+const pareshDuties = [
+  {
+    icon: FileCheck,
+    title: "Documentation",
+    detail:
+      "Every certificate, translation, affidavit and bank statement is assembled and cross-checked in Surat before anything is submitted.",
+  },
+  {
+    icon: Wallet,
+    title: "Finance",
+    detail:
+      "Fees, blocked-account transfers and payment schedules — what is due, to whom, and when, in writing before you pay it.",
+  },
+  {
+    icon: Handshake,
+    title: "B2B relations",
+    detail:
+      "The working relationships on the India side: partner institutes, language schools and the referral network that keeps files moving.",
   },
 ];
 
@@ -292,6 +324,103 @@ const MentorSection = () => {
             </Reveal>
           </div>
         </div>
+
+        {/* ------------------------------------------------- the India desk */}
+        <Reveal direction="up" className="mt-20">
+          <div className="rounded-2xl border border-border bg-surface p-6 shadow-warm-sm md:p-9">
+            <div className="grid gap-8 md:grid-cols-[minmax(0,15rem)_1fr] md:gap-10">
+              {/* portrait */}
+              <div>
+                <div className="group relative">
+                  <div className="relative overflow-hidden rounded-2xl border border-border bg-sunken shadow-warm-lg">
+                    <img
+                      src={portraitParesh}
+                      alt="Pareshbhai Vithani, co-founder of Germany Help Center, who runs the India desk in Surat, Gujarat"
+                      width="800"
+                      height="789"
+                      loading="lazy"
+                      decoding="async"
+                      className="aspect-square w-full object-cover transition-transform duration-1000 ease-brand group-hover:scale-[1.04]"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-ground via-ink-ground/85 to-transparent p-5 pt-14">
+                      <p className="font-display text-lg font-extrabold text-white">
+                        Pareshbhai Vithani
+                      </p>
+                      <p className="mt-0.5 text-[0.8125rem] text-white/60">
+                        Co-founder · Surat, Gujarat
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <a
+                  href={TEL_IN}
+                  className="mt-4 flex items-center justify-center gap-2 rounded-full border border-border bg-sunken px-4 py-3 text-[0.875rem] font-bold text-ink-body transition-colors duration-200 hover:border-brand/40 hover:text-brand"
+                >
+                  <Phone className="h-4 w-4 text-brand" aria-hidden="true" />
+                  <span className="tnum">{PHONE_IN}</span>
+                </a>
+                <p className="mt-2 text-center text-xs text-ink-subtle">
+                  The India line. He takes the first call.
+                </p>
+              </div>
+
+              {/* what he does */}
+              <div>
+                <p className="text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-brand">
+                  And in Surat
+                </p>
+                <h3 className="mt-2 text-[1.5rem] font-extrabold md:text-[1.75rem]">
+                  Nothing reaches an embassy{" "}
+                  <span className="text-brand">without passing his desk.</span>
+                </h3>
+                <p className="mt-3 leading-relaxed text-ink-muted">
+                  Half of this business is what happens on German soil. The other half is the file
+                  itself — and that half is Pareshbhai&apos;s. He runs the India side from Surat:
+                  the documents, the money, and the relationships that keep both moving.
+                </p>
+
+                <ul className="mt-7 grid gap-3 sm:grid-cols-3">
+                  {pareshDuties.map((duty, i) => (
+                    <Reveal as="li" key={duty.title} direction="up" delay={i * 80}>
+                      <div className="h-full rounded-xl border border-border bg-sunken p-4">
+                        <span className="grid h-10 w-10 place-items-center rounded-lg bg-brand-soft text-brand">
+                          <duty.icon className="h-5 w-5" aria-hidden="true" />
+                        </span>
+                        <p className="mt-3 font-bold text-foreground">{duty.title}</p>
+                        <p className="mt-1 text-[0.8125rem] leading-relaxed text-ink-muted">
+                          {duty.detail}
+                        </p>
+                      </div>
+                    </Reveal>
+                  ))}
+                </ul>
+
+                {/* the expertise claim, stated as a documentation record — not a
+                    visa outcome. See the content guardrails in CLAUDE.md. */}
+                <div className="mt-7 rounded-2xl border border-gold/35 bg-gold-soft p-5">
+                  <h4 className="flex items-center gap-2.5 text-[1.0625rem] font-extrabold">
+                    <ScanEye className="h-5 w-5 shrink-0 text-gold-deep" aria-hidden="true" />
+                    A sharp eye for documentation
+                  </h4>
+                  <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-ink-body">
+                    Most files are not refused on merit — they are sent back over a missing
+                    attestation, a translation nobody checked, or a date that doesn&apos;t match
+                    across two pages. Across{" "}
+                    <strong className="font-bold">100+ visa files</strong>, not one has come back
+                    from the embassy with a query about a document. Once a file is in his hands,
+                    it goes out complete.
+                  </p>
+                  <p className="mt-3 text-[0.8125rem] leading-relaxed text-ink-subtle">
+                    The decision itself always belongs to the German mission and no outcome is
+                    guaranteed. What we control is that the paperwork gives them nothing to hand
+                    back.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
