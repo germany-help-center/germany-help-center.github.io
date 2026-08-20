@@ -83,9 +83,14 @@ const CostsSection = () => {
         <SectionHeading
           eyebrow="Money, plainly"
           icon={Wallet}
+          /*
+             Deliberately NOT the same words as the H1 on /cost-of-studying-in-germany/
+             (`CostsPage.tsx`), which is the only place this section renders now. An H2
+             repeating its own H1 wastes the page's strongest secondary heading; phrasing
+             it as the question people actually type earns a second query variant. */
           title={
             <>
-              What studying in Germany <span className="text-brand">actually costs</span>
+              How much do you need <span className="text-brand">per year</span>?
             </>
           }
           subtitle="Tuition-free doesn't mean free. Here are the real numbers for the 2026 cycle, so you can decide before anyone asks you for a rupee."

@@ -17,16 +17,25 @@ import {
 } from "@/lib/cta";
 import logo from "@/assets/logo.png";
 
+/*
+ * The footer renders on every route, so it is the site's internal-linking spine:
+ * the four topic pages are reachable from anywhere, which is what stops them
+ * being orphans that Google discovers but never bothers to crawl.
+ *
+ * Topics that own a page link to the page (absolute path); the rest stay as
+ * homepage anchors. Keep it that way — an anchor and a page competing for the
+ * same label is how a reader ends up on the shallower of the two.
+ */
 const sectionLinks = [
   { label: "Why Germany", href: "#why-germany" },
   { label: "Your mentor", href: "#mentor" },
   { label: "Do I qualify?", href: "#check" },
-  { label: "Study pathways", href: "#study" },
-  { label: "APS India", href: "#aps" },
+  { label: "Study pathways", href: "/study-in-germany-from-india/" },
+  { label: "APS India", href: "/aps-certificate-india/" },
   { label: "dMAT prep", href: "#dmat" },
-  { label: "Opportunity Card", href: "#opportunity-card" },
+  { label: "Opportunity Card", href: "/opportunity-card-chancenkarte/" },
   { label: "Services", href: "#services" },
-  { label: "Costs", href: "#costs" },
+  { label: "Costs", href: "/cost-of-studying-in-germany/" },
   { label: "Process", href: "#process" },
   { label: "About us", href: "#about" },
   { label: "FAQ", href: "#faq" },
@@ -229,7 +238,7 @@ const Footer = () => {
             <div className="mt-6 flex flex-col items-start justify-between gap-4 text-xs text-white/45 sm:flex-row sm:items-center">
               <p>© {year} Germany Help Center. All rights reserved.</p>
               <div className="flex gap-5">
-                <a href="/privacy-policy" className="transition-colors hover:text-white">
+                <a href="/privacy-policy/" className="transition-colors hover:text-white">
                   Privacy policy
                 </a>
                 <a href="#faq" className="transition-colors hover:text-white">

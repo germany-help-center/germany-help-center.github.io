@@ -52,7 +52,7 @@ const ConsentBanner = () => {
             We&apos;d like to use Google Analytics to see which parts of this page people find useful.
             Nothing loads and no cookie is set unless you agree, and declining changes nothing about the
             site.{" "}
-            <a href="/privacy-policy" className="font-semibold text-brand underline">
+            <a href="/privacy-policy/" className="font-semibold text-brand underline">
               Privacy policy
             </a>
           </p>
