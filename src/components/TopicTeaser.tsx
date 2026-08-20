@@ -9,9 +9,15 @@ import { Reveal } from "@/lib/motion";
  *
  * Why this exists (docs/SEO-CONTENT-PLAN.md): the full treatment of a topic lives
  * on its own URL. Leaving the full section here as well would put identical copy
- * on two of our URLs — the likeliest cause of the four URLs already sitting at
- * "Crawled – currently not indexed" in Search Console. So the homepage keeps the
- * shape of the answer and the link; the page keeps the answer.
+ * on two of our URLs, which is a duplicate-content signal against both.
+ * So the homepage keeps the shape of the answer and the link; the page keeps
+ * the answer.
+ *
+ * (An earlier version of this comment blamed the four "Crawled – currently not
+ * indexed" URLs in Search Console. That was wrong: the property is a Domain
+ * property spanning dmat.germanyhelpcenter.com, and those URLs are dMAT's —
+ * verified 2026-08-20. The de-duplication is still right, just not for that
+ * reason.)
  *
  * The `id` must match the anchor the Header navigates to, and `landing.test.tsx`
  * asserts every one of those anchors still exists. Changing an id here breaks
