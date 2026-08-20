@@ -37,6 +37,7 @@ const sectionLinks = [
   { label: "Services", href: "#services" },
   { label: "Costs", href: "/cost-of-studying-in-germany/" },
   { label: "Process", href: "#process" },
+  { label: "Surat consultancy", href: "/germany-consultancy-surat/" },
   { label: "About us", href: "#about" },
   { label: "FAQ", href: "#faq" },
 ];

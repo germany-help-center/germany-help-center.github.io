@@ -11,6 +11,7 @@ import ApsPage from "./pages/topics/ApsPage";
 import CostsPage from "./pages/topics/CostsPage";
 import OpportunityCardPage from "./pages/topics/OpportunityCardPage";
 import StudyInGermanyPage from "./pages/topics/StudyInGermanyPage";
+import SuratPage from "./pages/topics/SuratPage";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,7 @@ export const AppShell = () => (
         <Route path="/aps-certificate-india" element={<ApsPage />} />
         <Route path="/cost-of-studying-in-germany" element={<CostsPage />} />
         <Route path="/opportunity-card-chancenkarte" element={<OpportunityCardPage />} />
+        <Route path="/germany-consultancy-surat" element={<SuratPage />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

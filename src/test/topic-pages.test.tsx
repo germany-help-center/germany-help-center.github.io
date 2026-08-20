@@ -6,6 +6,7 @@ import ApsPage from "@/pages/topics/ApsPage";
 import CostsPage from "@/pages/topics/CostsPage";
 import OpportunityCardPage from "@/pages/topics/OpportunityCardPage";
 import StudyInGermanyPage from "@/pages/topics/StudyInGermanyPage";
+import SuratPage from "@/pages/topics/SuratPage";
 
 /**
  * Guardrail tests for the topic routes (docs/SEO-CONTENT-PLAN.md).
@@ -44,6 +45,7 @@ const pages = [
   { name: "/aps-certificate-india", Component: ApsPage },
   { name: "/cost-of-studying-in-germany", Component: CostsPage },
   { name: "/opportunity-card-chancenkarte", Component: OpportunityCardPage },
+  { name: "/germany-consultancy-surat", Component: SuratPage },
 ];
 
 const renderPage = (Component: () => JSX.Element) =>
@@ -102,5 +104,32 @@ describe("figures that must stay unpublished", () => {
     renderPage(OpportunityCardPage);
     const body = document.body.textContent ?? "";
     expect(body).not.toMatch(/\d+\s*(–|-|to)\s*\d+\s*(weeks|months)\s+to\s+process/i);
+  });
+});
+
+describe("the Surat page stays inside its guardrails", () => {
+  /*
+   * Two rules from CLAUDE.md that this page is most likely to break, because it is
+   * the one page about the business itself rather than about a procedure.
+   */
+  it("prints no rating or review count", () => {
+    renderPage(SuratPage);
+    const body = document.body.textContent ?? "";
+    expect(body).not.toMatch(/[0-9](\.[0-9])?\s*(star|out of 5|\/\s*5)/i);
+    expect(body).not.toMatch(/[0-9]+\+?\s*(reviews|ratings)/i);
+  });
+
+  it("states that no visa outcome is guaranteed", () => {
+    renderPage(SuratPage);
+    expect(document.body.textContent ?? "").toMatch(
+      /belongs to the German mission|no outcome is guaranteed|cannot promise a result/i,
+    );
+  });
+
+  it("does not present the address as a walk-in office", () => {
+    renderPage(SuratPage);
+    const body = document.body.textContent ?? "";
+    expect(body).toMatch(/not a drop-in office|by appointment|message first/i);
+    expect(body).not.toMatch(/visit our office|walk in|drop by our office/i);
   });
 });

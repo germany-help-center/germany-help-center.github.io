@@ -94,6 +94,17 @@ const routes = [
     published: "2026-08-20",
     robots: "index, follow",
   },
+  {
+    url: "/germany-consultancy-surat",
+    out: path.join("germany-consultancy-surat", "index.html"),
+    title: "Germany Consultancy in Surat | No Commission, Germany Only",
+    description:
+      "A Germany-only consultancy run from Surat and from Germany itself. Public universities only, no university commission, and no promised outcomes.",
+    canonical: "https://germanyhelpcenter.com/germany-consultancy-surat/",
+    published: "2026-08-20",
+    robots: "index, follow",
+  },
+
 ];
 
 /** Replaces the content of a meta/title/link tag without disturbing the rest. */

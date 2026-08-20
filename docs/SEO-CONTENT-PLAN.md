@@ -30,18 +30,20 @@ Not-indexed breakdown:
 | Redirect error | 1 | genuine fault, URL not yet identified |
 | Page with redirect | 1 | the live sitemap listed `/privacy-policy` without a trailing slash; it 301s to `/privacy-policy/`. **Fixed** — see §5 |
 
-> ⚠️ **These 12 URLs are probably NOT all germanyhelpcenter's, and this changes what
-> they mean.** The property is a **Domain** property, so it spans
-> `dmat.germanyhelpcenter.com`. The arithmetic fits exactly: 2 GHC URLs + 11 dMAT
-> sitemap URLs = 13 = the 1 indexed + 12 not indexed that Search Console reports.
-> On that reading the 4 "Crawled – currently not indexed" are **dMAT pages**, and
-> germanyhelpcenter has never had a page judged thin — because until now it has only
-> ever had two pages.
+> ✅ **VERIFIED 2026-08-20 — these 12 URLs are mostly NOT germanyhelpcenter's.**
+> The property is a **Domain** property, so it spans `dmat.germanyhelpcenter.com`.
+> All six "Discovered – currently not indexed" examples were confirmed in Search
+> Console to be dMAT URLs: `/dmat-exam-preparation`, `/dmat-practice-papers`,
+> `/dmat-syllabus`, `/legal/privacy`, `/legal/refund`, `/legal/terms` (1–6 of 6).
 >
-> **Unverified.** Confirm in GSC → Indexing → Pages → click each reason → check the
-> example URLs' hostnames, then correct this section. Do not build an argument on the
-> "4 rejected pages" figure until that is done — the same caveat applies to the
-> comment in `src/components/TopicTeaser.tsx`.
+> The arithmetic closes: 2 GHC URLs + 11 dMAT sitemap URLs = 13 = 1 indexed + 12 not
+> indexed. So **germanyhelpcenter has never had a page judged thin** — until this
+> change it only ever had two pages. There is no quality penalty to undo here.
+>
+> **The real finding is on the other property:** ~10 of dMAT's 11 URLs are not
+> indexed at all, which makes the paid product close to invisible in Google while
+> "dmat exam" is the highest-interest query in the category. That is a more urgent
+> problem than anything on this page, and it belongs to `../dMatApp`.
 
 **The technical layer is not the problem.** Verified live on 2026-08-20:
 
