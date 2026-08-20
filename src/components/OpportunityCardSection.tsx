@@ -79,10 +79,14 @@ const OpportunityCardSection = () => {
         <SectionHeading
           eyebrow="For working professionals"
           icon={Briefcase}
+          /*
+             Deliberately NOT the same words as the H1 on
+             /opportunity-card-chancenkarte/ (`OpportunityCardPage.tsx`), the only place
+             this section renders now — an H2 echoing its own H1 wastes the slot. This
+             phrasing targets the question the points system actually raises. */
           title={
             <>
-              The Opportunity Card{" "}
-              <span className="text-brand">(Chancenkarte)</span>
+              Do you have <span className="text-brand">enough points</span>?
             </>
           }
           subtitle="Germany's points-based route for skilled workers. You apply from India, keep your current job, and only move once the visa is approved."

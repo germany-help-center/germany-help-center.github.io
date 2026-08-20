@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { ArrowUpRight, Menu, MessageCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FlagRail } from "@/components/Flag";
@@ -12,23 +13,43 @@ import logo from "@/assets/logo.png";
  * button did not fit — the items compressed into each other instead of wrapping.
  * Everything omitted here is still reachable from the footer and the mobile sheet.
  */
+/*
+ * Two kinds of entry live in these arrays:
+ *   "#id"    — a section of the homepage
+ *   "/slug/" — a real route (docs/SEO-CONTENT-PLAN.md)
+ *
+ * Sitewide nav anchor text is the strongest internal relevance signal we control,
+ * so the topics that own a page point at the page, not at the homepage teaser.
+ * Before this, 100% of nav anchor text pointed at fragments of a page that no
+ * longer holds those topics in full, and the four topic routes were reachable
+ * only from the footer.
+ *
+ * ⚠️ The scrollspy below feeds these to querySelector, where "/slug/" is an
+ * INVALID selector and throws. It filters to "#"-prefixed entries for that
+ * reason — keep the filter if you add entries.
+ */
 const navLinks = [
   { label: "Why Germany", href: "#why-germany" },
   { label: "Mentor", href: "#mentor" },
   { label: "Qualify?", href: "#check" },
-  { label: "Study", href: "#study" },
-  { label: "Work", href: "#opportunity-card" },
+  { label: "Study", href: "/study-in-germany-from-india/" },
+  { label: "Work", href: "/opportunity-card-chancenkarte/" },
   { label: "dMAT", href: "#dmat" },
-  { label: "Costs", href: "#costs" },
+  { label: "Costs", href: "/cost-of-studying-in-germany/" },
   { label: "FAQ", href: "#faq" },
 ];
 
-/** The mobile sheet has room for the full set. */
+/*
+ * The mobile sheet has room for the full set — which is why APS lives here and
+ * not on the desktop bar. The bar is capped at eight items by width (see the
+ * comment above it); a ninth compresses the others rather than wrapping.
+ */
 const mobileNavLinks = [
   ...navLinks.slice(0, 5),
+  { label: "APS India", href: "/aps-certificate-india/" },
   { label: "dMAT prep", href: "#dmat" },
   { label: "Services", href: "#services" },
-  { label: "Costs", href: "#costs" },
+  { label: "Costs", href: "/cost-of-studying-in-germany/" },
   { label: "Process", href: "#process" },
   { label: "About us", href: "#about" },
   { label: "FAQ", href: "#faq" },
@@ -40,6 +61,21 @@ const Header = () => {
   const [active, setActive] = useState<string>("");
   const [mobileOpen, setMobileOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
+
+  /*
+   * Every nav item points at a section of the HOMEPAGE. Since the topic routes
+   * exist (docs/SEO-CONTENT-PLAN.md), a visitor can land on /aps-certificate-india/
+   * straight from search — and there a bare "#costs" scrolls nowhere, because that
+   * section is not on the page. Off the homepage the link has to go home first.
+   *
+   * `navLinks[].href` stays a bare "#id" because the scrollspy below feeds it to
+   * querySelector, where "/#id" would be an invalid selector.
+   */
+  const { pathname } = useLocation();
+  const onHome = pathname === "/";
+  /** Route links pass through untouched; homepage anchors get sent home first. */
+  const sectionHref = (href: string) =>
+    href.startsWith("#") && !onHome ? `/${href}` : href;
 
   // Condense the bar and drive the reading-progress line.
   useEffect(() => {
@@ -67,6 +103,8 @@ const Header = () => {
   // Highlight the nav item for whichever section owns the upper viewport.
   useEffect(() => {
     const sections = navLinks
+      // Route entries ("/slug/") are not valid selectors — querySelector throws on them.
+      .filter((link) => link.href.startsWith("#"))
       .map((link) => document.querySelector<HTMLElement>(link.href))
       .filter((el): el is HTMLElement => el !== null);
     if (sections.length === 0 || typeof IntersectionObserver === "undefined") return;
@@ -122,7 +160,7 @@ const Header = () => {
             into the right padding and the bar stops looking symmetric. Measured
             headroom at gap-5 with the shortened tagline: ~54px. */}
         <div className="shell flex h-[4.25rem] items-center gap-5">
-          <a href="#top" className="group flex shrink-0 items-center gap-3" aria-label="Germany Help Center — home">
+          <a href={onHome ? "#top" : "/"} className="group flex shrink-0 items-center gap-3" aria-label="Germany Help Center — home">
             <span className="grid h-11 w-11 place-items-center overflow-hidden rounded-xl bg-white p-1 shadow-warm-sm transition-transform duration-300 ease-brand group-hover:scale-105">
               <img src={logo} alt="" className="h-full w-full object-contain" />
             </span>
@@ -148,7 +186,7 @@ const Header = () => {
               return (
                 <a
                   key={link.href}
-                  href={link.href}
+                  href={sectionHref(link.href)}
                   aria-current={isActive ? "true" : undefined}
                   className={`relative rounded-lg px-3 py-2 text-sm font-semibold transition-colors duration-200 ${
                     isActive ? "text-foreground" : "text-ink-muted hover:text-foreground"
@@ -214,7 +252,7 @@ const Header = () => {
           {mobileNavLinks.map((link, i) => (
             <a
               key={link.href}
-              href={link.href}
+              href={sectionHref(link.href)}
               onClick={() => setMobileOpen(false)}
               className="flex items-center justify-between border-b border-border/60 py-3 text-[0.9375rem] font-semibold text-foreground last:border-0"
               style={{ transitionDelay: `${i * 25}ms` }}

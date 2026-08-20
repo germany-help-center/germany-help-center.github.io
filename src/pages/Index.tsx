@@ -4,12 +4,9 @@ import StatsBar from "@/components/StatsBar";
 import DreamGermanySection from "@/components/DreamGermanySection";
 import MentorSection from "@/components/MentorSection";
 import EligibilityCheck from "@/components/EligibilityCheck";
-import StudentPathwaysSection from "@/components/StudentPathwaysSection";
-import ApsSection from "@/components/ApsSection";
+import TopicTeaser from "@/components/TopicTeaser";
 import DmatSection from "@/components/DmatSection";
-import OpportunityCardSection from "@/components/OpportunityCardSection";
 import ServicesSection from "@/components/ServicesSection";
-import CostsSection from "@/components/CostsSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import GermanCitiesSection from "@/components/GermanCitiesSection";
 import CountriesSection from "@/components/CountriesSection";
@@ -47,12 +44,71 @@ const Index = () => (
       <DreamGermanySection />
       <MentorSection />
       <EligibilityCheck />
-      <StudentPathwaysSection />
-      <ApsSection />
+      {/*
+        These four topics own their own routes (docs/SEO-CONTENT-PLAN.md), so the
+        homepage summarises and links rather than repeating them in full. The ids
+        are unchanged, so Header nav and landing.test.tsx still find them.
+      */}
+      <TopicTeaser
+        id="study"
+        eyebrow="Your route"
+        title={<>Which route into Germany <span className="text-brand">fits you</span></>}
+        subtitle="Bachelor's, master's and Ausbildung are different applications with different entry requirements and timelines."
+        points={[
+          "The routes compared side by side",
+          "What each one needs before you apply",
+          "Where uni-assist fits into it",
+        ]}
+        href="/study-in-germany-from-india/"
+        linkLabel="See which route fits you"
+      />
+
+      <TopicTeaser
+        id="aps"
+        eyebrow="APS India"
+        title={<>The <span className="text-brand">APS certificate</span>, explained</>}
+        subtitle="Almost every Indian applicant has to clear APS verification before a German university will open the file."
+        points={[
+          "What APS checks, and the documents to send",
+          "The 70% Class 12 rule for bachelor's applicants",
+          "How long it realistically takes",
+        ]}
+        href="/aps-certificate-india/"
+        linkLabel="Read the full APS guide"
+      />
+
       <DmatSection />
-      <OpportunityCardSection />
+
+      <TopicTeaser
+        id="opportunity-card"
+        eyebrow="Opportunity Card"
+        title={<>The <span className="text-brand">Chancenkarte</span>, by the numbers</>}
+        subtitle="A points-based route that lets you come to Germany to look for work, rather than arriving with an offer already signed."
+        points={[
+          "How the points system scores you",
+          "Who the route actually suits",
+          "The two figures we refuse to guess at",
+        ]}
+        href="/opportunity-card-chancenkarte/"
+        linkLabel="See how the points work"
+      />
+
       <ServicesSection />
-      <CostsSection />
+
+      <TopicTeaser
+        id="costs"
+        eyebrow="Money"
+        title={<>What a year in Germany <span className="text-brand">really costs</span></>}
+        subtitle="Tuition is rarely the number that decides anything. The blocked account, health insurance and the semester fee are."
+        points={[
+          "The blocked account and its monthly release",
+          "Health insurance and semester fees",
+          "Every figure stamped with its review date",
+        ]}
+        href="/cost-of-studying-in-germany/"
+        linkLabel="See the full cost breakdown"
+      />
+
       <HowItWorksSection />
       <GermanCitiesSection />
       <CountriesSection />
