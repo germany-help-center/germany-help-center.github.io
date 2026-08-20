@@ -31,7 +31,21 @@ import logo from "@/assets/logo.png";
 const navLinks = [
   { label: "Why Germany", href: "#why-germany" },
   { label: "Mentor", href: "#mentor" },
-  { label: "Qualify?", href: "#check" },
+  /*
+   * "Surat" replaced "Qualify?" (#check) here — the bar is capped at eight items
+   * by width, so adding one meant dropping one.
+   *
+   * Chosen on measured data: Search Console shows ~43 impressions of local
+   * consultancy intent ("germany consultancy in surat" alone sits at position
+   * 15.6), while the eligibility tool earns none. "Mentor" was the other
+   * candidate and was kept, because a named accountable person is what a
+   * consultancy's credibility rests on in a category where the German ambassador
+   * publicly warned students against agents.
+   *
+   * The eligibility tool is NOT orphaned: it keeps its slot in the mobile sheet
+   * below, and the homepage still scrolls to it.
+   */
+  { label: "Surat", href: "/germany-consultancy-surat/" },
   { label: "Study", href: "/study-in-germany-from-india/" },
   { label: "Work", href: "/opportunity-card-chancenkarte/" },
   { label: "dMAT", href: "#dmat" },
@@ -46,6 +60,9 @@ const navLinks = [
  */
 const mobileNavLinks = [
   ...navLinks.slice(0, 5),
+  // Kept here after losing its desktop slot — the tool is the site's best
+  // low-commitment entry point and should not become unreachable from the nav.
+  { label: "Do I qualify?", href: "#check" },
   { label: "APS India", href: "/aps-certificate-india/" },
   { label: "dMAT prep", href: "#dmat" },
   { label: "Services", href: "#services" },
